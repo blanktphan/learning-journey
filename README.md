@@ -3,4 +3,4 @@
 ## 📚 Table of Content
 
   ### ⌨️ Technical skills
-  - Programming
+  - [Programming](./technical-skills/programming/programming)
