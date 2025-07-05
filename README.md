@@ -2,13 +2,13 @@
 
 ## 📚 Fundamental
 
-- [Mathmematics](./)
-- [Physics](./)
-- [Chemistry](./)
-- [Electronics](./)
-- [Drawing](./)
+- 📘 [Mathmematics](./)
+- 📘 [Physics](./)
+- 📘 [Chemistry](./)
+- 📘 [Electronics](./)
+- 📘 [Drawing](./)
 
 ## 📚 Technical skills
   
-- [Programming](./technical-skills/programming/programming)
-- [Data Stucture](./)
+- 📕 [Programming](./technical-skills/programming)
+- 📕 [Data Stucture](./)
