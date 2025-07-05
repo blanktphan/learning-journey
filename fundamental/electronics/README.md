@@ -1,6 +1,6 @@
-📚 Data Struture
+📚 Electronics
 
-## 🔗 Data Struture-Related Content
+## 🔗 Electronics-Related Content
 
 ---
 

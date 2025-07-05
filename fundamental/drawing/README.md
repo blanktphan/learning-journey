@@ -1,6 +1,6 @@
-📚 Data Struture
+📚 Drawing
 
-## 🔗 Data Struture-Related Content
+## 🔗 Drawing-Related Content
 
 ---
 

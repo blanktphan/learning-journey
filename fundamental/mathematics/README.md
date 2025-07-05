@@ -1,6 +1,6 @@
-📚 Data Struture
+📚 Mathematics
 
-## 🔗 Data Struture-Related Content
+## 🔗 Mathmematics-Related Content
 
 ---
 

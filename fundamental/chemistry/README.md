@@ -1,6 +1,6 @@
-📚 Data Struture
+📚 Chemistry
 
-## 🔗 Data Struture-Related Content
+## 🔗 Chrmistry-Related Content
 
 ---
 

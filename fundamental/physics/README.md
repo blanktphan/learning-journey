@@ -1,6 +1,6 @@
-📚 Data Struture
+📚 Physics
 
-## 🔗 Data Struture-Related Content
+## 🔗 Physics-Related Content
 
 ---
 
