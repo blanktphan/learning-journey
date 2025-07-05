@@ -4,11 +4,11 @@
 
 ### 📕 Introduction to Programming
 
-- 📖 [What is Programming?](./programming/introduction-to-programming/01-what-is-programming.md)
-- 📖 [Why Programming is Important?](./programming/02-why-programming-is-important.md)
-- 📖 [When is it necessary to use programming?](./programming/03-when-is-it-necessary-to-use-programming.md)
-- 📖 [How is the programming process done?](./programming/introduction-to-programming/04-%20how-is-the-programming-process-done.md)
-- 📖 [Who are the people involved in programming?](./)
+- 📖 [What is Programming?](./introduction-to-programming/01-what-is-programming.md)
+- 📖 [Why Programming is Important?](./introduction-to-programming/02-why-programming-is-important.md)
+- 📖 [When is it necessary to use programming?](./introduction-to-programming/03-when-is-it-necessary-to-use-programming.md)
+- 📖 [How is the programming process done?](./introduction-to-programming/04-how-is-the-programming-process-done.md)
+- 📖 [Who are the people involved in programming?](./introduction-to-programming/05-who-are-the-people-involved-in-programming.md)
 
 ### 📕 Fundamental Concepts
 
