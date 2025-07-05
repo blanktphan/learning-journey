@@ -12,4 +12,3 @@
   
 - [Programming](./technical-skills/programming/programming)
 - [Data Stucture](./)
-- []
