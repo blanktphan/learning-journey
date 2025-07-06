@@ -4,8 +4,8 @@
 
 ### 📕 Fundamental Database Concepts
 
-- 📖 [What is a Database & Why it Matters](.)
-- 📖 [Data, Information, and DBMS](.)
+- 📖 [What is a Database & Why it Matters](./01-fundamental-database-concepts/01-what-is-a-database-&-why-it-matters.md)
+- 📖 [Data, Information, and DBMS](./01-fundamental-database-concepts/02-Data-information-and-dnms.md)
 - 📖 [Database System Architecture](.)
 
 ### 📕 The Relational Model
