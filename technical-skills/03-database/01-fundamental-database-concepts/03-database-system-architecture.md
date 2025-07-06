@@ -106,53 +106,56 @@ Registrar View:
 - Cannot see: Financial details, personal medical information
 ```
 
-**E-commerce Platform Example:**
+**SQL Implementation Examples:**
 ```sql
--- Customer View (External Schema)
-CREATE VIEW customer_account AS
+-- Student View (External Schema)
+CREATE VIEW student_portal AS
 SELECT 
-    customer_id,
-    first_name,
-    last_name,
-    email,
-    phone,
-    shipping_address,
-    order_history,
-    loyalty_points
-FROM customers c
-JOIN orders o ON c.customer_id = o.customer_id
-WHERE c.customer_id = CURRENT_USER_ID();
+    s.student_id,
+    s.first_name,
+    s.last_name,
+    s.email,
+    c.course_name,
+    e.grade,
+    e.semester,
+    e.year
+FROM students s
+JOIN enrollments e ON s.student_id = e.student_id
+JOIN sections sec ON e.section_id = sec.section_id
+JOIN courses c ON sec.course_id = c.course_id
+WHERE s.student_id = CURRENT_USER_ID();
 
--- Sales Manager View (External Schema)
-CREATE VIEW sales_dashboard AS
+-- Professor View (External Schema)
+CREATE VIEW professor_dashboard AS
 SELECT 
-    region,
-    salesperson,
-    COUNT(order_id) as total_orders,
-    SUM(total_amount) as revenue,
-    AVG(total_amount) as avg_order_value
-FROM orders o
-JOIN employees e ON o.salesperson_id = e.employee_id
-WHERE o.order_date >= DATE_SUB(CURRENT_DATE, INTERVAL 30 DAY)
-GROUP BY region, salesperson;
+    sec.section_id,
+    c.course_name,
+    s.first_name,
+    s.last_name,
+    e.grade,
+    sec.classroom,
+    sec.schedule
+FROM sections sec
+JOIN courses c ON sec.course_id = c.course_id
+JOIN enrollments e ON sec.section_id = e.section_id
+JOIN students s ON e.student_id = s.student_id
+WHERE sec.professor_id = CURRENT_USER_ID();
 
--- Inventory Manager View (External Schema) 
-CREATE VIEW inventory_status AS
+-- Financial Office View (External Schema) 
+CREATE VIEW financial_overview AS
 SELECT 
-    product_id,
-    product_name,
-    current_stock,
-    reorder_level,
-    supplier_info,
-    last_restock_date,
-    CASE 
-        WHEN current_stock <= reorder_level THEN 'REORDER_NEEDED'
-        WHEN current_stock <= (reorder_level * 1.5) THEN 'LOW_STOCK'
-        ELSE 'ADEQUATE'
-    END as stock_status
-FROM products p
-JOIN inventory i ON p.product_id = i.product_id
-JOIN suppliers s ON p.supplier_id = s.supplier_id;
+    s.student_id,
+    s.first_name,
+    s.last_name,
+    p.payment_status,
+    p.amount_due,
+    p.payment_date,
+    f.aid_amount,
+    f.aid_type
+FROM students s
+LEFT JOIN payments p ON s.student_id = p.student_id
+LEFT JOIN financial_aid f ON s.student_id = f.student_id
+-- Note: No grade information visible to financial office
 ```
 
 **Benefits of External Level:**
@@ -475,7 +478,7 @@ ORDER BY TABLE_NAME, INDEX_NAME, SEQ_IN_INDEX;
 
 The three-schema architecture enables two critical types of independence that make database systems flexible and maintainable:
 
-### 🔄 Logical Data Independence
+### � Logical Data Independence
 
 **Definition:** The ability to **modify the Conceptual Schema** (add/remove tables, change relationships, add constraints) **without affecting External Views** or applications that use the database.
 
@@ -610,7 +613,16 @@ SET GLOBAL innodb_buffer_pool_size = 17179869184; -- 16GB instead of 8GB
 **Query Optimization:**
 ```sql
 -- Before: Query without optimization
-SELECT s.first_name, s.last_name, AVG(CASE WHEN e.grade = 'A+' THEN 4.0 WHEN e.grade = 'A' THEN 4.0 ELSE 3.0 END)
+SELECT s.first_name, s.last_name, AVG(
+    CASE 
+        WHEN e.grade = 'A+' THEN 4.0 
+        WHEN e.grade = 'A' THEN 4.0 
+        WHEN e.grade = 'A-' THEN 3.7
+        WHEN e.grade = 'B+' THEN 3.3
+        WHEN e.grade = 'B' THEN 3.0
+        ELSE 2.0 
+    END
+) as gpa
 FROM students s
 JOIN enrollments e ON s.student_id = e.student_id
 WHERE s.major = 'Computer Science'
@@ -806,9 +818,9 @@ Raw Data Sources → Data Lake → Data Warehouse → Analytics Views
 
 ---
 
-## 📋 Summary & Practical Exercise
+## �📋 Summary & Practical Exercise
 
-## Summary
+### Comprehensive Summary
 
 **The Three-Schema Architecture** provides a robust foundation for database system design by clearly separating concerns across three distinct levels:
 
@@ -829,168 +841,170 @@ Raw Data Sources → Data Lake → Data Warehouse → Analytics Views
 - **Performance:** Optimization possible at each layer independently
 - **Evolution:** System can adapt to changing requirements and technology
 
----
+### Practical Exercise
 
-## Practical Exercise
+**Scenario:** Design the architecture for a modern e-commerce platform (like Shopee/Lazada) using the three-schema approach.
 
-**Scenario:** Design the architecture for a modern social media platform (like Instagram/TikTok) using the three-schema approach.
+**Analysis Questions from Thai Content:**
 
-### Part A: Three-Schema Design
+1. **Your perspective as a "buyer" (seeing only your own purchase history) represents which architectural level?**
+   - **Answer:** External Level (View Level)
+   - **Explanation:** As a buyer, you only see a customized view of data relevant to you
 
-**Task 1: External Level Design**
-Design specific views for different user types:
+2. **The model showing all relationships between "users," "products," and "orders" represents which architectural level?**
+   - **Answer:** Conceptual Level (Logical Level)
+   - **Explanation:** This is the complete logical data model for the entire organization
 
-**Regular User View:**
+3. **Engineers' decisions about what type of server to store product images on represents which level?**
+   - **Answer:** Internal Level (Physical Level)
+   - **Explanation:** Storage infrastructure decisions are physical implementation details
+
+**Extended Exercise:**
+
+**Part A: Three-Schema Design**
+
+**1. External Level - User Views:**
 ```sql
--- Design a view for regular users
-CREATE VIEW user_feed AS
+-- Buyer View
+CREATE VIEW buyer_portal AS
 SELECT 
-    -- Define what regular users should see
-    ________________________________
-FROM posts p
-JOIN users u ON p.user_id = u.user_id
-WHERE ________________________________;
+    o.order_id,
+    o.order_date,
+    p.product_name,
+    oi.quantity,
+    oi.unit_price,
+    o.status
+FROM orders o
+JOIN order_items oi ON o.order_id = oi.order_id
+JOIN products p ON oi.product_id = p.product_id
+WHERE o.user_id = CURRENT_USER_ID();
+
+-- Seller View
+CREATE VIEW seller_dashboard AS
+SELECT 
+    p.product_id,
+    p.product_name,
+    p.price,
+    i.quantity_available,
+    COUNT(oi.order_item_id) as orders_count,
+    SUM(oi.quantity * oi.unit_price) as total_revenue
+FROM products p
+LEFT JOIN inventory i ON p.product_id = i.product_id
+LEFT JOIN order_items oi ON p.product_id = oi.product_id
+WHERE p.seller_id = CURRENT_USER_ID()
+GROUP BY p.product_id;
+
+-- Admin View
+CREATE VIEW admin_analytics AS
+SELECT 
+    DATE(o.order_date) as order_date,
+    COUNT(DISTINCT o.order_id) as daily_orders,
+    COUNT(DISTINCT o.user_id) as active_buyers,
+    SUM(o.total_amount) as daily_revenue
+FROM orders o
+WHERE o.order_date >= CURRENT_DATE - INTERVAL '30 days'
+GROUP BY DATE(o.order_date);
 ```
 
-**Content Moderator View:**
+**2. Conceptual Level - Complete Schema:**
 ```sql
--- Design a view for content moderators
-CREATE VIEW moderation_queue AS
-SELECT 
-    -- Define what moderators should see
-    ________________________________
-FROM posts p
-LEFT JOIN reports r ON p.post_id = r.post_id
-WHERE ________________________________;
-```
-
-**Analytics Team View:**
-```sql
--- Design a view for data analysts
-CREATE VIEW engagement_metrics AS
-SELECT 
-    -- Define analytics data structure
-    ________________________________
-FROM posts p
-JOIN interactions i ON p.post_id = i.post_id
-GROUP BY ________________________________;
-```
-
-**Task 2: Conceptual Level Design**
-Create the complete logical schema:
-
-```sql
--- Design core entities and relationships
+-- Core business entities
 CREATE TABLE users (
-    -- Define user table structure
-    ________________________________
+    user_id SERIAL PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    user_type ENUM('buyer', 'seller', 'admin') NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE posts (
-    -- Define post table structure
-    ________________________________
+CREATE TABLE products (
+    product_id SERIAL PRIMARY KEY,
+    seller_id INTEGER REFERENCES users(user_id),
+    product_name VARCHAR(200) NOT NULL,
+    description TEXT,
+    price DECIMAL(10,2) NOT NULL,
+    category_id INTEGER,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE interactions (
-    -- Define interaction table (likes, comments, shares)
-    ________________________________
+CREATE TABLE orders (
+    order_id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(user_id),
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    total_amount DECIMAL(10,2) NOT NULL,
+    status ENUM('pending', 'confirmed', 'shipped', 'delivered', 'cancelled'),
+    shipping_address TEXT NOT NULL
 );
 
-CREATE TABLE relationships (
-    -- Define follower/following relationships
-    ________________________________
+CREATE TABLE order_items (
+    order_item_id SERIAL PRIMARY KEY,
+    order_id INTEGER REFERENCES orders(order_id),
+    product_id INTEGER REFERENCES products(product_id),
+    quantity INTEGER NOT NULL,
+    unit_price DECIMAL(10,2) NOT NULL
 );
 ```
 
-**Task 3: Internal Level Considerations**
-Specify physical storage decisions:
+**3. Internal Level - Physical Storage Decisions:**
 
-**Storage Strategy:**
-- **Media files:** ________________________________
-- **User data:** ________________________________  
-- **Analytics data:** ________________________________
+**Image Storage Strategy:**
+- **Product images:** Stored on CDN (Content Delivery Network) for global fast access
+- **User avatars:** Compressed and cached on edge servers
+- **Document uploads:** Encrypted storage in secure cloud buckets
+
+**Database Partitioning:**
+```sql
+-- Partition orders by date for better performance
+CREATE TABLE orders_2024_q1 PARTITION OF orders
+FOR VALUES FROM ('2024-01-01') TO ('2024-04-01');
+
+CREATE TABLE orders_2024_q2 PARTITION OF orders
+FOR VALUES FROM ('2024-04-01') TO ('2024-07-01');
+```
 
 **Indexing Strategy:**
 ```sql
--- Critical indexes for performance
-CREATE INDEX ________________________________;
-CREATE INDEX ________________________________;
-CREATE INDEX ________________________________;
+-- Critical indexes for e-commerce performance
+CREATE INDEX idx_product_category ON products(category_id, price);
+CREATE INDEX idx_order_user_date ON orders(user_id, order_date);
+CREATE INDEX idx_product_search ON products USING GIN(to_tsvector('english', product_name || ' ' || description));
 ```
 
-**Partitioning Strategy:**
+**Part B: Data Independence Demonstration**
+
+**Logical Data Independence Example:**
+When the business decides to add a "wishlist" feature:
+
 ```sql
--- How to partition large tables
-ALTER TABLE posts PARTITION BY ________________________________;
-ALTER TABLE interactions PARTITION BY ________________________________;
+-- Add new table to conceptual schema
+CREATE TABLE wishlists (
+    wishlist_id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(user_id),
+    product_id INTEGER REFERENCES products(product_id),
+    added_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Existing buyer/seller views continue to work unchanged
+-- New wishlist views can be created without affecting existing functionality
 ```
 
-### Part B: Data Independence Scenarios
+**Physical Data Independence Example:**
+When the engineering team decides to upgrade from HDD to SSD storage:
 
-**Scenario 1: Adding New Features (Logical Independence)**
-The company wants to add "Stories" feature (24-hour temporary posts):
+```sql
+-- Physical changes (invisible to applications)
+-- - Migrate data to SSD storage
+-- - Adjust buffer pool settings for SSD optimization
+-- - Update backup strategies for faster storage
 
-**Task:** Show how you would:
-1. Modify the conceptual schema: ________________________________
-2. Ensure existing views still work: ________________________________
-3. Create new views for Stories: ________________________________
+-- No changes needed to:
+-- - Conceptual schema remains the same
+-- - External views continue working
+-- - Application code requires no modifications
+-- - User experience is improved (faster) but unchanged functionally
+```
 
-**Scenario 2: Scaling Performance (Physical Independence)**
-The platform grows from 1 million to 100 million users:
-
-**Task:** Describe physical changes needed:
-1. **Database Sharding:** ________________________________
-2. **Caching Strategy:** ________________________________
-3. **Read Replicas:** ________________________________
-4. **CDN Integration:** ________________________________
-
-### Part C: Advanced Architecture Decisions
-
-**Microservices Architecture:**
-How would you split this into multiple services while maintaining the three-schema principles?
-
-1. **User Service:** ________________________________
-2. **Content Service:** ________________________________
-3. **Interaction Service:** ________________________________
-4. **Analytics Service:** ________________________________
-
-**Consistency vs. Availability Trade-offs:**
-For each service, decide on consistency requirements:
-
-1. **User Authentication:** ________________________________
-2. **Post Publishing:** ________________________________
-3. **Like Counts:** ________________________________
-4. **Analytics Data:** ________________________________
-
-### Part D: Real-World Challenges
-
-**Challenge 1: Global Distribution**
-How would you handle users across different continents?
-- **Data residency requirements:** ________________________________
-- **Latency optimization:** ________________________________
-- **Consistency across regions:** ________________________________
-
-**Challenge 2: Regulatory Compliance**
-How would you implement GDPR "right to be forgotten"?
-- **External level changes:** ________________________________
-- **Conceptual level changes:** ________________________________
-- **Internal level changes:** ________________________________
-
-**Challenge 3: Technology Evolution**
-How would you migrate from relational to hybrid (SQL + NoSQL)?
-- **Maintain existing views:** ________________________________
-- **Gradual migration strategy:** ________________________________
-- **Rollback capabilities:** ________________________________
-
-### Part E: Reflection Questions
-
-1. **Architecture Benefits:** How does the three-schema architecture help manage the complexity of a social media platform?
-
-2. **Trade-off Analysis:** What are the trade-offs between strict schema adherence and system performance?
-
-3. **Future Evolution:** How might emerging technologies (AI, blockchain, edge computing) affect your architectural decisions?
-
-4. **Team Organization:** How would different teams (frontend, backend, data science, DevOps) interact with different schema levels?
+This real-world analysis demonstrates how the three-schema architecture enables complex e-commerce platforms to evolve and scale while maintaining system integrity and user experience.
 
 ---
 
