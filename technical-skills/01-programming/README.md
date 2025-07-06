@@ -4,9 +4,9 @@
 
 ### 📕 Introduction to Programming
 
-- 📖 [What are Programs & Languages?](./introduction-to-programming/01-what-are-programs-and-languages.md)
-- 📖 [The Purpose of Programming](./introduction-to-programming/02-the-purpose-of-programming.md)
-- 📖 [How Computers Understand Code](./introduction-to-programming/03-how-computers-understand-code.md)
+- 📖 [What are Programs & Languages?](./01-introduction-to-programming/01-what-are-programs-and-languages.md)
+- 📖 [The Purpose of Programming](./01-introduction-to-programming/02-the-purpose-of-programming.md)
+- 📖 [How Computers Understand Code](./01-introduction-to-programming/03-how-computers-understand-code.md)
 
 ### 📕 Fundamental Concepts
 

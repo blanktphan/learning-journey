@@ -14,7 +14,7 @@ You can click [here](./fundamental/) to see more fundamental lessons.
 
 ## 📚 Technical skills
   
-- 📕 [Programming](./technical-skills/programming) - [🔨 processing]
+- 📕 [Programming](./technical-skills/01-programming) - [🔨 processing]
 - 📕 [Data Stucture](./technical-skills/data-structure/) - [🚧 soon]
 - 📕 [Database]() - [🚧 soon]
 - 📕 [Computer Architecture]() - [🚧 soon]
