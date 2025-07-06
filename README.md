@@ -3,6 +3,7 @@
 ## 📚 Fundamental
 
 - 📘 [Mathmematics](./fundamental/mathematics/) - [🚧 soon]
+- 📘 [English Language](./fundamental/english/) - [🚧 soon]
 - 📘 [Physics](./fundamental/physics/) - [🚧 soon]
 - 📘 [Chemistry](./fundamental/chemistry/) - [🚧 soon]
 - 📘 [Electronics](./fundamental/electronics/) - [🚧 soon]
