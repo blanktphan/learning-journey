@@ -212,7 +212,9 @@ Understanding how programming serves different sectors helps illustrate its univ
 
 ---
 
-## Summary
+## 📋 Summary & Practical Exercise
+
+### Summary
 
 Programming serves humanity through three fundamental purposes that often intersect and amplify each other:
 
@@ -240,9 +242,7 @@ As technology continues to advance, programming's role in society will only expa
 - **Space Technology:** Enabling human expansion beyond Earth through sophisticated control systems
 - **Sustainability:** Developing solutions for climate change and resource conservation
 
----
-
-## Practical Exercise
+### Practical Exercise
 
 **Choose a Software Application:** Select one application you use regularly (e.g., Spotify, Google Maps, Microsoft Excel, Instagram, or any mobile app).
 

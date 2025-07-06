@@ -347,7 +347,9 @@ Execute: Floating-Point Unit (FPU) activated
 
 ---
 
-## Summary
+## 📋 Summary & Practical Exercise
+
+### Summary
 
 **The Abstraction Journey:** Computer code understanding occurs through a sophisticated "translation process" that happens in distinct layers. High-level source code written by humans gets systematically converted into machine code that the CPU can understand and execute.
 
@@ -361,9 +363,7 @@ Execute: Floating-Point Unit (FPU) activated
 
 **Modern Optimizations:** Real-world systems employ numerous optimizations (pipelining, caching, branch prediction) that enhance this basic process while maintaining the same conceptual framework.
 
----
-
-## Practical Exercise
+### Practical Exercise
 
 **Scenario:** When you click the "Send" button in a chat application, trace the "Abstraction Ladder" that occurs.
 

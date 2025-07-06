@@ -201,7 +201,9 @@ The choice between different languages and translation methods depends on severa
 
 ---
 
-## Summary
+## 📋 Summary & Practical Exercise
+
+### Summary
 
 **Programs** represent the concrete implementation of algorithms using programming languages as the communication medium between human logic and computer execution.
 
@@ -221,9 +223,7 @@ Human Ideas → Algorithms → High-Level Code → Low-Level Code → Machine Co
 
 Understanding this spectrum helps developers choose appropriate tools and make informed decisions about technology stacks for different projects.
 
----
-
-## Practical Exercise
+### Practical Exercise
 
 **Scenario:** You need to instruct a robot to make a sandwich.
 
