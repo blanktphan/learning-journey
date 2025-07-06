@@ -8,6 +8,9 @@
 - 📘 [Electronics](./fundamental/electronics/) - [🚧 soon]
 - 📘 [Drawing](./fundamental/drawing/) - [🚧 soon]
 
+You can click [here](./fundamental/) to see more fundamental lessons.
+
+
 ## 📚 Technical skills
   
 - 📕 [Programming](./technical-skills/programming) - [🔨 processing]
@@ -15,6 +18,8 @@
 - 📕 [Database]() - [🚧 soon]
 - 📕 [Computer Architecture]() - [🚧 soon]
 - 📕 [Algorithms]() - [🚧 soon]
+
+You can click [here](./technical-skills/) to see more Technical skill lessons.
 
 ---
 
