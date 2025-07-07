@@ -4,21 +4,21 @@
 
 Upon completion of this topic, you will be able to:
 
-- **Explain** the conceptual differences between Data, Information, and Knowledge in information systems
-- **Define** the role and describe the primary functions of a Database Management System (DBMS)
-- **Identify** the key components that exist within a database system environment
-- **Classify** types of DBMS according to their data models at a foundational level
-- **Analyze** real-world scenarios to distinguish between data, information, and knowledge transformations
+- Explain the conceptual differences between Data, Information, and Knowledge in information systems
+- Define the role and describe the primary functions of a Database Management System (DBMS)
+- Identify the key components that exist within a database system environment
+- Classify types of DBMS according to their data models at a foundational level
+- Analyze real-world scenarios to distinguish between data, information, and knowledge transformations
 
 ---
 
 ## Introduction: The Information Hierarchy in Digital Systems
 
-Understanding the distinction between **data**, **information**, and **knowledge** is fundamental to grasping how database systems create value in modern organizations. These terms are often used interchangeably in casual conversation, but in information systems, they represent distinct levels of a **hierarchical transformation process** that turns raw facts into actionable insights.
+Understanding the distinction between data, information, and knowledge is fundamental to grasping how database systems create value in modern organizations. These terms are often used interchangeably in casual conversation, but in information systems, they represent distinct levels of a hierarchical transformation process that turns raw facts into actionable insights.
 
-This hierarchy forms the foundation for understanding why database systems are not merely storage solutions, but sophisticated **knowledge creation platforms** that power decision-making in every aspect of modern business and society.
+This hierarchy forms the foundation for understanding why database systems are not merely storage solutions, but sophisticated knowledge creation platforms that power decision-making in every aspect of modern business and society.
 
-**The Core Question:**
+The Core Question:
 How do we transform meaningless numbers and text into business intelligence that drives strategic decisions and competitive advantages?
 
 ---
@@ -29,19 +29,19 @@ In information systems, we distinguish these concepts with precision to understa
 
 ### 📊 Raw Data: The Foundation Layer
 
-**Technical Definition:**
-Raw data consists of **unprocessed facts** with no inherent context, organization, or meaning. It represents discrete observations, measurements, or recordings that exist independently of any interpretation framework.
+Technical Definition:
+Raw data consists of unprocessed facts with no inherent context, organization, or meaning. It represents discrete observations, measurements, or recordings that exist independently of any interpretation framework.
 
-**Key Characteristics of Raw Data:**
-- **Context-independent:** No inherent meaning without interpretation
-- **Unstructured or minimally structured:** Random collections of values
-- **Atomic:** Individual facts that cannot be meaningfully subdivided
-- **Volume-intensive:** Often exists in large, unwieldy quantities
-- **Processing-ready:** Suitable for computational manipulation
+Key Characteristics of Raw Data:
+- Context-independent: No inherent meaning without interpretation
+- Unstructured or minimally structured: Random collections of values
+- Atomic: Individual facts that cannot be meaningfully subdivided
+- Volume-intensive: Often exists in large, unwieldy quantities
+- Processing-ready: Suitable for computational manipulation
 
-**Real-World Data Examples:**
+Real-World Data Examples:
 
-**E-commerce Transaction Data:**
+E-commerce Transaction Data:
 ```
 Raw Data Points:
 [450, "สมชาย", "2024-07-10", "A-101", 14:32:15, "Card", "Completed"]
@@ -50,7 +50,7 @@ Raw Data Points:
 [125, "Lisa", "2024-07-11", "A-101", 11:22:18, "Card", "Pending"]
 ```
 
-**Sensor Data from IoT Devices:**
+Sensor Data from IoT Devices:
 ```
 Temperature Readings:
 [23.5, 24.1, 23.8, 24.3, 23.9, 24.7, 25.2, 24.8]
@@ -60,7 +60,7 @@ Location IDs:
 ["SENSOR_001", "SENSOR_001", "SENSOR_002", "SENSOR_003"]
 ```
 
-**Website Analytics Data:**
+Website Analytics Data:
 ```
 User Activity Logs:
 ["/products", 156, "Chrome", "192.168.1.100", 45.2]
@@ -70,10 +70,10 @@ User Activity Logs:
 
 ### 📋 Information: Contextualized Data
 
-**Technical Definition:**
-Information is **processed data** that has been organized, structured, or presented within a meaningful context. It answers the fundamental questions: **Who, What, Where, When** and provides actionable insights for immediate decision-making.
+Technical Definition:
+Information is processed data that has been organized, structured, or presented within a meaningful context. It answers the fundamental questions: Who, What, Where, When and provides actionable insights for immediate decision-making.
 
-**Information Transformation Process:**
+Information Transformation Process:
 ```
 Raw Data → [Context + Structure + Processing] → Information
 
@@ -85,9 +85,9 @@ Components of Transformation:
 └─ Validation (ensuring accuracy and consistency)
 ```
 
-**Information Examples from Raw Data:**
+Information Examples from Raw Data:
 
-**Processed E-commerce Information:**
+Processed E-commerce Information:
 ```sql
 -- Transforming raw transaction data into meaningful information
 SELECT 
@@ -106,7 +106,7 @@ Result (Information):
 "Customer Mary purchased Product B-205 for 320 THB on July 10, 2024, using Cash payment - Transaction Completed"
 ```
 
-**Environmental Monitoring Information:**
+Environmental Monitoring Information:
 ```sql
 -- Converting sensor readings into environmental reports
 SELECT 
@@ -123,7 +123,7 @@ Result (Information):
 "Building A averaged 24.2°C with maximum 25.2°C and minimum 23.5°C across 8 readings on July 10, 2024"
 ```
 
-**Business Performance Information:**
+Business Performance Information:
 ```sql
 -- Website traffic analysis
 SELECT 
@@ -141,10 +141,10 @@ Result (Information):
 
 ### 🧠 Knowledge: Strategic Intelligence
 
-**Technical Definition:**
-Knowledge represents the **synthesis and analysis** of information to identify patterns, relationships, and insights that enable strategic decision-making. It answers the critical questions: **How and Why** and provides the foundation for prediction, optimization, and innovation.
+Technical Definition:
+Knowledge represents the synthesis and analysis of information to identify patterns, relationships, and insights that enable strategic decision-making. It answers the critical questions: How and Why and provides the foundation for prediction, optimization, and innovation.
 
-**Knowledge Creation Process:**
+Knowledge Creation Process:
 ```
 Information → [Analysis + Pattern Recognition + Synthesis] → Knowledge
 
@@ -157,9 +157,9 @@ Components of Knowledge Creation:
 └─ Actionable Recommendations (specific guidance for action)
 ```
 
-**Knowledge Examples from Information Analysis:**
+Knowledge Examples from Information Analysis:
 
-**Strategic Business Knowledge:**
+Strategic Business Knowledge:
 ```sql
 -- Complex analysis revealing business insights
 WITH monthly_sales AS (
@@ -197,7 +197,7 @@ suggesting correlation with salary payment cycles. Recommendation: Increase inve
 A-101 by 30% during the last week of each month to prepare for early-month demand surge."
 ```
 
-**Operational Optimization Knowledge:**
+Operational Optimization Knowledge:
 ```sql
 -- Environmental pattern analysis for energy optimization
 WITH hourly_patterns AS (
@@ -240,7 +240,7 @@ reduce energy consumption by 12% annually while maintaining comfort levels."
 
 ### 📈 The Value Creation Pipeline
 
-**Economic Value of the Information Hierarchy:**
+Economic Value of the Information Hierarchy:
 ```
 Raw Data → Information → Knowledge → Business Value
 
@@ -251,25 +251,25 @@ Value Multipliers:
 └─ Implemented Knowledge: $1000+ per unit (competitive advantage)
 ```
 
-**Real-World Impact Examples:**
+Real-World Impact Examples:
 
-**Retail Industry:**
-- **Data:** Individual purchase transactions
-- **Information:** "Customer segments and purchase patterns"
-- **Knowledge:** "Personalized recommendation algorithms increase sales by 25%"
-- **Business Value:** Amazon's recommendation engine drives 35% of revenue
+Retail Industry:
+- Data: Individual purchase transactions
+- Information: "Customer segments and purchase patterns"
+- Knowledge: "Personalized recommendation algorithms increase sales by 25%"
+- Business Value: Amazon's recommendation engine drives 35% of revenue
 
-**Healthcare:**
-- **Data:** Patient vital signs and medical records
-- **Information:** "Patient health status and treatment history"
-- **Knowledge:** "Predictive models for disease prevention and optimal treatment protocols"
-- **Business Value:** Early intervention reduces treatment costs by 60% and improves outcomes
+Healthcare:
+- Data: Patient vital signs and medical records
+- Information: "Patient health status and treatment history"
+- Knowledge: "Predictive models for disease prevention and optimal treatment protocols"
+- Business Value: Early intervention reduces treatment costs by 60% and improves outcomes
 
-**Manufacturing:**
-- **Data:** Sensor readings from production equipment
-- **Information:** "Equipment performance and maintenance schedules"
-- **Knowledge:** "Predictive maintenance algorithms reduce downtime by 40%"
-- **Business Value:** Prevents $50M annually in production losses
+Manufacturing:
+- Data: Sensor readings from production equipment
+- Information: "Equipment performance and maintenance schedules"
+- Knowledge: "Predictive maintenance algorithms reduce downtime by 40%"
+- Business Value: Prevents $50M annually in production losses
 
 ---
 
@@ -277,10 +277,10 @@ Value Multipliers:
 
 ### 🔧 DBMS Architecture and Core Functions
 
-**Technical Definition:**
-A Database Management System (DBMS) is a **sophisticated software suite** that creates abstraction layers between users/applications and physical data storage, enabling efficient creation, access, and management of databases while hiding the complexity of underlying storage mechanisms.
+Technical Definition:
+A Database Management System (DBMS) is a sophisticated software suite that creates abstraction layers between users/applications and physical data storage, enabling efficient creation, access, and management of databases while hiding the complexity of underlying storage mechanisms.
 
-**DBMS Abstraction Layers:**
+DBMS Abstraction Layers:
 ```
 ┌─────────────────────────────────────────────────────────┐
 │                Application Layer                        │
@@ -302,11 +302,11 @@ A Database Management System (DBMS) is a **sophisticated software suite** that c
 
 ### 🎯 Primary Functions of DBMS
 
-#### **1. Data Definition (DDL Operations)**
+#### 1. Data Definition (DDL Operations)
 
-**Purpose:** Define and manage database structure, data types, and integrity constraints.
+Purpose: Define and manage database structure, data types, and integrity constraints.
 
-**Data Definition Language (DDL) Examples:**
+Data Definition Language (DDL) Examples:
 ```sql
 -- Creating database schema with complex constraints
 CREATE DATABASE ecommerce_system;
@@ -340,11 +340,11 @@ CREATE INDEX idx_order_date ON orders(order_date);
 CREATE INDEX idx_customer_orders ON orders(customer_id, order_date);
 ```
 
-#### **2. Data Manipulation (DML Operations)**
+#### 2. Data Manipulation (DML Operations)
 
-**Purpose:** Enable users to insert, update, delete, and query data with sophisticated operations.
+Purpose: Enable users to insert, update, delete, and query data with sophisticated operations.
 
-**Data Manipulation Language (DML) Examples:**
+Data Manipulation Language (DML) Examples:
 ```sql
 -- Complex data insertion with validation
 INSERT INTO customers (name, email, phone, credit_limit) 
@@ -390,11 +390,11 @@ HAVING COUNT(o.order_id) > 0
 ORDER BY total_spent DESC, last_order_date DESC;
 ```
 
-#### **3. Query Processing and Optimization**
+#### 3. Query Processing and Optimization
 
-**Purpose:** Analyze user queries and determine the most efficient execution strategy.
+Purpose: Analyze user queries and determine the most efficient execution strategy.
 
-**Query Optimization Process:**
+Query Optimization Process:
 ```sql
 -- Original user query
 SELECT c.name, p.product_name, oi.quantity, oi.unit_price
@@ -425,7 +425,7 @@ AND oi.quantity > 1;
 -- 5. Cost-based optimization for execution plan selection
 ```
 
-**Performance Optimization Techniques:**
+Performance Optimization Techniques:
 ```sql
 -- Materialized views for complex aggregations
 CREATE MATERIALIZED VIEW customer_summary AS
@@ -464,11 +464,11 @@ CREATE TABLE orders_2024_02 PARTITION OF orders_partitioned
 FOR VALUES FROM ('2024-02-01') TO ('2024-03-01');
 ```
 
-#### **4. Concurrency Control**
+#### 4. Concurrency Control
 
-**Purpose:** Manage simultaneous access to ensure data consistency and prevent conflicts.
+Purpose: Manage simultaneous access to ensure data consistency and prevent conflicts.
 
-**Concurrency Control Mechanisms:**
+Concurrency Control Mechanisms:
 ```sql
 -- Transaction isolation levels
 BEGIN TRANSACTION ISOLATION LEVEL SERIALIZABLE;
@@ -517,11 +517,11 @@ WHERE customer_id = 12345;
 COMMIT; -- Release locks
 ```
 
-#### **5. Transaction Management (ACID Properties)**
+#### 5. Transaction Management (ACID Properties)
 
-**Purpose:** Ensure data consistency and reliability through atomic operations.
+Purpose: Ensure data consistency and reliability through atomic operations.
 
-**ACID Compliance Implementation:**
+ACID Compliance Implementation:
 ```sql
 -- Atomicity: All operations succeed or all fail
 BEGIN TRANSACTION;
@@ -547,11 +547,11 @@ COMMIT; -- Make changes permanent
 -- (Handled by write-ahead logging and recovery mechanisms)
 ```
 
-#### **6. Security Management**
+#### 6. Security Management
 
-**Purpose:** Control access to data based on user roles and business requirements.
+Purpose: Control access to data based on user roles and business requirements.
 
-**Multi-Level Security Implementation:**
+Multi-Level Security Implementation:
 ```sql
 -- Role-based access control
 CREATE ROLE sales_representative;
@@ -595,11 +595,11 @@ CREATE TABLE payment_methods (
 );
 ```
 
-#### **7. Backup and Recovery**
+#### 7. Backup and Recovery
 
-**Purpose:** Protect against data loss and ensure business continuity.
+Purpose: Protect against data loss and ensure business continuity.
 
-**Comprehensive Backup Strategy:**
+Comprehensive Backup Strategy:
 ```sql
 -- Full database backup
 pg_dump --format=custom --compress=9 --file=full_backup_$(date +%Y%m%d).dump ecommerce_db
@@ -651,7 +651,7 @@ A complete database system ecosystem consists of interconnected components that 
 
 ### 🖥️ Hardware Infrastructure
 
-**Physical Components:**
+Physical Components:
 ```
 Database Server Specifications:
 ├─ CPU: Multi-core processors (16-128 cores) for parallel processing
@@ -664,7 +664,7 @@ Database Server Specifications:
 └─ Redundancy: Multiple power supplies, RAID configurations
 ```
 
-**Modern Cloud Infrastructure:**
+Modern Cloud Infrastructure:
 ```yaml
 # AWS RDS Configuration Example
 Database:
@@ -686,7 +686,7 @@ Database:
 
 ### 💻 Software Components
 
-**System Software Stack:**
+System Software Stack:
 ```
 Application Layer:
 ├─ Web Applications (React, Angular, Vue.js)
@@ -714,7 +714,7 @@ Operating System:
 
 ### 🗄️ Data Organization
 
-**Data Types and Structures:**
+Data Types and Structures:
 ```sql
 -- Structured data in relational tables
 CREATE TABLE products (
@@ -741,7 +741,7 @@ CREATE TABLE data_catalog (
 
 ### 📋 Procedures and Governance
 
-**Database Administration Procedures:**
+Database Administration Procedures:
 ```sql
 -- Daily maintenance procedures
 CREATE OR REPLACE FUNCTION daily_maintenance()
@@ -771,7 +771,7 @@ $$ LANGUAGE plpgsql;
 SELECT cron.schedule('daily-maintenance', '0 2 * * *', 'SELECT daily_maintenance();');
 ```
 
-**Data Quality Monitoring:**
+Data Quality Monitoring:
 ```sql
 -- Data quality checks
 CREATE OR REPLACE FUNCTION check_data_quality()
@@ -812,9 +812,9 @@ $$ LANGUAGE plpgsql;
 
 ### 👥 Personnel and Roles
 
-**Database Team Structure:**
+Database Team Structure:
 
-**Database Administrator (DBA):**
+Database Administrator (DBA):
 ```sql
 -- DBA responsibilities and typical tasks
 -- 1. Performance monitoring and tuning
@@ -843,7 +843,7 @@ FROM backup_history
 WHERE backup_date = CURRENT_DATE;
 ```
 
-**Database Designer:**
+Database Designer:
 ```sql
 -- Designer responsibilities: schema design and optimization
 -- Entity-Relationship modeling
@@ -863,7 +863,7 @@ CREATE TABLE product_attributes (
 );
 ```
 
-**Application Developer:**
+Application Developer:
 ```sql
 -- Developer responsibilities: efficient query writing
 -- Using database functions for business logic
@@ -898,7 +898,7 @@ END;
 $$ LANGUAGE plpgsql;
 ```
 
-**End Users:**
+End Users:
 ```sql
 -- End user interfaces through applications
 -- Self-service reporting capabilities
@@ -916,7 +916,7 @@ GROUP BY c.customer_id, c.name;
 
 ### 🔄 Modern DBMS Types and Data Models
 
-**Relational DBMS (RDBMS):**
+Relational DBMS (RDBMS):
 ```sql
 -- Traditional ACID-compliant systems
 -- Examples: PostgreSQL, MySQL, Oracle, SQL Server
@@ -929,7 +929,7 @@ CREATE TABLE normalized_inventory (
 );
 ```
 
-**NoSQL Document Databases:**
+NoSQL Document Databases:
 ```javascript
 // MongoDB document example
 {
@@ -959,7 +959,7 @@ CREATE TABLE normalized_inventory (
 }
 ```
 
-**Graph Databases:**
+Graph Databases:
 ```cypher
 // Neo4j Cypher example for social recommendations
 CREATE (u1:User {name: "Alice", age: 28})
@@ -979,7 +979,7 @@ RETURN product.name, COUNT(*) as recommendation_strength
 ORDER BY recommendation_strength DESC
 ```
 
-**Time-Series Databases:**
+Time-Series Databases:
 ```sql
 -- InfluxDB example for IoT sensor data
 -- Time-series optimized for high-volume, time-stamped data
@@ -1008,35 +1008,35 @@ GROUP BY time(1h), location;
 
 ### Comprehensive Summary
 
-**The Information Hierarchy** transforms raw facts into business value through a systematic process:
+The Information Hierarchy transforms raw facts into business value through a systematic process:
 
-1. **Raw Data:** Unprocessed facts without context or meaning
-2. **Information:** Processed data with context that answers Who, What, Where, When
-3. **Knowledge:** Analyzed information revealing patterns and insights that answer How and Why
+1. Raw Data: Unprocessed facts without context or meaning
+2. Information: Processed data with context that answers Who, What, Where, When
+3. Knowledge: Analyzed information revealing patterns and insights that answer How and Why
 
-**DBMS serves as the transformation engine** that enables this hierarchy through sophisticated software capabilities:
+DBMS serves as the transformation engine that enables this hierarchy through sophisticated software capabilities:
 
-- **Data Definition:** Structure and constraints management
-- **Data Manipulation:** Efficient CRUD operations with complex queries
-- **Query Optimization:** Intelligent execution planning for performance
-- **Concurrency Control:** Safe multi-user access without conflicts
-- **Transaction Management:** ACID compliance for data reliability
-- **Security:** Multi-layered access control and data protection
-- **Backup/Recovery:** Business continuity and disaster recovery
+- Data Definition: Structure and constraints management
+- Data Manipulation: Efficient CRUD operations with complex queries
+- Query Optimization: Intelligent execution planning for performance
+- Concurrency Control: Safe multi-user access without conflicts
+- Transaction Management: ACID compliance for data reliability
+- Security: Multi-layered access control and data protection
+- Backup/Recovery: Business continuity and disaster recovery
 
-**Modern Database Ecosystem** includes diverse technologies optimized for different use cases:
-- **Relational:** Traditional ACID transactions for business applications
-- **Document:** Flexible schemas for web applications and content management
-- **Graph:** Relationship-focused data for social networks and recommendations
-- **Time-Series:** High-volume temporal data for IoT and monitoring systems
+Modern Database Ecosystem includes diverse technologies optimized for different use cases:
+- Relational: Traditional ACID transactions for business applications
+- Document: Flexible schemas for web applications and content management
+- Graph: Relationship-focused data for social networks and recommendations
+- Time-Series: High-volume temporal data for IoT and monitoring systems
 
 ### Practical Exercise
 
-**Scenario Analysis: Convenience Store Receipt System**
+Scenario Analysis: Convenience Store Receipt System
 
 Analyze a convenience store receipt to understand the data-information-knowledge hierarchy and DBMS role:
 
-**Receipt Example:**
+Receipt Example:
 ```
 ABC Convenience Store
 Transaction ID: TXN-2024-071545
@@ -1056,7 +1056,7 @@ Payment: Cash                       ฿200.00
 Change:                             ฿39.50
 ```
 
-**Part A: Identify Raw Data Elements**
+Part A: Identify Raw Data Elements
 
 List the raw data points visible on this receipt:
 ```
@@ -1071,7 +1071,7 @@ Raw Data Points:
 - Payment amount: 200.00
 ```
 
-**Part B: Extract Information from Raw Data**
+Part B: Extract Information from Raw Data
 
 Transform raw data into meaningful information:
 ```sql
@@ -1088,7 +1088,7 @@ Information Generated:
 "Customer purchased 5 items for ฿150.00 plus ฿10.50 VAT, paid ฿200.00 cash and received ฿39.50 change. Transaction processed by Employee #1247 on July 15, 2024 at 2:32 PM."
 ```
 
-**Part C: Derive Knowledge from Information Analysis**
+Part C: Derive Knowledge from Information Analysis
 
 Analyze multiple transactions to generate business insights:
 ```sql
@@ -1128,7 +1128,7 @@ Recommendation: Schedule deliveries at 11 AM and 2 PM to ensure optimal stock le
 This could increase sales by 15% and reduce out-of-stock incidents by 60%."
 ```
 
-**Part D: DBMS Implementation Design**
+Part D: DBMS Implementation Design
 
 Design a database system to support this convenience store:
 
@@ -1199,11 +1199,11 @@ GROUP BY p.product_id, p.product_name, p.category
 ORDER BY total_revenue DESC;
 ```
 
-**Part E: DBMS Benefits Demonstration**
+Part E: DBMS Benefits Demonstration
 
 Show how DBMS features solve business problems:
 
-1. **Concurrency Control:**
+1. Concurrency Control:
 ```sql
 -- Multiple cashiers can work simultaneously without conflicts
 BEGIN TRANSACTION ISOLATION LEVEL READ COMMITTED;
@@ -1213,7 +1213,7 @@ WHERE product_id = @product_id AND quantity >= @sold_quantity;
 COMMIT;
 ```
 
-2. **Data Integrity:**
+2. Data Integrity:
 ```sql
 -- Automatic constraint enforcement
 ALTER TABLE transaction_items 
@@ -1222,14 +1222,14 @@ ALTER TABLE transactions
 ADD CONSTRAINT valid_payment CHECK (payment_amount >= total_amount);
 ```
 
-3. **Performance Optimization:**
+3. Performance Optimization:
 ```sql
 -- Fast lookup during checkout
 CREATE INDEX idx_barcode ON products(barcode);
 CREATE INDEX idx_transaction_time ON transactions(transaction_time);
 ```
 
-4. **Security:**
+4. Security:
 ```sql
 -- Role-based access for different staff levels
 GRANT SELECT ON daily_sales_summary TO cashier_role;
@@ -1240,4 +1240,4 @@ This exercise demonstrates how databases transform simple transaction records in
 
 ---
 
-📍 *Since most of the techniques and skills I've shared and demonstrated here were acquired through self-study, there might be some errors or omissions.*
+📍 Since most of the techniques and skills I've shared and demonstrated here were acquired through self-study, there might be some errors or omissions.

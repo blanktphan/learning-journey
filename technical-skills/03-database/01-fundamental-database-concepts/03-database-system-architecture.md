@@ -4,40 +4,40 @@
 
 Upon completion of this topic, you will be able to:
 
-- **Explain** the purpose and benefits of using layered architecture in database systems
-- **Describe** the components and functions of the Three-Schema Architecture (ANSI-SPARC)
-- **Distinguish** between logical and physical data independence concepts
-- **Analyze** how layered architecture promotes system flexibility and maintainability
-- **Apply** architectural principles to real-world database design scenarios
+- Explain the purpose and benefits of using layered architecture in database systems
+- Describe the components and functions of the Three-Schema Architecture (ANSI-SPARC)
+- Distinguish between logical and physical data independence concepts
+- Analyze how layered architecture promotes system flexibility and maintainability
+- Apply architectural principles to real-world database design scenarios
 
 ---
 
 ## Introduction: The Necessity of Layered Architecture
 
-Database systems are among the most complex software applications ever created. To manage this complexity effectively, computer scientists have developed standardized **architectural frameworks** that "divide" the system into distinct **layers**, where each layer has clearly defined responsibilities and operates independently of others.
+Database systems are among the most complex software applications ever created. To manage this complexity effectively, computer scientists have developed standardized architectural frameworks that "divide" the system into distinct layers, where each layer has clearly defined responsibilities and operates independently of others.
 
-The ultimate goal of having a well-defined architecture is to achieve **Data Independence**—the ability to modify the structure in one layer without affecting higher layers. This creates systems that are flexible, maintainable, and adaptable to changing requirements over time.
+The ultimate goal of having a well-defined architecture is to achieve Data Independence—the ability to modify the structure in one layer without affecting higher layers. This creates systems that are flexible, maintainable, and adaptable to changing requirements over time.
 
 ### Why Layered Architecture Matters
 
-**Complexity Management:**
+Complexity Management:
 - Large database systems involve millions of lines of code
 - Multiple subsystems must work together seamlessly
 - Clear separation of concerns simplifies development and maintenance
 
-**Change Management:**
+Change Management:
 - Business requirements evolve constantly
 - Hardware technology advances rapidly
 - Software updates and optimizations are frequent
 - Layered architecture isolates changes to specific layers
 
-**Team Collaboration:**
+Team Collaboration:
 - Different specialists work on different layers
 - Database administrators focus on physical optimization
 - Application developers work with logical structures
 - End users interact with customized views
 
-**System Evolution:**
+System Evolution:
 ```
 Traditional Monolithic System:
 ┌─────────────────────────────────┐
@@ -61,21 +61,21 @@ Layered Architecture:
 
 ## The ANSI-SPARC Three-Schema Architecture
 
-The **American National Standards Institute - Standards Planning and Requirements Committee (ANSI-SPARC)** developed this architectural model, which has become the most widely accepted standard for database system design. It consists of three distinct levels:
+The American National Standards Institute - Standards Planning and Requirements Committee (ANSI-SPARC) developed this architectural model, which has become the most widely accepted standard for database system design. It consists of three distinct levels:
 
 ### 1. 👁️ External Level (View Level)
 
-**Definition:** The level closest to **end users**, representing individual or group-specific views of the database. Users see only the portion of data relevant to their work and responsibilities. A single database can support multiple external views simultaneously.
+Definition: The level closest to end users, representing individual or group-specific views of the database. Users see only the portion of data relevant to their work and responsibilities. A single database can support multiple external views simultaneously.
 
-**Key Characteristics:**
-- **User-specific perspectives** on the same underlying data
-- **Security boundaries** that hide sensitive information
-- **Simplified interfaces** tailored to specific job functions
-- **Multiple views** can exist for the same database
+Key Characteristics:
+- User-specific perspectives on the same underlying data
+- Security boundaries that hide sensitive information
+- Simplified interfaces tailored to specific job functions
+- Multiple views can exist for the same database
 
-**Real-World Examples:**
+Real-World Examples:
 
-**University Database System:**
+University Database System:
 ```
 Student View:
 - Personal information (name, ID, contact)
@@ -106,7 +106,7 @@ Registrar View:
 - Cannot see: Financial details, personal medical information
 ```
 
-**SQL Implementation Examples:**
+SQL Implementation Examples:
 ```sql
 -- Student View (External Schema)
 CREATE VIEW student_portal AS
@@ -158,25 +158,25 @@ LEFT JOIN financial_aid f ON s.student_id = f.student_id
 -- Note: No grade information visible to financial office
 ```
 
-**Benefits of External Level:**
-- **Security:** Users only see data they're authorized to access
-- **Simplicity:** Complex database structure is simplified for specific use cases
-- **Customization:** Interface can be tailored to different user roles
-- **Change isolation:** Internal database changes don't affect user views
+Benefits of External Level:
+- Security: Users only see data they're authorized to access
+- Simplicity: Complex database structure is simplified for specific use cases
+- Customization: Interface can be tailored to different user roles
+- Change isolation: Internal database changes don't affect user views
 
 ### 2. 🏗️ Conceptual Level (Logical Level)
 
-**Definition:** This level describes the **complete logical structure** of the database for the entire organization. It's the blueprint that shows what data the database stores and how different data elements relate to each other, without concern for physical storage details.
+Definition: This level describes the complete logical structure of the database for the entire organization. It's the blueprint that shows what data the database stores and how different data elements relate to each other, without concern for physical storage details.
 
-**Key Characteristics:**
-- **Organization-wide perspective** of all data
-- **Entity relationships** and business rules
-- **Data integrity constraints** and validation rules
-- **Complete data model** independent of storage implementation
+Key Characteristics:
+- Organization-wide perspective of all data
+- Entity relationships and business rules
+- Data integrity constraints and validation rules
+- Complete data model independent of storage implementation
 
-**Conceptual Schema Components:**
+Conceptual Schema Components:
 
-**Entity-Relationship Model:**
+Entity-Relationship Model:
 ```
 University Database Conceptual Schema:
 
@@ -212,7 +212,7 @@ Relationships:
 - Department OFFERS Courses (One-to-Many)
 ```
 
-**SQL Schema Definition:**
+SQL Schema Definition:
 ```sql
 -- Conceptual Schema Implementation
 CREATE TABLE students (
@@ -278,7 +278,7 @@ CREATE TABLE enrollments (
 );
 ```
 
-**Business Rules and Constraints:**
+Business Rules and Constraints:
 ```sql
 -- Complex business rule: Students cannot enroll in more than 18 credits per semester
 DELIMITER //
@@ -319,25 +319,25 @@ END//
 DELIMITER ;
 ```
 
-**Responsibilities at Conceptual Level:**
-- **Database Designers:** Create comprehensive data models
-- **Business Analysts:** Define business rules and relationships
-- **Data Architects:** Ensure data consistency across organization
-- **System Analysts:** Bridge business requirements and technical implementation
+Responsibilities at Conceptual Level:
+- Database Designers: Create comprehensive data models
+- Business Analysts: Define business rules and relationships
+- Data Architects: Ensure data consistency across organization
+- System Analysts: Bridge business requirements and technical implementation
 
 ### 3. ⚙️ Internal Level (Physical Level)
 
-**Definition:** The lowest level that describes **how data is physically stored** on storage devices. It deals with all technical details of data storage, access methods, and performance optimization.
+Definition: The lowest level that describes how data is physically stored on storage devices. It deals with all technical details of data storage, access methods, and performance optimization.
 
-**Key Characteristics:**
-- **Storage structures** and file organization
-- **Access methods** and indexing strategies
-- **Buffer management** and caching policies
-- **Compression and encryption** techniques
+Key Characteristics:
+- Storage structures and file organization
+- Access methods and indexing strategies
+- Buffer management and caching policies
+- Compression and encryption techniques
 
-**Physical Storage Components:**
+Physical Storage Components:
 
-**File Organization Strategies:**
+File Organization Strategies:
 ```
 Heap Files (Unordered):
 ┌─────────────────────────────────┐
@@ -374,7 +374,7 @@ B+ Tree Files:
 + Good for both exact match and range queries
 ```
 
-**Index Structures:**
+Index Structures:
 ```sql
 -- Primary Index (on primary key)
 CREATE INDEX pk_students ON students(student_id) USING BTREE;
@@ -394,7 +394,7 @@ WHERE status = 'active';
 CREATE INDEX idx_student_fullname ON students((CONCAT(first_name, ' ', last_name)));
 ```
 
-**Storage Engine Configuration:**
+Storage Engine Configuration:
 ```sql
 -- InnoDB Storage Engine Settings (MySQL)
 CREATE TABLE students (
@@ -423,7 +423,7 @@ CREATE TABLE enrollments (
 );
 ```
 
-**Buffer Pool Management:**
+Buffer Pool Management:
 ```sql
 -- Configure InnoDB Buffer Pool
 SET GLOBAL innodb_buffer_pool_size = 8589934592; -- 8GB
@@ -441,7 +441,7 @@ SELECT
 FROM INFORMATION_SCHEMA.INNODB_BUFFER_POOL_STATS;
 ```
 
-**Performance Optimization Techniques:**
+Performance Optimization Techniques:
 ```sql
 -- Query execution plan analysis
 EXPLAIN ANALYZE 
@@ -466,11 +466,11 @@ WHERE TABLE_SCHEMA = 'university'
 ORDER BY TABLE_NAME, INDEX_NAME, SEQ_IN_INDEX;
 ```
 
-**Responsibilities at Internal Level:**
-- **Database Administrators (DBAs):** Optimize physical storage and performance
-- **System Engineers:** Configure hardware and storage systems
-- **DBMS Vendors:** Implement efficient storage engines and algorithms
-- **Performance Specialists:** Monitor and tune system performance
+Responsibilities at Internal Level:
+- Database Administrators (DBAs): Optimize physical storage and performance
+- System Engineers: Configure hardware and storage systems
+- DBMS Vendors: Implement efficient storage engines and algorithms
+- Performance Specialists: Monitor and tune system performance
 
 ---
 
@@ -480,9 +480,9 @@ The three-schema architecture enables two critical types of independence that ma
 
 ### � Logical Data Independence
 
-**Definition:** The ability to **modify the Conceptual Schema** (add/remove tables, change relationships, add constraints) **without affecting External Views** or applications that use the database.
+Definition: The ability to modify the Conceptual Schema (add/remove tables, change relationships, add constraints) without affecting External Views or applications that use the database.
 
-**How It Works:**
+How It Works:
 ```
 Conceptual Schema Change:
 ┌─────────────────────────────────┐
@@ -500,7 +500,7 @@ Conceptual Schema Change:
 └─────────────────────────────────┘
 ```
 
-**Real-World Example:**
+Real-World Example:
 ```sql
 -- Original Conceptual Schema
 CREATE TABLE professors (
@@ -537,13 +537,13 @@ FROM professors p
 JOIN departments d ON p.dept_id = d.dept_id;
 ```
 
-**Benefits:**
-- **Application Continuity:** Existing applications don't break
-- **Gradual Migration:** Changes can be implemented incrementally
-- **Business Evolution:** Database can adapt to changing business requirements
-- **Development Efficiency:** Teams can work on different aspects independently
+Benefits:
+- Application Continuity: Existing applications don't break
+- Gradual Migration: Changes can be implemented incrementally
+- Business Evolution: Database can adapt to changing business requirements
+- Development Efficiency: Teams can work on different aspects independently
 
-**Limitations:**
+Limitations:
 ```sql
 -- This change WOULD affect external views (breaking logical independence)
 ALTER TABLE students DROP COLUMN email;  -- Existing views using email would break
@@ -554,9 +554,9 @@ ALTER TABLE students ADD COLUMN middle_name VARCHAR(50);  -- New column doesn't 
 
 ### ⚡ Physical Data Independence
 
-**Definition:** The ability to **modify the Internal Schema** (change storage methods, add indexes, change file organization) **without affecting the Conceptual Schema** or any higher-level components.
+Definition: The ability to modify the Internal Schema (change storage methods, add indexes, change file organization) without affecting the Conceptual Schema or any higher-level components.
 
-**How It Works:**
+How It Works:
 ```
 Physical Storage Changes:
 ┌─────────────────────────────────┐
@@ -576,9 +576,9 @@ Physical Storage Changes:
 └─────────────────────────────────┘
 ```
 
-**Real-World Examples:**
+Real-World Examples:
 
-**Storage Optimization:**
+Storage Optimization:
 ```sql
 -- Add indexes for better performance (no schema changes needed)
 CREATE INDEX idx_enrollment_date ON enrollments(enrollment_date);
@@ -598,7 +598,7 @@ PARTITION BY RANGE (YEAR(enrollment_date)) (
 );
 ```
 
-**Hardware Upgrades:**
+Hardware Upgrades:
 ```sql
 -- Configure for new SSD storage
 SET GLOBAL innodb_io_capacity = 2000;          -- Higher I/O capacity
@@ -610,7 +610,7 @@ SET GLOBAL innodb_random_read_ahead = OFF;     -- Disable random read-ahead for 
 SET GLOBAL innodb_buffer_pool_size = 17179869184; -- 16GB instead of 8GB
 ```
 
-**Query Optimization:**
+Query Optimization:
 ```sql
 -- Before: Query without optimization
 SELECT s.first_name, s.last_name, AVG(
@@ -636,17 +636,17 @@ INCLUDE (enrollment_date);
 -- Query performance improves dramatically, but no application changes needed
 ```
 
-**Benefits:**
-- **Performance Tuning:** Continuous optimization without affecting applications
-- **Technology Upgrades:** Adopt new hardware/software without system redesign
-- **Scalability:** Implement clustering and distributed storage transparently
-- **Cost Optimization:** Change storage tiers and optimization strategies freely
+Benefits:
+- Performance Tuning: Continuous optimization without affecting applications
+- Technology Upgrades: Adopt new hardware/software without system redesign
+- Scalability: Implement clustering and distributed storage transparently
+- Cost Optimization: Change storage tiers and optimization strategies freely
 
 ### 🔀 Data Independence in Practice
 
-**Real-World Scenario: E-commerce Platform Evolution**
+Real-World Scenario: E-commerce Platform Evolution
 
-**Year 1: Initial Implementation**
+Year 1: Initial Implementation
 ```sql
 -- Simple schema
 CREATE TABLE products (
@@ -661,7 +661,7 @@ CREATE TABLE products (
 -- Basic indexes only
 ```
 
-**Year 2: Logical Schema Evolution (Logical Independence)**
+Year 2: Logical Schema Evolution (Logical Independence)
 ```sql
 -- Added sophisticated categorization (logical change)
 CREATE TABLE categories (
@@ -693,7 +693,7 @@ LEFT JOIN categories c ON pc.category_id = c.category_id
 GROUP BY p.product_id;
 ```
 
-**Year 3: Physical Optimization (Physical Independence)**
+Year 3: Physical Optimization (Physical Independence)
 ```sql
 -- Implemented sharding across multiple servers (physical change)
 -- No changes to application code required
@@ -708,7 +708,7 @@ GROUP BY p.product_id;
 -- Applications continue working without modification
 ```
 
-**Year 4: Advanced Features (Both Types)**
+Year 4: Advanced Features (Both Types)
 ```sql
 -- Added recommendation engine (logical change)
 CREATE TABLE product_recommendations (
@@ -736,7 +736,7 @@ While the three-schema architecture remains the foundation, modern systems imple
 
 ### 🌐 Distributed Database Architecture
 
-**Multi-Tier Architecture:**
+Multi-Tier Architecture:
 ```
 ┌─────────────────────────────────┐
 │        Client Applications      │ ← External Level (multiple views)
@@ -749,7 +749,7 @@ While the three-schema architecture remains the foundation, modern systems imple
 └─────────────────────────────────┘
 ```
 
-**Microservices with Database Per Service:**
+Microservices with Database Per Service:
 ```sql
 -- User Service Database
 CREATE DATABASE user_service;
@@ -784,7 +784,7 @@ CREATE TABLE products (
 
 ### ☁️ Cloud-Native Architecture
 
-**Database as a Service (DBaaS):**
+Database as a Service (DBaaS):
 ```yaml
 # Cloud configuration example
 apiVersion: v1
@@ -808,7 +808,7 @@ data:
 
 ### 🔄 Data Lake and Data Warehouse Architecture
 
-**Modern Analytics Architecture:**
+Modern Analytics Architecture:
 ```
 Raw Data Sources → Data Lake → Data Warehouse → Analytics Views
      │                │            │               │
@@ -822,48 +822,48 @@ Raw Data Sources → Data Lake → Data Warehouse → Analytics Views
 
 ### Comprehensive Summary
 
-**The Three-Schema Architecture** provides a robust foundation for database system design by clearly separating concerns across three distinct levels:
+The Three-Schema Architecture provides a robust foundation for database system design by clearly separating concerns across three distinct levels:
 
-1. **External Level:** User-specific views that provide security and simplicity
-2. **Conceptual Level:** Organization-wide logical data model that captures business requirements
-3. **Internal Level:** Physical storage optimization that ensures performance and reliability
+1. External Level: User-specific views that provide security and simplicity
+2. Conceptual Level: Organization-wide logical data model that captures business requirements
+3. Internal Level: Physical storage optimization that ensures performance and reliability
 
-**Data Independence** is the key benefit that makes this architecture powerful:
-- **Logical Independence:** Business logic changes don't break applications
-- **Physical Independence:** Performance optimizations don't require application changes
+Data Independence is the key benefit that makes this architecture powerful:
+- Logical Independence: Business logic changes don't break applications
+- Physical Independence: Performance optimizations don't require application changes
 
-**Modern Implementations** extend these principles to distributed systems, cloud platforms, and microservices architectures while maintaining the same fundamental separation of concerns.
+Modern Implementations extend these principles to distributed systems, cloud platforms, and microservices architectures while maintaining the same fundamental separation of concerns.
 
-**Architectural Benefits:**
-- **Maintainability:** Changes isolated to appropriate layers
-- **Scalability:** Physical layer can scale without affecting logical design
-- **Security:** Access control implemented at multiple levels
-- **Performance:** Optimization possible at each layer independently
-- **Evolution:** System can adapt to changing requirements and technology
+Architectural Benefits:
+- Maintainability: Changes isolated to appropriate layers
+- Scalability: Physical layer can scale without affecting logical design
+- Security: Access control implemented at multiple levels
+- Performance: Optimization possible at each layer independently
+- Evolution: System can adapt to changing requirements and technology
 
 ### Practical Exercise
 
-**Scenario:** Design the architecture for a modern e-commerce platform (like Shopee/Lazada) using the three-schema approach.
+Scenario: Design the architecture for a modern e-commerce platform (like Shopee/Lazada) using the three-schema approach.
 
-**Analysis Questions from Thai Content:**
+Analysis Questions from Thai Content:
 
-1. **Your perspective as a "buyer" (seeing only your own purchase history) represents which architectural level?**
-   - **Answer:** External Level (View Level)
-   - **Explanation:** As a buyer, you only see a customized view of data relevant to you
+1. Your perspective as a "buyer" (seeing only your own purchase history) represents which architectural level?
+   - Answer: External Level (View Level)
+   - Explanation: As a buyer, you only see a customized view of data relevant to you
 
-2. **The model showing all relationships between "users," "products," and "orders" represents which architectural level?**
-   - **Answer:** Conceptual Level (Logical Level)
-   - **Explanation:** This is the complete logical data model for the entire organization
+2. The model showing all relationships between "users," "products," and "orders" represents which architectural level?
+   - Answer: Conceptual Level (Logical Level)
+   - Explanation: This is the complete logical data model for the entire organization
 
-3. **Engineers' decisions about what type of server to store product images on represents which level?**
-   - **Answer:** Internal Level (Physical Level)
-   - **Explanation:** Storage infrastructure decisions are physical implementation details
+3. Engineers' decisions about what type of server to store product images on represents which level?
+   - Answer: Internal Level (Physical Level)
+   - Explanation: Storage infrastructure decisions are physical implementation details
 
-**Extended Exercise:**
+Extended Exercise:
 
-**Part A: Three-Schema Design**
+Part A: Three-Schema Design
 
-**1. External Level - User Views:**
+1. External Level - User Views:
 ```sql
 -- Buyer View
 CREATE VIEW buyer_portal AS
@@ -906,7 +906,7 @@ WHERE o.order_date >= CURRENT_DATE - INTERVAL '30 days'
 GROUP BY DATE(o.order_date);
 ```
 
-**2. Conceptual Level - Complete Schema:**
+2. Conceptual Level - Complete Schema:
 ```sql
 -- Core business entities
 CREATE TABLE users (
@@ -945,14 +945,14 @@ CREATE TABLE order_items (
 );
 ```
 
-**3. Internal Level - Physical Storage Decisions:**
+3. Internal Level - Physical Storage Decisions:
 
-**Image Storage Strategy:**
-- **Product images:** Stored on CDN (Content Delivery Network) for global fast access
-- **User avatars:** Compressed and cached on edge servers
-- **Document uploads:** Encrypted storage in secure cloud buckets
+Image Storage Strategy:
+- Product images: Stored on CDN (Content Delivery Network) for global fast access
+- User avatars: Compressed and cached on edge servers
+- Document uploads: Encrypted storage in secure cloud buckets
 
-**Database Partitioning:**
+Database Partitioning:
 ```sql
 -- Partition orders by date for better performance
 CREATE TABLE orders_2024_q1 PARTITION OF orders
@@ -962,7 +962,7 @@ CREATE TABLE orders_2024_q2 PARTITION OF orders
 FOR VALUES FROM ('2024-04-01') TO ('2024-07-01');
 ```
 
-**Indexing Strategy:**
+Indexing Strategy:
 ```sql
 -- Critical indexes for e-commerce performance
 CREATE INDEX idx_product_category ON products(category_id, price);
@@ -970,9 +970,9 @@ CREATE INDEX idx_order_user_date ON orders(user_id, order_date);
 CREATE INDEX idx_product_search ON products USING GIN(to_tsvector('english', product_name || ' ' || description));
 ```
 
-**Part B: Data Independence Demonstration**
+Part B: Data Independence Demonstration
 
-**Logical Data Independence Example:**
+Logical Data Independence Example:
 When the business decides to add a "wishlist" feature:
 
 ```sql
@@ -988,7 +988,7 @@ CREATE TABLE wishlists (
 -- New wishlist views can be created without affecting existing functionality
 ```
 
-**Physical Data Independence Example:**
+Physical Data Independence Example:
 When the engineering team decides to upgrade from HDD to SSD storage:
 
 ```sql
@@ -1008,4 +1008,4 @@ This real-world analysis demonstrates how the three-schema architecture enables 
 
 ---
 
-📍 *Since most of the techniques and skills I've shared and demonstrated here were acquired through self-study, there might be some errors or omissions.*
+📍 Since most of the techniques and skills I've shared and demonstrated here were acquired through self-study, there might be some errors or omissions.
