@@ -30,16 +30,16 @@
 
 ### 📕 Database Design & Management
 
-- [Database Development Life Cycle](.)
-- [Data Modeling](.)
-- [Database Security](.)
-- [Backup and Recovery](.)
+- 📖 [Database Development Life Cycle](.)
+- 📖 [Data Modeling](.)
+- 📖 [Database Security](.)
+- 📖 [Backup and Recovery](.)
 
 ### 📕 Advanced Topics
 
-- [Transaction Management & Concurrency](.)
-- [Data Warehousing & Data Mining](.)
-- [Distributed Databases](.)
+- 📖 [Transaction Management & Concurrency](.)
+- 📖 [Data Warehousing & Data Mining](.)
+- 📖 [Distributed Databases](.)
 
 ---
 
