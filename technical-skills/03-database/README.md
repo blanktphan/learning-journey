@@ -10,10 +10,10 @@
 
 ### 📕 The Relational Model
 
-- 📖 [Tables, Rows, and Columns](.)
-- 📖 [Keys and Constraints: Primary, Foreign, Unique](.)
-- 📖 [Table Relationships: 1-to-1, 1-to-Many, Many-to-Many](.)
-- 📖 [Normalization: 1NF, 2NF, 3NF](.)
+- 📖 [Tables, Rows, and Columns](./02-the-relational-model/01-tables.-rows,-and-columns.md)
+- 📖 [Keys and Constraints: Primary, Foreign, Unique](./02-the-relational-model/02-keys-and-constraints:-primary,-foreign,-unique.md)
+- 📖 [Table Relationships: 1-to-1, 1-to-Many, Many-to-Many](./02-the-relational-model/03-table-relationships:-1-to-1-1-to-many,-amny-to-many.md)
+- 📖 [Normalization: 1NF, 2NF, 3NF](./02-the-relational-model/04-normalization-1nf,2nf,3nf.md)
 
 ### 📕 Structured Query Language
 
