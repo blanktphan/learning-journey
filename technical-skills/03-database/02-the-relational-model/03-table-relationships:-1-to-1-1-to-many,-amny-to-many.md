@@ -13,17 +13,17 @@ Upon completion of this topic, you will be able to:
 
 ## 1. Introduction: The Power of Connections
 
-The true power of relational databases doesn't come from individual tables working in isolation, but from creating meaningful **relationships** between those tables. These relationships, enforced through Foreign Keys, enable us to model complex real-world scenarios, reduce data redundancy, and maintain data integrity across the entire system.
+The true power of relational databases doesn't come from individual tables working in isolation, but from creating meaningful relationships between those tables. These relationships, enforced through Foreign Keys, enable us to model complex real-world scenarios, reduce data redundancy, and maintain data integrity across the entire system.
 
-We define relationship types using **Cardinality**, which describes how many rows in one table can be related to how many rows in another table.
+We define relationship types using Cardinality, which describes how many rows in one table can be related to how many rows in another table.
 
 ### Why Relationships Matter
 
 Relationships solve fundamental data management challenges:
-- **Real-World Modeling**: Accurately represent complex business scenarios
-- **Data Normalization**: Eliminate redundant information storage
-- **Integrity Enforcement**: Maintain consistency across related data
-- **Query Power**: Enable sophisticated cross-table analysis
+- Real-World Modeling: Accurately represent complex business scenarios
+- Data Normalization: Eliminate redundant information storage
+- Integrity Enforcement: Maintain consistency across related data
+- Query Power: Enable sophisticated cross-table analysis
 
 ---
 
@@ -31,23 +31,23 @@ Relationships solve fundamental data management challenges:
 
 ### A. 🔗 One-to-One Relationship (1:1)
 
-**Definition**: One row in Table A can relate to **at most one row** in Table B, and vice versa.
+Definition: One row in Table A can relate to at most one row in Table B, and vice versa.
 
-**Characteristics**:
-- **Least common** relationship type in practice
+Characteristics:
+- Least common relationship type in practice
 - Often used for data separation rather than true business relationships
-- Requires **UNIQUE constraint** on Foreign Key
+- Requires UNIQUE constraint on Foreign Key
 
 #### 💡 Common Use Cases
 
-**1. Security Separation**: Separate sensitive data from main table
+1. Security Separation: Separate sensitive data from main table
 ```sql
 -- Example: Separate employee salary information
 EMPLOYEES(EmployeeID (PK), Name, Department, HireDate)
 EMPLOYEE_SALARIES(SalaryID (PK), EmployeeID (FK, UNIQUE), BaseSalary, Bonus)
 ```
 
-**2. Performance Optimization**: Separate large, infrequently accessed data
+2. Performance Optimization: Separate large, infrequently accessed data
 ```sql
 -- Example: Separate detailed profile information
 USERS(UserID (PK), Username, Email, Status)
@@ -55,7 +55,7 @@ USER_PROFILES(ProfileID (PK), UserID (FK, UNIQUE), Bio, ProfilePicture, Detailed
 ```
 
 #### 🌍 Real-World Example
-**"Each country has exactly one capital city, and each capital city belongs to exactly one country."**
+Each country has exactly one capital city, and each capital city belongs to exactly one country.
 
 #### 📊 Visual Representation
 ```
@@ -96,15 +96,15 @@ CREATE TABLE capitals (
 
 ### B. 📈 One-to-Many Relationship (1:N)
 
-**Definition**: One row in Table A ("one side") can relate to **multiple rows** in Table B ("many side"), but each row in Table B relates to exactly one row in Table A.
+Definition: One row in Table A ("one side") can relate to multiple rows in Table B ("many side"), but each row in Table B relates to exactly one row in Table A.
 
-**Characteristics**:
-- **Most common** relationship type in databases
+Characteristics:
+- Most common relationship type in databases
 - Foreign Key placed in the "many" side table
-- **No UNIQUE constraint** on Foreign Key (allows duplicates)
+- No UNIQUE constraint on Foreign Key (allows duplicates)
 
 #### 🌍 Real-World Example
-**"One teacher can teach multiple courses, but each course has exactly one primary instructor."**
+One teacher can teach multiple courses, but each course has exactly one primary instructor.
 
 #### 📊 Visual Representation
 ```
@@ -176,16 +176,16 @@ INSERT INTO employees VALUES
 
 ### C. 🔄 Many-to-Many Relationship (M:N)
 
-**Definition**: Multiple rows in Table A can relate to multiple rows in Table B, and vice versa.
+Definition: Multiple rows in Table A can relate to multiple rows in Table B, and vice versa.
 
-**Characteristics**:
-- **Cannot be implemented directly** between two tables
-- Requires a **Junction Table** (also called Linking Table or Bridge Table)
+Characteristics:
+- Cannot be implemented directly between two tables
+- Requires a Junction Table (also called Linking Table or Bridge Table)
 - Junction table contains Foreign Keys from both related tables
-- Primary Key is usually a **composite key**
+- Primary Key is usually a composite key
 
 #### 🌍 Real-World Example
-**"Students can enroll in multiple courses, and each course can have multiple students enrolled."**
+Students can enroll in multiple courses, and each course can have multiple students enrolled.
 
 #### 📊 Visual Representation
 ```
@@ -400,7 +400,7 @@ CREATE TABLE product_reviews (
 
 ### 📊 Query Examples for Different Relationships
 
-**1:1 Queries** (User Profiles):
+1:1 Queries (User Profiles):
 ```sql
 -- Get user with profile information
 SELECT u.username, u.email, p.bio, p.phone
@@ -409,7 +409,7 @@ LEFT JOIN user_profiles p ON u.user_id = p.user_id
 WHERE u.user_id = 123;
 ```
 
-**1:N Queries** (User Orders):
+1:N Queries (User Orders):
 ```sql
 -- Get all orders for a specific user
 SELECT o.order_id, o.order_date, o.status, o.total_amount
@@ -425,7 +425,7 @@ GROUP BY u.user_id, u.username
 ORDER BY order_count DESC;
 ```
 
-**M:N Queries** (Product Reviews):
+M:N Queries (Product Reviews):
 ```sql
 -- Get all reviews for a specific product
 SELECT u.username, r.rating, r.review_text, r.review_date
@@ -450,30 +450,30 @@ ORDER BY avg_rating DESC;
 
 ### 📋 Summary
 
-**Relationship Types**:
-1. **One-to-One (1:1)**: Use UNIQUE Foreign Key - for data separation
-2. **One-to-Many (1:N)**: Foreign Key in "many" side - most common type
-3. **Many-to-Many (M:N)**: Junction Table with composite keys - for complex relationships
+Relationship Types:
+1. One-to-One (1:1): Use UNIQUE Foreign Key - for data separation
+2. One-to-Many (1:N): Foreign Key in "many" side - most common type
+3. Many-to-Many (M:N): Junction Table with composite keys - for complex relationships
 
-**Implementation Rules**:
-- **1:1**: `FK + UNIQUE` constraint
-- **1:N**: `FK` in child table (many side)
-- **M:N**: Junction table with `FK` from both entities
+Implementation Rules:
+- 1:1: `FK + UNIQUE` constraint
+- 1:N: `FK` in child table (many side)
+- M:N: Junction table with `FK` from both entities
 
 ### 🧠 Practice Exercise: E-Commerce Product-Supplier Analysis
 
-**Question**: Consider the relationship between Products and Suppliers in an e-commerce system:
+Question: Consider the relationship between Products and Suppliers in an e-commerce system:
 
-1. **What type of relationship should exist between Products and Suppliers (1:1, 1:N, or M:N)? Why?**
+1. What type of relationship should exist between Products and Suppliers (1:1, 1:N, or M:N)? Why?
 
-**Analysis**:
+Analysis:
 - One product can be supplied by multiple suppliers (for better pricing/availability)
 - One supplier can supply multiple products (typical business model)
-- **Answer**: Many-to-Many (M:N) relationship
+- Answer: Many-to-Many (M:N) relationship
 
-2. **How would you design the schema to support this relationship?**
+2. How would you design the schema to support this relationship?
 
-**Your Task**: Complete this schema design:
+Your Task: Complete this schema design:
 ```sql
 CREATE TABLE products (
     product_id INTEGER PRIMARY KEY AUTO_INCREMENT,
@@ -497,12 +497,12 @@ CREATE TABLE product_suppliers (
 );
 ```
 
-**Advanced Challenge**: 
+Advanced Challenge: 
 - How would you find the cheapest supplier for each product?
 - How would you handle supplier discontinuing a product?
 - What additional attributes might be useful in the junction table?
 
-**Solution Framework**:
+Solution Framework:
 ```sql
 -- Junction table with business data
 CREATE TABLE product_suppliers (

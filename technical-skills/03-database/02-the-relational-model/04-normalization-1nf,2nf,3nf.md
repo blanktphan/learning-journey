@@ -18,10 +18,10 @@ Database normalization is a systematic approach to organizing data to minimize r
 ### Why Normalization Matters
 
 Consider this common scenario in many organizations:
-- **Data Redundancy**: Same information stored multiple times
-- **Storage Waste**: Unnecessary disk space consumption
-- **Maintenance Nightmares**: Updates required in multiple places
-- **Data Inconsistencies**: Different versions of the "same" data
+- Data Redundancy: Same information stored multiple times
+- Storage Waste: Unnecessary disk space consumption
+- Maintenance Nightmares: Updates required in multiple places
+- Data Inconsistencies: Different versions of the "same" data
 
 ---
 
@@ -42,29 +42,29 @@ REGISTRATIONS Table (Poorly Designed)
 └───────────┴─────────────┴──────────┴─────────────────┴───────┘
 ```
 
-**Problems with this design:**
-- **StudentName** repeated for every course registration
-- **CourseName** repeated for every student enrollment
-- Massive **data redundancy** leading to serious anomalies
+Problems with this design:
+- StudentName repeated for every course registration
+- CourseName repeated for every student enrollment
+- Massive data redundancy leading to serious anomalies
 
 ### 🚨 The Three Types of Data Anomalies
 
-#### 1. **Insertion Anomaly**
-**Problem**: Cannot add a new student to the system unless they register for at least one course.
+#### 1. Insertion Anomaly
+Problem: Cannot add a new student to the system unless they register for at least one course.
 
-**Example**: 
+Example: 
 ```sql
 -- This fails because CourseID (part of primary key) would be NULL
 INSERT INTO registrations (StudentID, StudentName, CourseID, CourseName, Grade)
 VALUES ('S004', 'David', NULL, NULL, NULL);
 ```
 
-**Real-World Impact**: New students must immediately register for courses, even if they're just exploring options.
+Real-World Impact: New students must immediately register for courses, even if they're just exploring options.
 
-#### 2. **Deletion Anomaly**
-**Problem**: Deleting a student's last course registration removes all student information from the database.
+#### 2. Deletion Anomaly
+Problem: Deleting a student's last course registration removes all student information from the database.
 
-**Example**:
+Example:
 ```sql
 -- If Bob only has one course and we delete it:
 DELETE FROM registrations 
@@ -72,12 +72,12 @@ WHERE StudentID = 'S002' AND CourseID = 'CS101';
 -- Bob's entire record disappears from the system!
 ```
 
-**Real-World Impact**: Lose historical data about students who temporarily drop all courses.
+Real-World Impact: Lose historical data about students who temporarily drop all courses.
 
-#### 3. **Update Anomaly**
-**Problem**: Changing course information requires updating multiple rows, risking inconsistency.
+#### 3. Update Anomaly
+Problem: Changing course information requires updating multiple rows, risking inconsistency.
 
-**Example**:
+Example:
 ```sql
 -- Course name change requires multiple updates
 UPDATE registrations 
@@ -86,21 +86,21 @@ WHERE CourseID = 'CS101';
 -- If we miss any rows, we get inconsistent data!
 ```
 
-**Real-World Impact**: Database becomes unreliable with conflicting information.
+Real-World Impact: Database becomes unreliable with conflicting information.
 
-**Normalization** is the systematic process of decomposing poorly designed tables into smaller, related tables to eliminate these problems.
+Normalization is the systematic process of decomposing poorly designed tables into smaller, related tables to eliminate these problems.
 
 ---
 
 ## 2. Functional Dependency: The Theoretical Foundation
 
-The heart of normalization lies in understanding **Functional Dependency**, represented as `X → Y`, meaning "the value of X uniquely determines the value of Y" or "Y depends on X."
+The heart of normalization lies in understanding Functional Dependency, represented as `X → Y`, meaning "the value of X uniquely determines the value of Y" or "Y depends on X."
 
 ### 🔍 Understanding Functional Dependencies
 
-**Definition**: In a relation R, attribute Y is functionally dependent on attribute X if each value of X is associated with exactly one value of Y.
+Definition: In a relation R, attribute Y is functionally dependent on attribute X if each value of X is associated with exactly one value of Y.
 
-**Examples from our REGISTRATIONS table**:
+Examples from our REGISTRATIONS table:
 ```
 StudentID → StudentName    (Student ID determines student name)
 CourseID → CourseName      (Course ID determines course name)
@@ -123,20 +123,20 @@ REGISTRATIONS Dependencies:
 
 ### 🎯 Types of Functional Dependencies
 
-#### **Full Functional Dependency**
+#### Full Functional Dependency
 An attribute depends on the entire primary key, not just part of it.
 ```
 {StudentID, CourseID} → Grade  ✅ (Full dependency)
 ```
 
-#### **Partial Functional Dependency**
+#### Partial Functional Dependency
 An attribute depends on only part of a composite primary key.
 ```
 StudentID → StudentName  ❌ (Partial dependency - violates 2NF)
 CourseID → CourseName    ❌ (Partial dependency - violates 2NF)
 ```
 
-#### **Transitive Functional Dependency**
+#### Transitive Functional Dependency
 A non-key attribute depends on another non-key attribute.
 ```
 EmployeeID → DepartmentID → DepartmentName  ❌ (Transitive - violates 3NF)
@@ -150,16 +150,16 @@ Normal Forms are a series of rules that measure the "quality" of table design. T
 
 ### 🥇 First Normal Form (1NF)
 
-**Rule**: Every column must contain **atomic (indivisible) values**, and each row must be unique.
+Rule: Every column must contain atomic (indivisible) values, and each row must be unique.
 
-**Requirements**:
-1. **Single values only** - no lists, arrays, or multiple values in one cell
-2. **Unique rows** - no duplicate records
-3. **Consistent data types** - each column contains the same type of data
+Requirements:
+1. Single values only - no lists, arrays, or multiple values in one cell
+2. Unique rows - no duplicate records
+3. Consistent data types - each column contains the same type of data
 
 #### ❌ Violations of 1NF
 
-**Example 1: Multiple Values in Single Cell**
+Example 1: Multiple Values in Single Cell
 ```
 STUDENTS (Violates 1NF)
 ┌───────────┬─────────────┬─────────────────────┐
@@ -170,7 +170,7 @@ STUDENTS (Violates 1NF)
 └───────────┴─────────────┴─────────────────────┘
 ```
 
-**Example 2: Repeating Groups**
+Example 2: Repeating Groups
 ```
 ORDERS (Violates 1NF)
 ┌─────────┬─────────────┬──────────┬──────────┬──────────┐
@@ -183,7 +183,7 @@ ORDERS (Violates 1NF)
 
 #### ✅ Converting to 1NF
 
-**Solution 1: Separate Rows**
+Solution 1: Separate Rows
 ```
 STUDENT_COURSES (1NF Compliant)
 ┌───────────┬─────────────┬──────────┐
@@ -196,7 +196,7 @@ STUDENT_COURSES (1NF Compliant)
 └───────────┴─────────────┴──────────┘
 ```
 
-**Solution 2: Separate Tables**
+Solution 2: Separate Tables
 ```
 ORDERS (1NF Compliant)
 ┌─────────┬─────────────┐     ORDER_ITEMS (1NF Compliant)
@@ -227,11 +227,11 @@ CREATE TABLE student_courses (
 
 ### 🥈 Second Normal Form (2NF)
 
-**Prerequisites**: Table must be in 1NF first.
+Prerequisites: Table must be in 1NF first.
 
-**Rule**: Every non-key attribute must be **fully functionally dependent** on the entire primary key (no partial dependencies).
+Rule: Every non-key attribute must be fully functionally dependent on the entire primary key (no partial dependencies).
 
-**Note**: This rule only applies to tables with **composite primary keys**.
+Note: This rule only applies to tables with composite primary keys.
 
 #### 🔍 Identifying 2NF Violations
 
@@ -246,14 +246,14 @@ CourseID → CourseName         ❌ Partial dependency (violates 2NF)
 {StudentID, CourseID} → Grade ✅ Full dependency (acceptable)
 ```
 
-**Problems with Partial Dependencies**:
-- **Redundancy**: StudentName repeated for every course
-- **Update Anomalies**: Changing a student's name requires multiple updates
-- **Insertion Anomalies**: Cannot add student without course enrollment
+Problems with Partial Dependencies:
+- Redundancy: StudentName repeated for every course
+- Update Anomalies: Changing a student's name requires multiple updates
+- Insertion Anomalies: Cannot add student without course enrollment
 
 #### ✅ Converting to 2NF
 
-**Solution**: Create separate tables for each entity:
+Solution: Create separate tables for each entity:
 
 ```sql
 -- Decompose into 2NF
@@ -302,13 +302,13 @@ After 2NF (Solutions):
 
 ### 🥉 Third Normal Form (3NF)
 
-**Prerequisites**: Table must be in 2NF first.
+Prerequisites: Table must be in 2NF first.
 
-**Rule**: There must be **no transitive dependencies** - non-key attributes cannot depend on other non-key attributes.
+Rule: There must be no transitive dependencies - non-key attributes cannot depend on other non-key attributes.
 
 #### 🔍 Identifying 3NF Violations
 
-**Example**: Employee table with department information
+Example: Employee table with department information
 ```
 EMPLOYEES (Violates 3NF)
 ┌────────────┬──────────────┬──────────────┬─────────────────┐
@@ -327,14 +327,14 @@ DepartmentID → DepartmentName  ❌ Transitive dependency
 Therefore: EmployeeID → DepartmentID → DepartmentName ❌ Violates 3NF
 ```
 
-**Problems with Transitive Dependencies**:
-- **Redundancy**: Department names repeated for each employee
-- **Update Anomalies**: Changing department name requires multiple updates
-- **Inconsistency**: Risk of different department names for same ID
+Problems with Transitive Dependencies:
+- Redundancy: Department names repeated for each employee
+- Update Anomalies: Changing department name requires multiple updates
+- Inconsistency: Risk of different department names for same ID
 
 #### ✅ Converting to 3NF
 
-**Solution**: Separate entities into their own tables:
+Solution: Separate entities into their own tables:
 
 ```sql
 -- 3NF Implementation
@@ -361,7 +361,7 @@ CREATE TABLE employees (
 
 #### 📊 Complete 3NF Example
 
-**Student Information System in 3NF**:
+Student Information System in 3NF:
 ```sql
 -- Students table (entity: student)
 CREATE TABLE students (
@@ -464,18 +464,18 @@ ORDERS (Unnormalized - 0NF)
 ### 🔄 Step-by-Step Normalization
 
 #### Step 1: Convert to 1NF
-**Analysis**: The table already has atomic values and unique rows.
-**Result**: Already in 1NF.
+Analysis: The table already has atomic values and unique rows.
+Result: Already in 1NF.
 
 #### Step 2: Convert to 2NF
-**Analysis**: 
+Analysis: 
 - Primary Key: `{OrderID, ProductID}`
 - Dependencies:
   - `OrderID → {OrderDate, CustomerID, CustomerName, CustomerAddress}` ❌ Partial
   - `ProductID → {ProductName, Price}` ❌ Partial
   - `{OrderID, ProductID} → Quantity` ✅ Full
 
-**Solution**:
+Solution:
 ```sql
 -- Orders table (order information)
 CREATE TABLE orders (
@@ -509,10 +509,10 @@ CREATE TABLE order_items (
 ```
 
 #### Step 3: Convert to 3NF
-**Analysis**: 
+Analysis: 
 - In `orders` table: `CustomerID → {CustomerName, CustomerAddress}` ❌ Transitive
 
-**Solution**:
+Solution:
 ```sql
 -- Customers table (separate customer entity)
 CREATE TABLE customers (
@@ -571,7 +571,7 @@ CREATE TABLE order_items (
 
 ### 📊 Benefits of 3NF Design
 
-**Query Examples**:
+Query Examples:
 ```sql
 -- Get customer order history
 SELECT c.customer_name, o.order_date, o.total_amount
@@ -602,30 +602,30 @@ WHERE product_id = 'P001';
 
 ### 📋 Summary
 
-**Normalization Goals**:
-1. **Eliminate Redundancy**: Store each fact only once
-2. **Prevent Anomalies**: Avoid insertion, deletion, and update problems
-3. **Improve Integrity**: Maintain consistent, accurate data
-4. **Optimize Storage**: Reduce unnecessary data duplication
+Normalization Goals:
+1. Eliminate Redundancy: Store each fact only once
+2. Prevent Anomalies: Avoid insertion, deletion, and update problems
+3. Improve Integrity: Maintain consistent, accurate data
+4. Optimize Storage: Reduce unnecessary data duplication
 
-**Normal Form Rules**:
-- **1NF**: Atomic values, unique rows
-- **2NF**: No partial dependencies (eliminate redundancy from composite keys)
-- **3NF**: No transitive dependencies (separate entities completely)
+Normal Form Rules:
+- 1NF: Atomic values, unique rows
+- 2NF: No partial dependencies (eliminate redundancy from composite keys)
+- 3NF: No transitive dependencies (separate entities completely)
 
-**Key Principle**: Each table should describe **exactly one entity** and contain **only attributes that directly describe that entity**.
+Key Principle: Each table should describe exactly one entity and contain only attributes that directly describe that entity.
 
 ### 🧠 Practice Exercise: Order Management System
 
-**Scenario**: You receive an Excel file with order data containing these columns:
+Scenario: You receive an Excel file with order data containing these columns:
 `OrderID, OrderDate, CustomerID, CustomerName, CustomerAddress, ProductID, ProductName, Quantity, Price`
 
-**Questions**:
-1. **What normal form is this data currently in?**
-2. **What anomalies might occur with this design?**
-3. **How would you decompose this table to achieve 3NF?**
+Questions:
+1. What normal form is this data currently in?
+2. What anomalies might occur with this design?
+3. How would you decompose this table to achieve 3NF?
 
-**Your Task**: Design a normalized database schema:
+Your Task: Design a normalized database schema:
 
 ```sql
 -- Complete this normalization exercise
@@ -646,15 +646,15 @@ CREATE TABLE order_items (
 );
 ```
 
-**Guided Analysis**:
+Guided Analysis:
 
-**Step 1: Identify Current Form**
+Step 1: Identify Current Form
 - Contains atomic values ✅ (1NF)
 - Has composite dependencies ❌ (violates 2NF)
 - Has transitive dependencies ❌ (violates 3NF)
-- **Current State**: 1NF only
+- Current State: 1NF only
 
-**Step 2: Identify Dependencies**
+Step 2: Identify Dependencies
 ```
 OrderID → {OrderDate, CustomerID}
 CustomerID → {CustomerName, CustomerAddress}  
@@ -662,12 +662,12 @@ ProductID → {ProductName, Price}
 {OrderID, ProductID} → Quantity
 ```
 
-**Step 3: Identify Anomalies**
-- **Insertion**: Can't add customer without order
-- **Deletion**: Deleting last order loses customer data
-- **Update**: Changing customer info requires multiple updates
+Step 3: Identify Anomalies
+- Insertion: Can't add customer without order
+- Deletion: Deleting last order loses customer data
+- Update: Changing customer info requires multiple updates
 
-**Step 4: Solution Framework**
+Step 4: Solution Framework
 ```sql
 -- 3NF Solution
 CREATE TABLE customers (
@@ -708,7 +708,7 @@ CREATE TABLE order_items (
 );
 ```
 
-**Advanced Challenge**: How would you handle:
+Advanced Challenge: How would you handle:
 - Products with time-varying prices?
 - Orders with discounts or taxes?
 - Customers with multiple addresses?
