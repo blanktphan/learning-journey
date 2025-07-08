@@ -24,9 +24,9 @@
 
 ### 📕 NoSQL Databases
 
-- 📖 [NoSQL Concepts & Rationale](.)
-- 📖 [Types: Document, Key-Value, Column-Family, Graph](.)
-- 📖 [The CAP Theorem](.)
+- 📖 [NoSQL Concepts & Rationale](./04.nosql-databases/01-nosql-concepts-&-rationale.md)
+- 📖 [Types: Document, Key-Value, Column-Family, Graph](./04.nosql-databases/02-type:-document,-key-value,-column-family,-graph.md)
+- 📖 [The CAP Theorem](./04-nosql-databases/03-the-cap-theorem.md)
 
 ### 📕 Database Design & Management
 
