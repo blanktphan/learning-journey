@@ -10,17 +10,17 @@
 
 ### 📕 Fundamental Concepts
 
-- 📖 [Computational Thinking]()
-- 📖 [Logic and Abstraction]()
-- 📖 [Problem Decomposition]()
+- 📖 [Computational Thinking](./02-fundamental-concepts/01-computational-thinking.md)
+- 📖 [Logic and Abstraction](./02-fundamental-concepts/02-logic-and-abstraction.md)
+- 📖 [Problem Decomposition](./02-fundamental-concepts/03-problem-decomposition.md)
 
 ### 📕 Core Language Constructs
 
-- 📖 [Variables and Data Types]()
-- 📖 [Operators]()
-- 📖 [Control Flow: Conditionals & Loops]()
-- 📖 [Functions / Methods]()
-- 📖 [Error Handling]()
+- 📖 [Variables and Data Types](./03-core-language-constructs/01-variables-and-data-types.md)
+- 📖 [Operators](./03-core-language-constructs/02-operators.md)
+- 📖 [Control Flow: Conditionals & Loops](./03-core-language-constructs/03-control-flow:-conditionals-&-loops.md)
+- 📖 [Functions / Methods](./03-core-language-constructs/04-functions-and-methods.md)
+- 📖 [Error Handling](./03-core-language-constructs/05-error-handing.md)
 
 ### 📕 The Programming Process
 
