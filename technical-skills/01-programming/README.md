@@ -19,7 +19,7 @@
 - 📖 [Variables and Data Types](./03-core-language-constructs/3_1-variables-and-data-types.md)
 - 📖 [Operators](./03-core-language-constructs/3_2-operators.md)
 - 📖 [Control Flow: Conditionals & Loops](./03-core-language-constructs/3_3-control-flow:-conditionals-&-loops.md)
-- 📖 [Functions / Methods](./03-core-language-constructs/3_4-functions-and-methods.md)
+- 📖 [Functions / Methods](./03-core-language-constructs/3_4-functions-or-methods.md)
 - 📖 [Error Handling](./03-core-language-constructs/3_5-error-handing.md)
 
 ### 📕 The Programming Process
