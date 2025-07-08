@@ -1,5 +1,19 @@
 # 🎒 Learning Journey
 
+
+
+<section align="center">
+    <span>
+        <img alt="Youtube Badge" src="https://img.shields.io/badge/youtube-transparent?style=for-the-badge&logo=youtube&logoColor=fff&color=FF0000">
+    </span>
+    <span>
+        <img alt="Gemini Badge" src="https://img.shields.io/badge/gemini-transparent?style=for-the-badge&logo=googlegemini&logoColor=fff&color=8E75B2">
+    </span>
+    <span>
+      <img alt="GitHub copilot Badge" src="https://img.shields.io/badge/github%20copilot-transparent?style=for-the-badge&logo=githubcopilot&logoColor=fff&color=%23181717">
+    </span>
+</section>
+
 ## 📚 Fundamental
 
 - 📘 [Mathmematics](./fundamental/mathematics/) - [🚧 soon]
