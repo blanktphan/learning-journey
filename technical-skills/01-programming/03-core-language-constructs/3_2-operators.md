@@ -2,853 +2,590 @@
 
 ## 💡 Basic knowledge required:
 
-Understanding of Variables and Data Types concepts (from Lesson 3.1)
+Understanding of variables and data types concepts (covered in lesson 3.1)
 
 ## 🎯 Learning Objectives
 
 Upon completion of this topic, you will be able to:
 
-- Define "operators" as symbols used to perform operations on data (operands)
+- Define "operator" as a symbol used to perform operations on data (operands)
 - Identify and classify the main types of operators (Arithmetic, Assignment, Comparison, Logical)
-- Understand the concepts of precedence and associativity of operators for evaluating complex expressions
+- Understand the concepts of precedence and associativity for evaluating complex expressions
 
 ---
 
 ## 1. Introduction to Operators
 
-If variables are like "nouns" (data) in programming languages, operators are like "verbs" (actions). They are symbols used to perform mathematical operations, assign values, compare values, or perform logical operations on one or more pieces of data. The data being operated on are called operands.
+If variables are like "nouns" (data) in programming languages, then operators are like "verbs" (actions). An operator is a symbol used to perform mathematical operations, assign values, compare values, or perform logical operations on one or more pieces of data. The data being operated on is called operands.
+
+### Understanding Operators and Expressions
 
 ```
-Programming Language Analogy:
+Operator Anatomy
+================
 
-Variables (Nouns)              Operators (Verbs)
-┌─────────────────┐           ┌─────────────────┐
-│ Data Storage    │           │ Data Actions    │
-│                 │           │                 │
-│ • Numbers       │           │ • Calculate     │
-│ • Text          │ ────────► │ • Compare       │
-│ • True/False    │           │ • Assign        │
-│ • Collections   │           │ • Combine       │
-└─────────────────┘           └─────────────────┘
+Expression: x + 5 * 2
+            │   │   │
+            │   │   └─ Operand (literal value)
+            │   └───── Operator (multiplication)
+            └───────── Operand (variable)
 
-Example: x + 5 = 8
-         ↑   ↑   ↑
-      Variable Operator Result
-      (Noun)   (Verb)   (New Data)
+Complete Expression Structure:
+┌────────────────────────────────────────────────────┐
+│ Operand  Operator  Operand  Operator   Operand     │
+│    x        +        5        *            2       │
+│    │        │        │        │            │       │
+│    └─ Data  └─ Action └─ Data  └─ Action   └─ Data │
+└────────────────────────────────────────────────────┘
+                    │
+                    ▼
+              Single Result Value
 ```
 
-The combination of values, variables, and operators forms expressions, which can be evaluated to produce a single value. For example: (x + 5) * 2
+The combination of values, variables, and operators forms expressions, which can be evaluated to produce a single value, such as (x + 5) * 2.
 
-### Understanding Expressions
-
-An expression is any combination of values, variables, and operators that can be evaluated to produce a result. Every expression has a data type that matches the type of value it produces when evaluated.
-
-Simple Expressions:
-```
-5 + 3                    // Arithmetic expression, evaluates to 8
-x                        // Variable expression, evaluates to x's value
-"Hello"                  // Literal expression, evaluates to the string "Hello"
-```
-
-Complex Expressions:
-```
-(x + 5) * 2             // Mixed arithmetic expression
-(age >= 18) && hasID    // Boolean expression with logical operators
-name + " " + surname    // String concatenation expression
-```
-
-### The Operator-Operand Relationship
-
-Understanding how operators work with operands:
+### Expression Evaluation Process
 
 ```
-Basic Operator Structure:
+Expression Evaluation
+=====================
 
-    Operand  Operator  Operand  =  Result
-    ┌─────┐     │     ┌─────┐     ┌─────┐
-    │  5  │ ──► + ◄── │  3  │ ──► │  8  │
-    └─────┘           └─────┘     └─────┘
-      │                 │           │
-      ▼                 ▼           ▼
-   Left Side        Operation    Final Value
-    Data             Symbol        Output
+Input Expression: (score + bonus) * multiplier
+                      │
+                      ▼
+Step 1: Resolve Variables
+        (85 + 15) * 2.0
+                      │
+                      ▼
+Step 2: Apply Operators
+        100 * 2.0
+                      │
+                      ▼
+Step 3: Final Result
+        200.0
 
-Visual Examples:
-┌─────────────────────────────────────────────────────────────┐
-│  Expression     │ Left │ Op │ Right │    Result             │
-├─────────────────┼──────┼────┼───────┼───────────────────────┤
-│  5 + 3          │  5   │ +  │   3   │ ──► 8                 │
-│  x * 2          │  x   │ *  │   2   │ ──► (depends on x)    │
-│  true && false  │ true │ && │ false │ ──► false             │
-│  "Hi" + " "     │ "Hi" │ +  │  " "  │ ──► "Hi "             │
-└─────────────────┴──────┴────┴───────┴───────────────────────┘
+Expressions transform multiple values into single results
 ```
-
-```
-Structure: Operand Operator Operand = Result
-Examples:
-   5       +       3     =   8
-   x       *       2     =   (depends on x value)
-  true     &&     false  =   false
- "Hi"      +      " "    =   "Hi "
-```
-
-This relationship forms the foundation of all computational expressions in programming.
 
 ## 2. Main Types of Operators
 
-```
-Operator Categories Overview:
-
-┌─────────────────────────────────────────────────────────────────┐
-│                      Operator Types                             │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                 │
-│  Arithmetic          Assignment         Comparison    Logical   │
-│  ┌─────────────┐     ┌─────────────┐    ┌─────────┐  ┌───────┐  │
-│  │ + - * / %   │     │ = += -= *=  │    │ == !=   │  │ && || │  │
-│  │             │     │             │    │ > < >=  │  │   !   │  │
-│  │ Calculate   │────►│ Store       │───►│ <= <>   │  │       │  │
-│  │ Numbers     │     │ Values      │    │ Compare │  │ Logic │  │
-│  │             │     │             │    │ Results │  │ Ops   │  │
-│  └─────────────┘     └─────────────┘    └─────────┘  └───────┘  │
-│        │                    │               │           │       │
-│        ▼                    ▼               ▼           ▼       │
-│   Math Results         Variable        Boolean      Boolean     │
-│   (Numbers)            Updates         Results      Results     │
-└─────────────────────────────────────────────────────────────────┘
-```
+Programming languages provide several categories of operators, each serving specific purposes in data manipulation and program logic.
 
 ### A. Arithmetic Operators
 
-Used for basic mathematical calculations:
-
-- + (Addition)
-- - (Subtraction)
-- * (Multiplication)
-- / (Division)
-- % (Modulus): Returns the remainder after division
+Arithmetic operators perform basic mathematical calculations on numeric operands.
 
 ```
-Arithmetic Operations Visualization:
+Arithmetic Operators
+====================
 
-Addition (+):                  Subtraction (-):
-┌─────┐     ┌─────┐           ┌─────┐     ┌─────┐
-│  5  │ ──► │  8  │           │  8  │ ──► │  3  │
-└─────┘     └─────┘           └─────┘     └─────┘
-   +3         Result             -5         Result
+Operator │ Name          │ Example    │ Result
+─────────┼───────────────┼────────────┼────────
+    +    │ Addition      │ 7 + 3      │   10
+    -    │ Subtraction   │ 7 - 3      │    4
+    *    │ Multiplication│ 7 * 3      │   21
+    /    │ Division      │ 7 / 3      │ 2.33 (or 2 if integer)
+    %    │ Modulo        │ 7 % 3      │    1 (remainder)
 
-Multiplication (*):            Division (/):
-┌─────┐     ┌─────┐           ┌─────┐     ┌─────┐
-│  4  │ ──► │ 12  │           │ 12  │ ──► │  3  │
-└─────┘     └─────┘           └─────┘     └─────┘
-   *3         Result             /4         Result
-
-Modulus (%):
-┌─────┐     ┌─────┐
-│ 10  │ ──► │  1  │  ◄── Remainder after 10 ÷ 3 = 3 remainder 1
-└─────┘     └─────┘
-   %3         Result
-
-Division Types:
-┌─────────────────────────────────────────────────────────────┐
-│  Integer Division       │    Floating-Point Division        │
-│  7 / 3 = 2              │    7.0 / 3 = 2.333...             │
-│  ┌─────┐                │    ┌─────┐                        │
-│  │  7  │ ÷ 3 = 2        │    │ 7.0 │ ÷ 3 = 2.333...         │
-│  └─────┘                │    └─────┘                        │
-│  (Truncated)            │    (With decimals)                │
-└─────────────────────────────────────────────────────────────┘
+Special Cases:
+┌─────────────────────────────────────────┐
+│ Integer Division:                       │
+│   int result = 100 / 3;  // Result: 33  │
+│   (Fractional part discarded)           │
+│                                         │
+│ Modulo Usage:                           │
+│   int remainder = 100 % 3;  // Result: 1│
+│   (Remainder after division)            │
+└─────────────────────────────────────────┘
 ```
 
-Examples in different programming languages:
+#### Practical Applications of Arithmetic Operators
 
-Java:
-```java
-int score = 100 / 3;        // Result is 33 (integer division)
-int remainder = 100 % 3;    // Result is 1 (remainder from division)
-double precise = 100.0 / 3; // Result is 33.333... (floating-point division)
 ```
+Real-World Arithmetic Examples
+==============================
 
-Python:
-```python
-score = 100 // 3      # Floor division: 33
-remainder = 100 % 3   # Modulus: 1
-precise = 100 / 3     # True division: 33.333...
-```
+Financial Calculations:
+┌─────────────────────────────────────────┐
+│ double price = 19.99;                   │
+│ double tax_rate = 0.08;                 │
+│ double tax = price * tax_rate;          │
+│ double total = price + tax;             │
+│ // total = 21.59                        │
+└─────────────────────────────────────────┘
 
-C:
-```c
-int score = 100 / 3;        // Result is 33 (integer division)
-int remainder = 100 % 3;    // Result is 1 (remainder from division)
-float precise = 100.0 / 3;  // Result is 33.333... (floating-point division)
-```
+Time and Date Calculations:
+┌───────────────────────────────────────────┐
+│ int total_seconds = 3665;                 │
+│ int hours = total_seconds / 3600;         │
+│ int minutes = (total_seconds % 3600) / 60;│
+│ int seconds = total_seconds % 60;         │
+│ // 1 hour, 1 minute, 5 seconds            │
+└───────────────────────────────────────────┘
 
-#### Division Behavior
-
-Understanding different types of division:
-
-Integer Division:
-- When both operands are integers, the result is an integer
-- The decimal portion is truncated, not rounded
-- Example: 7 / 3 = 2 (not 2.333...)
-
-Floating-Point Division:
-- When at least one operand is a floating-point number, the result includes decimals
-- Example: 7.0 / 3 = 2.333...
-
-#### Practical Applications of Modulus
-
-The modulus operator has many useful applications:
-
-Determining Even or Odd:
-```java
-if (number % 2 == 0) {
-    System.out.println("Even number");
-} else {
-    System.out.println("Odd number");
-}
-```
-
-Creating Cycling Patterns:
-```java
-// Cycle through values 0, 1, 2, 0, 1, 2...
-int cycleValue = counter % 3;
-
-// Wrap array indices
-int safeIndex = index % arrayLength;
-```
-
-Time Calculations:
-```java
-int totalSeconds = 125;
-int minutes = totalSeconds / 60;        // 2 minutes
-int seconds = totalSeconds % 60;        // 5 seconds remaining
-```
-
-Extracting Digits:
-```java
-int number = 1234;
-int lastDigit = number % 10;           // 4
-int secondLastDigit = (number / 10) % 10; // 3
+Modulo for Patterns:
+┌─────────────────────────────────────────┐
+│ // Check if number is even              │
+│ bool is_even = (number % 2 == 0);       │
+│                                         │
+│ // Cycle through values 0, 1, 2         │
+│ int cycle_position = counter % 3;       │
+└─────────────────────────────────────────┘
 ```
 
 ### B. Assignment Operators
 
-Used to assign values to variables:
-
-- = (Basic assignment): Assigns the value from the right to the variable on the left
-- +=, -=, *=, /=, %= (Compound assignment): Performs the operation and assigns the result back to the variable
+Assignment operators are used to assign values to variables, with basic and compound forms available.
 
 ```
-Assignment Operation Flow:
-
-Basic Assignment (=):
-  Value ──────► Variable
-    5     =      x
-┌─────┐        ┌─────┐
-│  5  │ ─────► │  x  │
-└─────┘        └─────┘
-             (x now = 5)
-
-Compound Assignment (+=):
-Step 1: Get current value    Step 2: Perform operation    Step 3: Store result
-┌─────┐                     ┌─────────────┐              ┌─────┐
-│ x=10│ ──────────────────► │  10 + 5     │ ──────────►  │x=15 │
-└─────┘                     └─────────────┘              └─────┘
-                               (x += 5)
-
-Compound Assignment Equivalents:
-┌─────────────────────────────────────────────────────────────┐
-│ Compound     │ Equivalent Long Form    │ Example            │
-├──────────────┼─────────────────────────┼────────────────────┤
-│ x += 5       │ x = x + 5              │ 10 += 5 → 15        │
-│ x -= 3       │ x = x - 3              │ 10 -= 3 → 7         │
-│ x *= 2       │ x = x * 2              │ 10 *= 2 → 20        │
-│ x /= 4       │ x = x / 4              │ 20 /= 4 → 5         │
-│ x %= 3       │ x = x % 3              │ 10 %= 3 → 1         │
-└─────────────────────────────────────────────────────────────┘
-```
+Assignment Operators
+====================
 
 Basic Assignment:
-```java
-int level = 10;  // Initial assignment
-level = 15;      // Reassignment
-```
+┌─────────────────────────────────────────┐
+│ = (Assignment)                          │
+│   Assigns value from right to left      │
+│   int x = 10;  // x now contains 10     │
+└─────────────────────────────────────────┘
 
 Compound Assignment:
-```java
-int level = 10;
-level += 5;  // Equivalent to: level = level + 5; Now level is 15
-level *= 2;  // Equivalent to: level = level * 2; Now level is 30
-level /= 3;  // Equivalent to: level = level / 3; Now level is 10
-level %= 7;  // Equivalent to: level = level % 7; Now level is 3
+┌─────────────────────────────────────────┐
+│ Operator │ Example     │ Equivalent     │
+│ ─────────┼─────────────┼─────────────── │
+│    +=    │ x += 5      │ x = x + 5      │
+│    -=    │ x -= 3      │ x = x - 3      │
+│    *=    │ x *= 2      │ x = x * 2      │
+│    /=    │ x /= 4      │ x = x / 4      │
+│    %=    │ x %= 3      │ x = x % 3      │
+└─────────────────────────────────────────┘
+
+Example Usage:
+┌─────────────────────────────────────────┐
+│ int level = 10;                         │
+│ level += 5;   // level is now 15        │
+│ level *= 2;   // level is now 30        │
+│ level /= 3;   // level is now 10        │
+└─────────────────────────────────────────┘
 ```
 
-#### Assignment vs Initialization
+#### Assignment Flow and Memory Updates
 
-Understanding the distinction:
-
-```java
-// Declaration and initialization (first time assigning a value)
-int age = 25;
-
-// Assignment (changing existing value)
-age = 26;           // Direct assignment
-age = age + 1;      // Calculation then assignment
-age += 1;           // Compound assignment (shorthand)
 ```
+Assignment Process
+==================
 
-#### Assignment Return Values
+Memory Before: level = 10
+┌─────────────────────────────────────────┐
+│ Variable: level                         │
+│ Address:  0x1000                        │
+│ Value:    10                            │
+└─────────────────────────────────────────┘
+                    │
+                    ▼ level += 5
+Calculation: 10 + 5 = 15
+                    │
+                    ▼
+Memory After: level = 15
+┌─────────────────────────────────────────┐
+│ Variable: level                         │
+│ Address:  0x1000                        │
+│ Value:    15                            │
+└─────────────────────────────────────────┘
 
-Assignment operations return the assigned value, enabling chaining:
-
-```java
-int x, y, z;
-x = y = z = 5;  // All variables become 5
-// Evaluation: z = 5 returns 5, y = 5 returns 5, x = 5 returns 5
+Compound assignment = Arithmetic + Assignment in one step
 ```
 
 ### C. Comparison/Relational Operators
 
-Used to compare two values. The result is always a Boolean value (true or false):
-
-- == (Equal to)
-- != (Not equal to)
-- > (Greater than)
-- < (Less than)
-- >= (Greater than or equal to)
-- <= (Less than or equal to)
+Comparison operators compare two values and always return a Boolean result (true or false).
 
 ```
-Comparison Operations Visualization:
+Comparison Operators
+====================
 
-Number Line Comparisons:
-    0     5     10     15     20
-    ├─────┼─────┼─────┼─────┤
-          ▲     ▲           ▲
-          A     B           C
+Operator │ Name                    │ Example     │ Result
+─────────┼─────────────────────────┼─────────────┼────────
+   ==    │ Equal to                │ 5 == 5      │  true
+   !=    │ Not equal to            │ 5 != 3      │  true
+   >     │ Greater than            │ 7 > 3       │  true
+   <     │ Less than               │ 3 < 7       │  true
+   >=    │ Greater than or equal   │ 5 >= 5      │  true
+   <=    │ Less than or equal      │ 3 <= 7      │  true
 
-Examples with A=5, B=10, C=20:
-┌─────────────────────────────────────────────────────────────┐
-│ Comparison  │ Operation  │ Result │ Visual                  │
-├─────────────┼────────────┼────────┼─────────────────────────┤
-│ A == B      │ 5 == 10    │ false  │ A ≠ B (different)       │
-│ A != B      │ 5 != 10    │ true   │ A ≠ B (different)       │
-│ A < B       │ 5 < 10     │ true   │ A ←─── B (A is left)    │
-│ A > B       │ 5 > 10     │ false  │ A ←─── B (A not right)  │
-│ B >= A      │ 10 >= 5    │ true   │ B ───→ A (B equal/right)│
-│ A <= C      │ 5 <= 20    │ true   │ A ←─── C (A equal/left) │
-└─────────────────────────────────────────────────────────────┘
-
-Boolean Result Flow:
-    Values ──► Comparison ──► Boolean Result
-   ┌─────┐         │         ┌─────────┐
-   │ 5,10│ ────► < ────────► │  true   │
-   └─────┘                   └─────────┘
-
-Truth Table for Comparisons:
-A=5, B=10
-┌────────┬────────┬────────┬────────┬────────┬────────┐
-│ A==B   │ A!=B   │ A<B    │ A>B    │ A<=B   │ A>=B   │
-├────────┼────────┼────────┼────────┼────────┼────────┤
-│ false  │ true   │ true   │ false  │ true   │ false  │
-└────────┴────────┴────────┴────────┴────────┴────────┘
+Important Notes:
+┌─────────────────────────────────────────┐
+│ Comparison vs Assignment:               │
+│   x = 5     // Assignment (sets value)  │
+│   x == 5    // Comparison (tests value) │
+│                                         │
+│ Common Mistake:                         │
+│   if (x = 5)    // Wrong! Assignment    │
+│   if (x == 5)   // Correct! Comparison  │
+└─────────────────────────────────────────┘
 ```
 
-Examples:
-```java
-int userAge = 20;
-boolean canVote = (userAge >= 18);  // canVote will be true
-boolean isTeenager = (userAge >= 13) && (userAge <= 19); // true
-boolean isChild = (userAge < 13);   // false
+#### Practical Comparison Examples
+
 ```
+Real-World Comparisons
+======================
 
-Python allows chained comparisons:
-```python
-user_age = 20
-is_teenager = 13 <= user_age <= 19  # Equivalent to (13 <= user_age) && (user_age <= 19)
-```
+Age Verification:
+┌─────────────────────────────────────────┐
+│ int user_age = 20;                      │
+│ bool can_vote = (user_age >= 18);       │
+│ bool is_senior = (user_age >= 65);      │
+│ bool is_teenager = (user_age >= 13 &&   │
+│                     user_age <= 19);    │
+└─────────────────────────────────────────┘
 
-#### Common Mistake: Assignment vs Comparison
-
-Be careful not to confuse = (assignment) with == (comparison):
-
-```java
-// WRONG - This assigns 5 to x, doesn't compare
-if (x = 5) {  // This will cause a compilation error in Java
-    // This assigns 5 to x and may use the result as condition
-}
-
-// CORRECT - This compares x with 5
-if (x == 5) {
-    // This checks if x equals 5
-}
-```
-
-#### Comparing Different Data Types
-
-Numeric Comparisons:
-```java
-5 > 3           // true
-3.14 == 3.14    // true
-2.0 == 2        // true (automatic type conversion)
-```
+Grade Classification:
+┌─────────────────────────────────────────┐
+│ double score = 87.5;                    │
+│ bool passed = (score >= 60.0);          │
+│ bool excellent = (score >= 90.0);       │
+│ bool needs_improvement = (score < 70.0);│
+└─────────────────────────────────────────┘
 
 String Comparisons:
-```java
-// In Java, use .equals() for string content comparison
-"apple".equals("apple")     // true
-"Apple".equals("apple")     // false (case sensitive)
-
-// Lexicographic comparison (dictionary order)
-"apple".compareTo("banana") // negative number (apple comes before banana)
-```
-
-#### Floating-Point Comparison Challenges
-
-Comparing floating-point numbers requires special consideration:
-
-```java
-// PROBLEMATIC
-double result = 0.1 + 0.2;
-if (result == 0.3) {  // May be false due to floating-point precision
-    System.out.println("Equal");
-}
-
-// BETTER APPROACH
-double epsilon = 1e-10;
-if (Math.abs(result - 0.3) < epsilon) {
-    System.out.println("Close enough to equal");
-}
+┌──────────────────────────────────────────┐
+│ string username = "admin";               │
+│ bool is_admin = (username == "admin");   │
+│ bool is_guest = (username != "admin");   │
+└──────────────────────────────────────────┘
 ```
 
 ### D. Logical Operators
 
-Used to connect two or more Boolean expressions or invert Boolean values:
-
-- && (AND): Result is true only when both expressions are true
-- || (OR): Result is true when at least one expression is true
-- ! (NOT): Inverts the Boolean value (true becomes false, false becomes true)
-
-Examples:
-```java
-boolean hasKey = true;
-boolean isAuthorized = false;
-boolean canOpenDoor = hasKey && isAuthorized;  // canOpenDoor will be false
-
-boolean canEnter = hasKey || isAuthorized;     // canEnter will be true
-boolean isLocked = !canOpenDoor;               // isLocked will be true
-```
-
-#### Truth Tables
-
-Understanding logical operators through truth tables:
+Logical operators connect two or more Boolean expressions or invert Boolean values.
 
 ```
-Logical Operators Truth Tables Visualization:
+Logical Operators
+=================
 
-AND (&&) - "Both must be true"
-┌─────────────────────────────────────────────────────────────┐
-│   A    │   B    │ A && B │        Logic Gate                │
-├────────┼────────┼────────┼──────────────────────────────────┤
-│ true   │ true   │ true   │ ✓ ──┐     ┌─── ✓ (Both true)     │
-│ true   │ false  │ false  │ ✓ ──┤ AND ├─── ✗ (One false)     │
-│ false  │ true   │ false  │ ✗ ──┤     ├─── ✗ (One false)     │
-│ false  │ false  │ false  │ ✗ ──┘     └─── ✗ (Both false)    │
-└─────────────────────────────────────────────────────────────┘
+Operator │ Name │ Description                    │ Symbol
+─────────┼──────┼────────────────────────────────┼────────
+   &&    │ AND  │ True if both operands are true │   ∧
+   ||    │ OR   │ True if either operand is true │   ∨
+   !     │ NOT  │ Inverts the Boolean value      │   ¬
 
-OR (||) - "At least one must be true"
-┌─────────────────────────────────────────────────────────────┐
-│   A    │   B    │ A || B │        Logic Gate                │
-├────────┼────────┼────────┼──────────────────────────────────┤
-│ true   │ true   │ true   │ ✓ ──┐     ┌─── ✓ (Both true)     │
-│ true   │ false  │ true   │ ✓ ──┤ OR  ├─── ✓ (One true)      │
-│ false  │ true   │ true   │ ✗ ──┤     ├─── ✓ (One true)      │
-│ false  │ false  │ false  │ ✗ ──┘     └─── ✗ (Both false)    │
-└─────────────────────────────────────────────────────────────┘
+Truth Tables:
+┌─────────────────────────────────────────┐
+│ AND (&&) Truth Table:                   │
+│ A     │ B     │ A && B                  │
+│ ──────┼───────┼────────                 │
+│ true  │ true  │ true                    │
+│ true  │ false │ false                   │
+│ false │ true  │ false                   │
+│ false │ false │ false                   │
+└─────────────────────────────────────────┘
 
-NOT (!) - "Flip the value"
-┌─────────────────────────────────────┐
-│   A    │  !A   │    Logic Gate      │
-├────────┼───────┼────────────────────┤
-│ true   │ false │ ✓ ──► NOT ──► ✗    │
-│ false  │ true  │ ✗ ──► NOT ──► ✓    │
-└─────────────────────────────────────┘
+┌─────────────────────────────────────────┐
+│ OR (||) Truth Table:                    │
+│ A     │ B     │ A || B                  │
+│ ──────┼───────┼────────                 │
+│ true  │ true  │ true                    │
+│ true  │ false │ true                    │
+│ false │ true  │ true                    │
+│ false │ false │ false                   │
+└─────────────────────────────────────────┘
 
-Visual Memory Aid:
-AND: "Strict" - needs ALL conditions true
- ✓ + ✓ = ✓    ✓ + ✗ = ✗    ✗ + ✓ = ✗    ✗ + ✗ = ✗
-
-OR: "Flexible" - needs ANY condition true  
- ✓ + ✓ = ✓    ✓ + ✗ = ✓    ✗ + ✓ = ✓    ✗ + ✗ = ✗
-
-NOT: "Opposite" - flips the result
- ✓ → ✗        ✗ → ✓
+┌─────────────────────────────────────────┐
+│ NOT (!) Truth Table:                    │
+│ A     │ !A                              │
+│ ──────┼────                             │
+│ true  │ false                           │
+│ false │ true                            │
+└─────────────────────────────────────────┘
 ```
 
-#### Short-Circuit Evaluation
-
-Logical operators use short-circuit evaluation for efficiency and safety:
-
-AND (&&) Short-Circuit:
-- If the first operand is false, the second operand is not evaluated
-- The result is already determined to be false
-
-OR (||) Short-Circuit:
-- If the first operand is true, the second operand is not evaluated
-- The result is already determined to be true
-
-Practical examples:
-```java
-// Safe division - if x is 0, division won't be attempted
-boolean result = (x != 0) && (100 / x > 5);
-
-// Efficient search - if found in database, cache won't be searched
-boolean found = searchDatabase() || searchCache();
-
-// Null safety - if object is null, method won't be called
-boolean isValid = (object != null) && object.isValid();
-```
-
-## 3. Precedence and Associativity
-
-When evaluating complex expressions like a + b * c, programming languages follow clear rules to ensure consistent results.
-
-### Precedence (Order of Operations)
-
-Precedence determines which operators are evaluated first, similar to mathematical rules:
+#### Logical Operator Applications
 
 ```
-Operator Precedence Hierarchy (High to Low):
+Complex Logical Conditions
+===========================
 
-  Level 1 (Highest)  ┌─────────────────┐
-                     │ ()  Parentheses │
-                     └─────────────────┘
-                             │
-  Level 2            ┌─────────────────┐
-                     │ !   Logical NOT │
-                     └─────────────────┘
-                             │
-  Level 3            ┌─────────────────┐
-                     │ * / %  Math Ops │
-                     └─────────────────┘
-                             │
-  Level 4            ┌─────────────────┐
-                     │ + -   Add/Sub   │
-                     └─────────────────┘
-                             │
-  Level 5            ┌─────────────────┐
-                     │ > < >= <=  Rel  │
-                     └─────────────────┘
-                             │
-  Level 6            ┌─────────────────┐
-                     │ == !=  Equality │
-                     └─────────────────┘
-                             │
-  Level 7            ┌─────────────────┐
-                     │ &&  Logical AND │
-                     └─────────────────┘
-                             │
-  Level 8            ┌─────────────────┐
-                     │ ||  Logical OR  │
-                     └─────────────────┘
-                             │
-  Level 9 (Lowest)   ┌─────────────────┐
-                     │ = += -= *=  etc │
-                     │   Assignment    │
-                     └─────────────────┘
+Access Control:
+┌─────────────────────────────────────────┐
+│ bool has_key = true;                    │
+│ bool is_authorized = false;             │
+│ bool is_emergency = true;               │
+│                                         │
+│ bool can_enter = (has_key && is_authorized) ||│
+│                  is_emergency;          │
+│ // Result: true (emergency access)      │
+└─────────────────────────────────────────┘
 
-Expression Evaluation Example:
-    10 + 5 * 2
-    
-Step 1: Identify operators and precedence
-    10 + 5 * 2
-    ─┬─   ─┬─
-     │     └─ Level 3 (* has higher precedence)
-     └─ Level 4 (+ has lower precedence)
+Input Validation:
+┌─────────────────────────────────────────────┐
+│ int age = 25;                               │
+│ string email = "user@domain.com";           │
+│ bool email_valid = (email.length() > 0 &&   │
+│                     email.contains("@"));   │
+│ bool age_valid = (age >= 0 && age <= 120);  │
+│ bool form_valid = email_valid && age_valid; │
+└─────────────────────────────────────────────┘
 
-Step 2: Evaluate by precedence
-    10 + (5 * 2)  ← Multiplication first
-    10 + 10       ← Then addition
-    20            ← Final result
-
-Visual Precedence Memory:
-┌─────────────────────────────────────────────────────────────┐
-│ Think: PEMDAS-like hierarchy                                │
-│ P - Parentheses     ()                                      │
-│ E - Exponents       ! (NOT is like negation)                │
-│ MD - Multiply/Div   * / %                                   │
-│ AS - Add/Subtract   + -                                     │
-│ C - Comparisons     > < >= <= == !=                         │
-│ L - Logical         && ||                                   │
-│ A - Assignment      = += -= *=                              │
-└─────────────────────────────────────────────────────────────┘
+Game Logic:
+┌─────────────────────────────────────────────┐
+│ bool has_ammo = true;                       │
+│ bool enemy_in_range = false;                │
+│ bool weapon_ready = true;                   │
+│                                             │
+│ bool can_shoot = has_ammo && enemy_in_range │
+│                  && weapon_ready;           │
+│ // Result: false (no enemy in range)        │
+└─────────────────────────────────────────────┘
 ```
 
-Examples demonstrating precedence:
-```java
-int result1 = 10 + 5 * 2;        // Evaluated as: 10 + (5 * 2) = 20
-boolean result2 = 5 > 3 && 2 < 4; // Evaluated as: (5 > 3) && (2 < 4) = true
-int result3 = 20 / 4 + 2 * 3;    // Evaluated as: (20 / 4) + (2 * 3) = 5 + 6 = 11
-```
+## 3. Operator Precedence and Associativity
 
-### Associativity (Direction of Evaluation)
+When evaluating complex expressions like a + b * c, programming languages have clear rules to ensure consistent results.
 
-Associativity determines the direction of evaluation for operators with the same precedence:
+### Understanding Precedence
 
 ```
-Associativity Direction Rules:
+Operator Precedence Hierarchy
+==============================
 
-Left-to-Right (Most operators):
-┌─────────────────────────────────────────────────────────────┐
-│  Expression: 100 - 10 + 5                                  │
-│                                                             │
-│  Step 1: Group left-to-right                               │
-│      ((100 - 10) + 5)                                      │
-│       ┌─────────┐                                          │
-│       │   90    │ + 5                                      │
-│       └─────────┘                                          │
-│                                                             │
-│  Step 2: Continue left-to-right                            │
-│      90 + 5 = 95                                           │
-│                                                             │
-│  Direction: ──►──►──►                                       │
-└─────────────────────────────────────────────────────────────┘
+High Precedence (Evaluated First):
+┌─────────────────────────────────────────┐
+│ 1. Parentheses          ()              │
+│ 2. Unary operators      ! - +           │
+│ 3. Multiplicative       * / %           │
+│ 4. Additive             + -             │
+│ 5. Relational           < > <= >=       │
+│ 6. Equality             == !=           │
+│ 7. Logical AND          &&              │
+│ 8. Logical OR           ||              │
+│ 9. Assignment           = += -= *= /=   │
+└─────────────────────────────────────────┘
+Low Precedence (Evaluated Last)
 
-Right-to-Left (Assignment operators):
-┌─────────────────────────────────────────────────────────────┐
-│  Expression: x = y = z = 5                                 │
-│                                                             │
-│  Step 1: Group right-to-left                               │
-│      x = (y = (z = 5))                                     │
-│               ┌─────┐                                      │
-│               │ z=5 │                                      │
-│               └─────┘                                      │
-│                                                             │
-│  Step 2: Continue right-to-left                            │
-│      x = (y = 5)  →  x = 5                                 │
-│                                                             │
-│  Direction: ◄──◄──◄──                                       │
-│  Result: x=5, y=5, z=5                                     │
-└─────────────────────────────────────────────────────────────┘
+Example: 10 + 5 * 2
+Step 1: 5 * 2 = 10 (multiplication first)
+Step 2: 10 + 10 = 20 (then addition)
+```
 
-Visual Comparison:
-Arithmetic (Left-to-Right):        Assignment (Right-to-Left):
-  20 / 4 * 2                        a = b = c = 10
-  ──┬──                             ──┬──
-    └─► ((20/4) * 2) = 10             └─► a = (b = (c = 10))
-      ────────►                         ◄────────
+### Precedence Examples
 
-Memory Aid:
-• Math operations: "Read naturally left-to-right"
-• Assignments: "Build from the value outward"
+```
+Precedence in Action
+====================
+
+Mathematical Expression:
+┌─────────────────────────────────────────┐
+│ int result = 10 + 5 * 2;                │
+│                                         │
+│ Without precedence: (10 + 5) * 2 = 30   │
+│ With precedence: 10 + (5 * 2) = 20      │
+│                                         │
+│ Actual result: 20                       │
+└─────────────────────────────────────────┘
+
+Logical Expression:
+┌───────────────────────────────────────────┐
+│ bool result = true || false && false;     │
+│                                           │
+│ Step 1: false && false = false (AND first)│
+│ Step 2: true || false = true (then OR)    │
+│                                           │
+│ Actual result: true                       │
+└───────────────────────────────────────────┘
+
+Mixed Expression:
+┌─────────────────────────────────────────┐
+│ bool result = 10 > 5 && 3 < 7;          │
+│                                         │
+│ Step 1: 10 > 5 = true (comparison first)│
+│ Step 2: 3 < 7 = true (comparison first) │
+│ Step 3: true && true = true (then AND)  │
+│                                         │
+│ Actual result: true                     │
+└─────────────────────────────────────────┘
+```
+
+### Understanding Associativity
+
+```
+Associativity Rules
+===================
+
+Left-to-Right Associativity (Most operators):
+┌─────────────────────────────────────────┐
+│ Expression: 100 - 10 + 5                │
+│                                         │
+│ Step 1: 100 - 10 = 90 (leftmost first)  │
+│ Step 2: 90 + 5 = 95 (then next)         │
+│                                         │
+│ Result: 95                              │
+│                                         │
+│ NOT: 100 - (10 + 5) = 85                │
+└─────────────────────────────────────────┘
+
+Right-to-Left Associativity (Assignment):
+┌─────────────────────────────────────────┐
+│ Expression: x = y = z = 5               │
+│                                         │
+│ Step 1: z = 5 (rightmost first)         │
+│ Step 2: y = z (which is 5)              │
+│ Step 3: x = y (which is 5)              │
+│                                         │
+│ Result: x = y = z = 5                   │
+└─────────────────────────────────────────┘
+
+Chain of Operations:
+┌─────────────────────────────────────────┐
+│ Expression: a = b += c *= 2             │
+│                                         │
+│ Step 1: c *= 2 (rightmost assignment)   │
+│ Step 2: b += c (middle assignment)      │
+│ Step 3: a = b (leftmost assignment)     │
+└─────────────────────────────────────────┘
+```
+
+## 4. Complex Expression Evaluation
+
+### Step-by-Step Expression Analysis
+
+```
+Complex Expression Breakdown
+============================
+
+Expression: (score + bonus) * 1.1 > passing_grade && attempts < 3
+
+Given Values:
+score = 85, bonus = 10, passing_grade = 90, attempts = 2
+
+Step-by-Step Evaluation:
+┌─────────────────────────────────────────┐
+│ 1. Parentheses first:                   │
+│    (85 + 10) = 95                       │
+│                                         │
+│ 2. Multiplication:                      │
+│    95 * 1.1 = 104.5                     │
+│                                         │
+│ 3. Comparisons (left to right):         │
+│    104.5 > 90 = true                    │
+│    2 < 3 = true                         │
+│                                         │
+│ 4. Logical AND:                         │
+│    true && true = true                  │
+│                                         │
+│ Final Result: true                      │
+└─────────────────────────────────────────┘
 ```
 
 ### Using Parentheses for Clarity
 
-When operator precedence might be unclear, use parentheses:
+```
+Parentheses for Explicit Ordering
+==================================
 
-```java
-// Force different evaluation order
-int result1 = (10 + 5) * 2;      // Forces addition first: 30
-int result2 = 10 + (5 * 2);      // Standard precedence: 20
+Ambiguous Expression:
+┌─────────────────────────────────────────┐
+│ result = a + b * c + d;                 │
+│ // Relies on operator precedence        │
+│ // Hard to read and verify              │
+└─────────────────────────────────────────┘
 
-// Clear logical grouping
-boolean canProceed = (userLoggedIn && accountVerified) || 
-                    (guestMode && termsAccepted);
+Clear Expression:
+┌─────────────────────────────────────────┐
+│ result = a + (b * c) + d;               │
+│ // Explicit about multiplication first  │
+│ // Easy to understand intention         │
+└─────────────────────────────────────────┘
+
+Complex Logical Expression:
+┌─────────────────────────────────────────────┐
+│ // Ambiguous                                │
+│ if (age >= 18 && has_license || is_adult)   │
+│                                             │
+│ // Clear                                    │
+│ if ((age >= 18 && has_license) || is_adult) │
+│                                             │
+│ // Very clear                               │
+│ bool eligible = (age >= 18 && has_license); │
+│ if (eligible || is_adult)                   │
+└─────────────────────────────────────────────┘
 ```
 
-### Complex Expression Evaluation Example
+## 5. Common Operator Mistakes and Best Practices
 
-Let's analyze this step by step:
-```java
-boolean result = (10 > 5) && !(7 == 7) || (10 % 3 == 1);
+### Frequent Pitfalls
+
+```
+Common Operator Errors
+======================
+
+1. Assignment vs Comparison:
+┌─────────────────────────────────────────┐
+│ // WRONG - Assignment in condition      │
+│ if (x = 5) {  // Always true!           │
+│     // This assigns 5 to x              │
+│ }                                       │
+│                                         │
+│ // CORRECT - Comparison in condition    │
+│ if (x == 5) {  // Tests if x equals 5   │
+│     // This compares x with 5           │
+│ }                                       │
+└─────────────────────────────────────────┘
+
+2. Integer Division Precision Loss:
+┌─────────────────────────────────────────┐
+│ // WRONG - Loses decimal precision      │
+│ int average = (a + b + c) / 3;          │
+│ // If sum is 10, result is 3 (not 3.33) │
+│                                         │
+│ // CORRECT - Preserves precision        │
+│ double average = (a + b + c) / 3.0;     │
+│ // Result includes decimal places       │
+└─────────────────────────────────────────┘
+
+3. Logical Operator Confusion:
+┌─────────────────────────────────────────┐
+│ // WRONG - Missing logical operator     │
+│ if (x > 0 && < 10) {  // Syntax error   │
+│                                         │
+│ // CORRECT - Complete comparisons       │
+│ if (x > 0 && x < 10) {                  │
+└─────────────────────────────────────────┘
 ```
 
-Step-by-step evaluation:
+### Best Practices
 
-1. Evaluate parentheses first:
-   - (10 > 5) = true
-   - (7 == 7) = true
-   - (10 % 3 == 1): First 10 % 3 = 1, then 1 == 1 = true
-
-2. Apply NOT operator (higher precedence than &&):
-   - !(7 == 7) = !true = false
-
-3. Apply AND operator (higher precedence than ||):
-   - (10 > 5) && !(7 == 7) = true && false = false
-
-4. Apply OR operator (lowest precedence):
-   - false || (10 % 3 == 1) = false || true = true
-
-Final result: true
-
-## 4. Practical Applications
-
-### Example 1: Grade Calculator
-
-```java
-public class GradeCalculator {
-    public static void main(String[] args) {
-        int totalPoints = 85;
-        int maxPoints = 100;
-        
-        // Calculate percentage using arithmetic operators
-        double percentage = (double) totalPoints / maxPoints * 100;
-        
-        // Determine letter grade using comparison operators
-        char grade;
-        if (percentage >= 90) {
-            grade = 'A';
-        } else if (percentage >= 80) {
-            grade = 'B';
-        } else if (percentage >= 70) {
-            grade = 'C';
-        } else if (percentage >= 60) {
-            grade = 'D';
-        } else {
-            grade = 'F';
-        }
-        
-        System.out.println("Score: " + percentage + "% - Grade: " + grade);
-    }
-}
 ```
+Operator Best Practices
+=======================
 
-### Example 2: Input Validation
+1. Use Parentheses for Clarity:
+┌─────────────────────────────────────────┐
+│ // Good - Clear intention               │
+│ total = (price * quantity) + tax;       │
+│ valid = (age >= 18) && (has_id);        │
+└─────────────────────────────────────────┘
 
-```java
-public class UserValidator {
-    public static boolean validateUser(String email, String password, int age) {
-        // Email validation using logical operators
-        boolean validEmail = (email != null) && 
-                            (email.length() > 0) && 
-                            email.contains("@");
-        
-        // Password validation
-        boolean validPassword = (password != null) && 
-                               (password.length() >= 8);
-        
-        // Age validation
-        boolean validAge = (age >= 13) && (age <= 120);
-        
-        // All conditions must be true
-        return validEmail && validPassword && validAge;
-    }
-}
-```
+2. Break Complex Expressions:
+┌────────────────────────────────────────────┐
+│ // Instead of:                             │
+│ if ((a > b && c < d) || (x == y && z != w))│
+│                                            │
+│ // Use:                                    │
+│ bool condition1 = (a > b && c < d);        │
+│ bool condition2 = (x == y && z != w);      │
+│ if (condition1 || condition2) {            │
+└────────────────────────────────────────────┘
 
-### Example 3: Mathematical Operations
-
-```python
-def demonstrate_operators():
-    # Arithmetic operations
-    a = 15
-    b = 4
-    
-    print(f"Addition: {a} + {b} = {a + b}")           # 19
-    print(f"Subtraction: {a} - {b} = {a - b}")        # 11
-    print(f"Multiplication: {a} * {b} = {a * b}")     # 60
-    print(f"Division: {a} / {b} = {a / b}")           # 3.75
-    print(f"Floor Division: {a} // {b} = {a // b}")   # 3
-    print(f"Modulus: {a} % {b} = {a % b}")            # 3
-    
-    # Compound assignment
-    x = 10
-    x += 5   # x = x + 5, now x is 15
-    x *= 2   # x = x * 2, now x is 30
-    print(f"After compound assignments: x = {x}")
-```
-
-## 5. Common Mistakes and Best Practices
-
-### Mistake 1: Floating-Point Precision
-
-Problem:
-```java
-double result = 0.1 + 0.2;
-if (result == 0.3) {  // This may fail
-    System.out.println("Equal");
-}
-```
-
-Solution:
-```java
-double result = 0.1 + 0.2;
-double epsilon = 1e-10;
-if (Math.abs(result - 0.3) < epsilon) {
-    System.out.println("Close enough");
-}
-```
-
-### Mistake 2: Integer Division
-
-Problem:
-```java
-double average = (5 + 7) / 2;  // Result: 6.0 (integer division)
-```
-
-Solution:
-```java
-double average = (5 + 7) / 2.0;  // Result: 6.0 (floating-point division)
-```
-
-### Mistake 3: Assignment vs Comparison
-
-Problem:
-```java
-if (x = 5) {  // Assignment, not comparison
-    // This assigns 5 to x
-}
-```
-
-Solution:
-```java
-if (x == 5) {  // Comparison
-    // This checks if x equals 5
-}
-```
-
-### Best Practice 1: Use Meaningful Variable Names
-
-Poor:
-```java
-boolean a = (b > 18) && (c == true);
-```
-
-Better:
-```java
-boolean canVote = (age > 18) && (hasValidId == true);
-```
-
-### Best Practice 2: Break Complex Expressions
-
-Hard to read:
-```java
-if ((userAge >= 18) && (hasLicense == true) && (hasInsurance == true)) {
-    // Allow driving
-}
-```
-
-Easier to read:
-```java
-boolean isAdult = userAge >= 18;
-boolean hasValidDocuments = hasLicense && hasInsurance;
-
-if (isAdult && hasValidDocuments) {
-    // Allow driving
-}
-```
-
-### Best Practice 3: Use Parentheses for Clarity
-
-```java
-// Less clear
-int result = a + b * c - d / e;
-
-// More clear
-int result = a + (b * c) - (d / e);
+3. Consistent Spacing:
+┌─────────────────────────────────────────┐
+│ // Good - Readable spacing              │
+│ result = (a + b) * (c - d);             │
+│ valid = (x >= 0) && (x <= 100);         │
+│                                         │
+│ // Avoid - Cramped or inconsistent      │
+│ result=(a+b)*(c-d);                     │
+│ valid = (x>=0)&&(x<=100);               │
+└─────────────────────────────────────────┘
 ```
 
 ---
@@ -857,82 +594,148 @@ int result = a + (b * c) - (d / e);
 
 ### Comprehensive Summary
 
-Operators are symbols that perform operations on data (operands). The main categories are:
+Operators are the fundamental symbols that enable computation, comparison, and logical reasoning in programming. They serve as the "verbs" that act upon data (operands) to create expressions that can be evaluated to produce results. Understanding operators and their behavior is essential for writing correct and efficient programs.
 
-Arithmetic Operators (+, -, *, /, %):
-- Perform mathematical calculations
-- Include considerations for integer vs floating-point division
-- Modulus operator useful for remainders and cycling patterns
+Key Concepts:
 
-Assignment Operators (=, +=, -=, *=, /=, %=):
-- Assign values to variables
-- Compound assignment operators provide shorthand notation
-- Assignment operations return values, enabling chaining
+Operator Categories:
+- Arithmetic operators perform mathematical calculations (+, -, *, /, %)
+- Assignment operators store values in variables (=, +=, -=, *=, /=, %=)
+- Comparison operators test relationships between values (==, !=, >, <, >=, <=)
+- Logical operators combine Boolean expressions (&&, ||, !)
 
-Comparison Operators (==, !=, >, <, >=, <=):
-- Compare values and return Boolean results
-- Be careful with floating-point comparisons due to precision issues
-- Distinguish between assignment (=) and equality comparison (==)
+Expression Evaluation:
+- Precedence determines which operators are evaluated first
+- Associativity determines the order for operators of equal precedence
+- Parentheses can override default precedence for explicit control
+- Complex expressions should be broken down for clarity and maintainability
 
-Logical Operators (&&, ||, !):
-- Combine and manipulate Boolean expressions
-- Use short-circuit evaluation for efficiency and safety
-- Follow truth table rules for predictable results
+Type Considerations:
+- Operators must be compatible with their operand types
+- Integer division may lose decimal precision
+- Comparison operators always return Boolean values
+- Logical operators work specifically with Boolean values
 
-Precedence and Associativity:
-- Precedence determines order of operations (similar to mathematics)
-- Associativity determines direction for operators of equal precedence
-- Use parentheses to clarify intentions and override default precedence
-- Complex expressions should be broken down for readability
-
-Essential principles:
-- Understand operator precedence to predict expression evaluation
-- Use parentheses when expression logic is not immediately clear
-- Be aware of common pitfalls like floating-point precision and integer division
-- Break complex expressions into simpler, more readable parts
-- Leverage short-circuit evaluation for both performance and error prevention
+Essential Insight: Mastering operators and expression evaluation is crucial for translating mathematical and logical thinking into working code. Clear understanding of precedence and associativity prevents bugs and makes code predictable and maintainable.
 
 ### Practical Exercise
 
-Analyze the following expression step by step. What will be the final result and why?
+Analyze and evaluate complex expressions to understand operator precedence, associativity, and type interactions in realistic programming scenarios.
 
-Precedence order for reference: () > ! > * / % > + - > > < >= <= > == != > && > ||
+#### Exercise Steps:
 
-```java
-boolean result = (10 > 5) && !(7 == 7) || (10 % 3 == 1);
+Step 1: Expression Analysis
+Given the following complex expression, trace through its evaluation step by step:
+
+```
+Expression Evaluation Challenge
+===============================
+
+Expression: 
+bool result = (10 > 5) && !(7 == 7) || (10 % 3 == 1);
+
+Given precedence order:
+() > ! > * / % > + - > > < >= <= > == != > && > ||
+
+Your task:
+1. Identify all operators and their precedence levels
+2. Show the step-by-step evaluation process
+3. Determine the final result
 ```
 
-Step-by-Step Solution:
+Step 2: Create Your Own Expressions
+Design expressions that demonstrate different operator interactions:
 
-Step 1: Evaluate expressions in parentheses first
-- (10 > 5) = true (10 is greater than 5)
-- (7 == 7) = true (7 equals 7)
-- (10 % 3 == 1): First calculate 10 % 3 = 1, then 1 == 1 = true
+```
+Expression Design Framework
+===========================
 
-Step 2: Apply NOT operator (higher precedence than &&)
-- !(7 == 7) = !true = false
+Arithmetic Expression:
+┌──────────────────────────────────────────────────┐
+│ Create an expression that:                       │
+│ • Uses at least 3 different arithmetic operators │
+│ • Includes parentheses                           │
+│ • Tests mathematical precedence                  │
+│                                                  │
+│ Your expression: _________________               │
+│ Expected result: _________________               │
+└──────────────────────────────────────────────────┘
 
-Step 3: Apply AND operator (higher precedence than ||)
-- (10 > 5) && !(7 == 7) = true && false = false
+Logical Expression:
+┌─────────────────────────────────────────────┐
+│ Create an expression that:                  │
+│ • Combines comparison and logical operators │
+│ • Uses both && and || operators             │
+│ • Tests a real-world condition              │
+│                                             │
+│ Your expression: _________________          │
+│ Expected result: _________________          │
+└─────────────────────────────────────────────┘
+```
 
-Step 4: Apply OR operator (lowest precedence)
-- false || (10 % 3 == 1) = false || true = true
+Step 3: Debug Common Mistakes
+Identify and fix errors in problematic expressions:
 
-Final result: true
+```
+Error Detection Exercise
+========================
 
-Analysis Questions:
-1. Why does the modulus operation get evaluated before the equality comparison?
-2. How does operator precedence affect the overall evaluation order?
-3. What would happen if we changed the && to || in the expression?
-4. How would adding different parentheses change the result?
+Find and explain the problems:
 
-Additional Practice:
-Try evaluating these expressions step by step:
-- boolean test1 = 5 + 3 * 2 > 10 && !(false || true);
-- int calc = 20 / 4 + 3 * 2 - 1;
-- boolean access = true || false && !true;
+1. if (x = 10 && y > 5) { ... }
+   Error: ________________________
+   Fix: __________________________
 
-Understanding operator precedence and associativity is fundamental to writing correct expressions and debugging code effectively.
+2. double average = sum / count;
+   (where sum=10, count=3, expecting 3.333...)
+   Error: ________________________
+   Fix: __________________________
+
+3. bool valid = age >= 18 && <= 65;
+   Error: ________________________
+   Fix: __________________________
+```
+
+Step 4: Real-World Application
+Design expressions for practical programming scenarios:
+
+#### Analysis Questions:
+
+1. Precedence Understanding:
+   - How does operator precedence affect the reliability of your code?
+   - When should you use parentheses even if they're not required?
+   - What strategies help you remember precedence rules?
+
+2. Type Safety:
+   - How do different data types affect operator behavior?
+   - What unexpected results can occur from type mismatches?
+   - How can you prevent precision loss in calculations?
+
+3. Code Clarity:
+   - How do you balance concise expressions with readable code?
+   - When should complex expressions be broken into multiple statements?
+   - How do naming conventions help with expression clarity?
+
+#### Extension Challenge:
+
+Advanced Exercise: Expression optimization and validation
+
+1. Performance Considerations:
+   - Analyze how operator choice affects execution speed
+   - Design expressions that minimize unnecessary calculations
+   - Consider short-circuit evaluation in logical expressions
+
+2. Robust Expression Design:
+   - Create expressions that handle edge cases gracefully
+   - Design validation expressions for user input
+   - Build expressions that are resilient to unexpected data types
+
+3. Expression Patterns:
+   - Identify common expression patterns in your problem domain
+   - Create reusable expression templates
+   - Design expressions that scale well with changing requirements
+
+This exercise demonstrates how operators form the foundation of computational thinking in code, enabling the translation of mathematical and logical concepts into working programs while emphasizing the importance of clarity and correctness in expression design.
 
 ---
 
