@@ -16,11 +16,11 @@
 
 ### 📕 Core Language Constructs
 
-- 📖 [Variables and Data Types](./03-core-language-constructs/01-variables-and-data-types.md)
-- 📖 [Operators](./03-core-language-constructs/02-operators.md)
-- 📖 [Control Flow: Conditionals & Loops](./03-core-language-constructs/03-control-flow:-conditionals-&-loops.md)
-- 📖 [Functions / Methods](./03-core-language-constructs/04-functions-and-methods.md)
-- 📖 [Error Handling](./03-core-language-constructs/05-error-handing.md)
+- 📖 [Variables and Data Types](./03-core-language-constructs/3_1-variables-and-data-types.md)
+- 📖 [Operators](./03-core-language-constructs/3_2-operators.md)
+- 📖 [Control Flow: Conditionals & Loops](./03-core-language-constructs/3_3-control-flow:-conditionals-&-loops.md)
+- 📖 [Functions / Methods](./03-core-language-constructs/3_4-functions-and-methods.md)
+- 📖 [Error Handling](./03-core-language-constructs/3_5-error-handing.md)
 
 ### 📕 The Programming Process
 
