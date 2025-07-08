@@ -10,9 +10,9 @@
 
 ### 📕 Fundamental Concepts
 
-- 📖 [Computational Thinking](./02-fundamental-concepts/01-computational-thinking.md)
-- 📖 [Logic and Abstraction](./02-fundamental-concepts/02-logic-and-abstraction.md)
-- 📖 [Problem Decomposition](./02-fundamental-concepts/03-problem-decomposition.md)
+- 📖 [Computational Thinking](./02-fundamental-concepts/2_1-computational-thinking.md)
+- 📖 [Logic and Abstraction](./02-fundamental-concepts/2_2-logic-and-abstraction.md)
+- 📖 [Problem Decomposition](./02-fundamental-concepts/2_3-problem-decomposition.md)
 
 ### 📕 Core Language Constructs
 
