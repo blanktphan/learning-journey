@@ -26,9 +26,44 @@ In the real world, many things can go wrong that are beyond the programmer's dir
 
 Programs written without proper planning will "crash" immediately when encountering these situations, creating a poor user experience and potentially leading to data loss. Error Handling is a set of techniques and best practices for creating "robust" programs that can anticipate and appropriately handle these unexpected situations.
 
+```
+Program Behavior Comparison:
+
+Without Error Handling:
+User Input ──► Program ──► CRASH! ✗
+     │             │
+     │             └─ Unexpected situation
+     └─ Invalid data
+
+With Error Handling:
+User Input ──► Program ──► Graceful Recovery ✓
+     │             │              │
+     │             │              ├─ User-friendly message
+     │             │              ├─ Log the error
+     │             │              └─ Continue execution
+     └─ Invalid data
+```
+
 ## 2. Types of Errors
 
 We can categorize programming errors into two main types:
+
+```
+Error Classification Timeline:
+
+Before Program Runs          During Program Execution
+       │                            │
+       ▼                            ▼
+┌─────────────────┐          ┌──────────────────┐
+│  Syntax Errors  │          │ Runtime Errors   │
+│                 │          │   (Exceptions)   │
+│ • Missing ;     │          │ • Division by 0  │
+│ • Wrong spelling│          │ • File not found │
+│ • Incomplete () │          │ • Null pointer   │
+│                 │          │ • Network fail   │
+│ PREVENTS START  │          │ CRASHES RUNNING  │
+└─────────────────┘          └──────────────────┘
+```
 
 ### Syntax Errors
 
@@ -38,21 +73,97 @@ Detection: Detected by the compiler or interpreter before the program starts run
 
 Examples: Missing semicolons, incorrect command names, incomplete brackets
 
+```
+Syntax Error Example:
+
+Source Code:        Compiler Check:        Result:
+┌─────────────┐    ┌──────────────┐      ┌─────────────┐
+│ int x = 5   │───►│ Missing ';'  │─────►│ COMPILE     │
+│ print(x)    │    │ at line 1    │      │ ERROR       │
+└─────────────┘    └──────────────┘      │ Won't run!  │
+                                         └─────────────┘
+```
+
 ### Runtime Errors (Exceptions)
 
 Description: Errors that occur while the program is running, even though the code syntax is completely correct. These are unexpected situations that cause the program to be unable to continue normal execution. This is the type of error we need to "handle."
 
 Examples: DivisionByZeroError (division by zero), FileNotFoundError (file not found), NullPointerException (attempting to call a method from a null object)
 
+```
+Runtime Error Example:
+
+Program Flow:
+┌─────────┐    ┌─────────────┐    ┌─────────────┐
+│ Start   │───►│ result = 10 │───►│ EXCEPTION!  │
+│ Program │    │ divided by  │    │ Program     │
+│         │    │ user_input  │    │ CRASHES     │
+└─────────┘    └─────────────┘    └─────────────┘
+                       │
+                       ▼
+                user_input = 0
+```
+
 ## 3. Structured Exception Handling
 
 This is the standard approach used in modern programming languages to handle Runtime Errors. The core principle is to "separate" normal working code from error handling code, making the overall code much cleaner and more readable.
+
+```
+Exception Handling Structure:
+
+Normal Code Flow:        With Exception Handling:
+┌─────────────┐         ┌─────────────────────────────┐
+│ Statement 1 │         │        try block            │
+│ Statement 2 │         │  ┌─────────────────────┐    │
+│ Statement 3 │ ──────► │  │ Risky Statement 1   │    │
+│ Statement 4 │         │  │ Risky Statement 2   │    │
+│ Statement 5 │         │  │ Risky Statement 3   │    │
+└─────────────┘         │  └─────────────────────┘    │
+     │                  │           │                 │
+     ▼                  │           ▼                 │
+   CRASH!               │    except/catch blocks      │
+                        │  ┌─────────────────────┐    │
+                        │  │ Handle Error Type 1 │    │
+                        │  │ Handle Error Type 2 │    │
+                        │  │ Handle Error Type 3 │    │
+                        │  └─────────────────────┘    │
+                        └─────────────────────────────┘
+                                    │
+                                    ▼
+                              Continue Program
+```
 
 ### try-catch Structure (or try-except in Python)
 
 try block: Contains the "risky" code or code that we expect "might" cause an exception.
 
 catch/except block: This code block only executes when an exception occurs in the try block. It "catches" the error and allows us to handle it appropriately, such as displaying user-friendly messages, logging errors, or trying alternative approaches. If no error occurs in the try block, this section is completely skipped.
+
+```
+try-catch Flow Diagram:
+
+┌─────────────────────────────────────────────────────────┐
+│                    try block                            │
+│  ┌─────────────────────────────────────────────────┐    │
+│  │ file = open("data.txt", "r")                    │    │
+│  │ number = int(file.read())                       │    │
+│  │ result = 100 / number                           │    │
+│  │ print(result)                                   │    │
+│  └─────────────────────────────────────────────────┘    │
+└─────────────────────────────────────────────────────────┘
+                            │
+                 ┌──────────┼──────────┐
+                 │          │          │
+                 ▼          ▼          ▼
+         ┌─────────────┐ ┌─────────┐  ┌─────────────┐
+         │FileNotFound │ │ValueError│ │ZeroDivision │
+         │Exception    │ │Exception │ │Exception    │
+         │             │ │         │  │             │
+         │Print:       │ │Print:   │  │Print:       │
+         │"File not    │ │"Invalid │  │"Cannot      │
+         │ found"      │ │ data"   │  │ divide by 0"│
+         └─────────────┘ └─────────┘  └─────────────┘
+```
 
 Example (Python-like syntax):
 
@@ -80,6 +191,50 @@ finally block: An optional code block that will always execute, regardless of wh
 
 throw or raise: Commands used to "intentionally" create exceptions. Used when programmers detect logical errors in the program (such as functions receiving incorrect arguments) and want to signal that error to other parts of the program for handling.
 
+```
+Complete Exception Handling Structure:
+
+┌─────────────────────────────────────────────────────────┐
+│                    try block                            │
+│               (risky operations)                        │
+└─────────────────────┬───────────────────────────────────┘
+                      │
+      ┌───────────────┼───────────────┐
+      │ Exception?    │ No Exception  │
+      ▼               ▼               ▼
+┌─────────────┐ ┌─────────────┐ ┌─────────────┐
+│except Block1│ │except Block2│ │ (skip all   │
+│(Error Type1)│ │(Error Type2)│ │ except      │
+└─────────────┘ └─────────────┘ │ blocks)     │
+      │               │         └─────────────┘
+      └───────────────┼───────────────┘
+                      ▼
+              ┌─────────────────┐
+              │  finally block  │
+              │ (ALWAYS RUNS)   │
+              │ • Close files   │
+              │ • Clean memory  │
+              │ • Release locks │
+              └─────────────────┘
+                      │
+                      ▼
+              Continue Program
+
+throw/raise Command:
+┌─────────────────────────────────────────┐
+│ def validate_age(age):                  │
+│     if age < 0:                         │
+│         raise ValueError("Negative age")│
+│     return age                          │
+└─────────────────────────────────────────┘
+              │
+              ▼ (when age < 0)
+┌─────────────────────────────────────────┐
+│ Exception thrown to calling code        │
+│ Must be caught by try-except block      │
+└─────────────────────────────────────────┘
+```
+
 ---
 
 ## 📋 Summary & Practical Exercise
@@ -105,10 +260,56 @@ Thinking Challenge: You are writing a function that takes two numbers as input a
 1. Most Likely Exception: What exception is most likely to occur in this function?
 2. Error Handling: How would you use a try-except block to handle this error? What message would you display to the user?
 
+```
+Division Function Analysis:
+
+Input: divide(a, b)
+         │
+         ▼
+┌─────────────────────┐
+│ Potential Problems: │
+│                     │
+│ 1. b = 0            │ ──► ZeroDivisionError (MOST LIKELY)
+│ 2. a,b not numbers  │ ──► TypeError
+│ 3. Invalid input    │ ──► ValueError
+└─────────────────────┘
+```
+
 Step-by-Step Solution:
 
 1. Exception Analysis:
 The most likely exception is ZeroDivisionError when the second parameter (b) is zero.
+
+```
+Problem Visualization:
+
+Normal Case:           Error Case:
+┌─────────────┐       ┌─────────────┐
+│ divide(10,2)│       │ divide(10,0)│
+│     │       │       │     │       │
+│     ▼       │       │     ▼       │
+│ 10/2 = 5    │       │ 10/0 = ???  │
+│     │       │       │     │       │
+│     ▼       │       │     ▼       │
+│ Return 5    │       │ CRASH!      │
+└─────────────┘       └─────────────┘
+
+With Error Handling:
+┌─────────────┐
+│ divide(10,0)│
+│     │       │
+│     ▼       │
+│ try: 10/0   │
+│     │       │
+│     ▼       │
+│ Exception   │
+│ caught!     │
+│     │       │
+│     ▼       │
+│ Print error │
+│ Return None │
+└─────────────┘
+```
 
 2. Implementation:
 
@@ -126,6 +327,29 @@ def safe_divide(a, b):
 # Test examples
 safe_divide(10, 2)    # Normal: 10 / 2 = 5.0
 safe_divide(10, 0)    # Error: Cannot divide by zero
+```
+
+```
+Function Behavior Comparison:
+
+Test Case: safe_divide(10, 2)
+┌─────────────────────────────────┐
+│ try:                            │
+│   result = 10 / 2  ✓ Success    │
+│   print("10 / 2 = 5.0")         │
+│   return 5.0                    │
+│ except: (skipped)               │
+└─────────────────────────────────┘
+
+Test Case: safe_divide(10, 0)
+┌─────────────────────────────────┐
+│ try:                            │
+│   result = 10 / 0  ✗ Exception  │
+│ except ZeroDivisionError:       │
+│   print("Error: Cannot divide   │
+│          by zero.")             │
+│   return None                   │
+└─────────────────────────────────┘
 ```
 
 This exercise demonstrates how to identify potential exceptions, implement proper error handling, and provide meaningful feedback while maintaining program stability.

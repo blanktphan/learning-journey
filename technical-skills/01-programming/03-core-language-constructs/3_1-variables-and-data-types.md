@@ -22,6 +22,37 @@ Upon completion of this topic, you will be able to:
 
 Technically, a variable is a symbolic name or identifier that is created to reference a memory address in a computer, which is used for storing data.
 
+```
+Variable Analogy - Memory as a Warehouse:
+
+    Physical Warehouse                    Computer Memory
+┌───────────────────────────┐           ┌─────────────────────────┐
+│                           │           │                         │
+│  ┌─────┐ ┌─────┐ ┌─────┐  │           │ ┌─────┐ ┌─────┐ ┌─────┐ │
+│  │  25 │ │99.99│ │true │  │           │ │  25 │ │99.99│ │ 01  │ │
+│  └─────┘ └─────┘ └─────┘  │           │ └─────┘ └─────┘ └─────┘ │
+│     ▲       ▲       ▲     │           │     ▲       ▲       ▲   │
+│     │       │       │     │           │     │       │       │   │
+│ [Shelf A][Shelf B][Shelf C]           │ [0x1000][0x1004][0x1008]│
+│                           │           │                         │
+└───────────────────────────┘           └─────────────────────────┘
+          │                                       │
+          ▼                                       ▼
+    Human-Friendly                        Computer Addresses
+      References                           (Hard to remember)
+
+Variable Names = Easy-to-Remember Labels:
+┌──────────────┐    ┌──────────────┐    ┌──────────────┐
+│ customer_age │───►│product_price │───►│is_premium    │
+│      25      │    │    99.99     │    │    true      │
+└──────────────┘    └──────────────┘    └──────────────┘
+    Address:            Address:            Address:
+   0x1000             0x1004             0x1008
+
+Instead of: "Get value from 0x7FFF5FBFFD90"
+We write:   "Get value from customer_age"
+```
+
 It is like having "boxes" for storing items. These boxes are located in a "warehouse" (memory) at specific positions. Instead of having to remember complex positions (like 0x7FFF5FBFFD90), we simply attach "name labels" (variable names) to those boxes (like customer_age). Whenever we need to use or change the contents of the box, we reference it through this memorable name label.
 
 ### Memory Management Fundamentals
@@ -29,14 +60,87 @@ It is like having "boxes" for storing items. These boxes are located in a "wareh
 Variables serve as the primary interface between human-readable code and computer memory management:
 
 ```
-Memory Address: 0x7FFF5FBFFD90  →  Variable Name: customer_age
-Memory Address: 0x7FFF5FBFFD94  →  Variable Name: product_price
-Memory Address: 0x7FFF5FBFFD98  →  Variable Name: is_premium_member
+Memory Layout Visualization:
+
+RAM (Random Access Memory)
+┌─────────────────────────────────────────────────────────────┐
+│  Address     │ Variable Name      │ Data Type │ Value       │
+├──────────────┼────────────────────┼───────────┼─────────────┤
+│ 0x7FFF...90  │ customer_age       │ int       │ 25          │
+│ 0x7FFF...94  │ product_price      │ double    │ 99.99       │
+│ 0x7FFF...98  │ is_premium_member  │ boolean   │ true        │
+│ 0x7FFF...9C  │ customer_name      │ string    │ "John"      │
+└─────────────────────────────────────────────────────────────┘
+
+Simplified Memory Model:
+┌──────────────────────────────────────────────────────────────┐
+│                    Computer Memory                           │
+│                                                              │
+│  [customer_age]    [product_price]   [is_premium]  [name]    │
+│  ┌───────────┐    ┌─────────────┐   ┌──────────┐  ┌──────┐   │
+│  │    25     │    │    99.99    │   │   true   │  │"John"│   │
+│  └───────────┘    └─────────────┘   └──────────┘  └──────┘   │
+│      4 bytes          8 bytes         1 byte      variable   │
+└──────────────────────────────────────────────────────────────┘
+
+Access Pattern:
+Program says: "Get customer_age"
+    ↓
+System looks up: customer_age → 0x7FFF5FBFFD90
+    ↓
+Retrieves value: 25
 ```
 
 ### Variable Lifecycle
 
 Variables go through several stages during program execution:
+
+```
+Variable Lifecycle Timeline:
+
+1. DECLARATION                2. INITIALIZATION             3. ASSIGNMENT (Updates)
+┌──────────────┐             ┌──────────────┐              ┌──────────────┐
+│ Reserve      │────────────►│ First Value  │─────────────►│ New Values   │
+│ Memory Space │             │ Assignment   │              │ Assignment   │
+└──────────────┘             └──────────────┘              └──────────────┘
+       │                            │                             │
+       ▼                            ▼                             ▼
+┌─────────────┐               ┌─────────────┐               ┌─────────────┐
+│   Memory    │               │   Memory    │               │   Memory    │
+│ ┌─────────┐ │               │ ┌─────────┐ │               │ ┌─────────┐ │
+│ │   ???   │ │  int age;     │ │   25    │ │  age = 25;    │ │   26    │ │
+│ └─────────┘ │               │ └─────────┘ │               │ └─────────┘ │
+│   [age]     │               │   [age]     │               │   [age]     │
+└─────────────┘               └─────────────┘               └─────────────┘
+ No value yet                   Has value 25                 Updated to 26
+
+Lifecycle Stages Detailed:
+┌─────────────────────────────────────────────────────────────────────────┐
+│ Stage 1: DECLARATION                                                    │
+│ ┌─────────────────────────────────────────────────────────────────────┐ │
+│ │ • System reserves memory space                                      │ │
+│ │ • Associates a name with memory address                             │ │
+│ │ • Determines data type (size and format)                            │ │
+│ │ • Memory contains undefined/garbage value                           │ │
+│ └─────────────────────────────────────────────────────────────────────┘ │
+├─────────────────────────────────────────────────────────────────────────┤
+│ Stage 2: INITIALIZATION                                                 │
+│ ┌─────────────────────────────────────────────────────────────────────┐ │
+│ │ • First value assignment to the variable                            │ │
+│ │ • Memory now contains meaningful data                               │ │
+│ │ • Variable becomes "usable" in expressions                          │ │
+│ │ • Can be done combined with declaration                             │ │
+│ └─────────────────────────────────────────────────────────────────────┘ │
+├─────────────────────────────────────────────────────────────────────────┤
+│ Stage 3: ASSIGNMENT/UPDATE                                              │
+│ ┌─────────────────────────────────────────────────────────────────────┐ │
+│ │ • Subsequent value changes                                          │ │
+│ │ • Old value is overwritten                                          │ │
+│ │ • Memory address stays the same                                     │ │
+│ │ • Can happen multiple times                                         │ │
+│ └─────────────────────────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────────────────┘
+```
 
 #### Declaration
 The process of creating a variable is called declaration. This tells the system to reserve a memory location and associate it with a name.
@@ -104,6 +208,55 @@ data = "john@example.com"
 
 Data type is a characteristic of data that tells the compiler or interpreter how the programmer intends to use that data. It is like the "type of box" that determines:
 
+```
+Data Type Concept - Different Box Types for Different Contents:
+
+Physical Storage Analogy:
+┌─────────────────────────────────────────────────────────────────────┐
+│                        Storage Container Types                      │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐          │
+│  │ Toolbox  │   │ Jewelry  │   │ Library  │   │ Switch   │          │
+│  │          │   │   Box    │   │  Shelf   │   │  Panel   │          │
+│  │ ┌──────┐ │   │ ┌──────┐ │   │ ┌──────┐ │   │ ┌──────┐ │          │
+│  │ │Tools │ │   │ │Rings │ │   │ │Books │ │   │ │ON/OFF│ │          │
+│  │ └──────┘ │   │ └──────┘ │   │ └──────┘ │   │ └──────┘ │          │
+│  └──────────┘   └──────────┘   └──────────┘   └──────────┘          │
+│       │               │               │               │             │
+│       ▼               ▼               ▼               ▼             │
+│  Heavy Items     Valuable Items    Text/Info    True/False          │
+│  (Numbers)       (Decimals)        (Letters)     (Boolean)          │
+└─────────────────────────────────────────────────────────────────────┘
+
+Computer Data Type System:
+┌─────────────────────────────────────────────────────────────────────┐
+│                      Programming Data Types                         │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│ ┌─────────┐   ┌─────────┐   ┌─────────┐   ┌─────────┐               │
+│ │   int   │   │ double  │   │ string  │   │boolean  │               │
+│ │ ┌─────┐ │   │ ┌─────┐ │   │ ┌─────┐ │   │ ┌─────┐ │               │
+│ │ │ 25  │ │   │ │3.14 │ │   │ │"Hi" │ │   │ │true │ │               │
+│ │ └─────┘ │   │ └─────┘ │   │ └─────┘ │   │ └─────┘ │               │
+│ └─────────┘   └─────────┘   └─────────┘   └─────────┘               │
+│     │             │             │             │                     │
+│     ▼             ▼             ▼             ▼                     │
+│ Whole Numbers  Decimal Nums   Text Data    True/False               │
+│ (4 bytes)      (8 bytes)     (Variable)     (1 bit)                 │
+└─────────────────────────────────────────────────────────────────────┘
+
+Data Type Determines Three Key Aspects:
+┌─────────────────────────────────────────────────────────────────────┐
+│ 1. POSSIBLE VALUES    │ 2. VALID OPERATIONS  │ 3. MEMORY LAYOUT     │
+├───────────────────────┼──────────────────────┼──────────────────────┤
+│ int: -2B to +2B      │ +, -, *, /, %        │ 4 bytes fixed         │
+│ double: decimals     │ +, -, *, /           │ 8 bytes fixed         │
+│ string: text         │ +, compare, search   │ Variable length       │
+│ boolean: true/false  │ &&, ||, !            │ 1 bit                 │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
 ### Possible Values
 What can this box store (e.g., only numbers, or only letters)?
 
@@ -119,12 +272,60 @@ How much memory space is needed, and how will the data be stored as bits (0s and
 Different data types require different amounts of memory space. For example, an Integer might need 4 bytes, while a Double might need 8 bytes. Specifying data types helps the operating system allocate space appropriately.
 
 ```
-Memory Allocation Examples:
-int (32-bit):     4 bytes  →  32 bits  →  Range: -2,147,483,648 to 2,147,483,647
-long (64-bit):    8 bytes  →  64 bits  →  Range: much larger numbers
-float (32-bit):   4 bytes  →  32 bits  →  Precision: ~7 decimal digits
-double (64-bit):  8 bytes  →  64 bits  →  Precision: ~15 decimal digits
-char:             1 byte   →  8 bits   →  256 possible characters
+Memory Allocation Visualization:
+
+Data Type Memory Requirements:
+┌─────────────────────────────────────────────────────────────────────────┐
+│                           Memory Layout                                 │
+├─────────────────────────────────────────────────────────────────────────┤
+│                                                                         │
+│ boolean (1 bit):    │ 0 or 1                                            │
+│                     ┌─┐                                                 │
+│                     │1│  (true)                                         │
+│                     └─┘                                                 │
+│                                                                         │
+│ char (1 byte):      │ ┌─┬─┬─┬─┬─┬─┬─┬─┐                                 │
+│                     │ │0│1│0│0│0│0│0│1│  (ASCII 'A' = 65)               │
+│                     │ └─┴─┴─┴─┴─┴─┴─┴─┘                                 │
+│                                                                         │
+│ int (4 bytes):      │ ┌───────────────────────────────────┐             │
+│                     │ │           25                      │             │
+│                     │ └───────────────────────────────────┘             │
+│                     │ ◄──────── 32 bits ─────────►                      │
+│                                                                         │
+│ double (8 bytes):   │ ┌───────────────────────────────────────────────┐ │
+│                     │ │              3.14159                          │ │
+│                     │ └───────────────────────────────────────────────┘ │
+│                     │ ◄──────────── 64 bits ────────────►               │
+│                                                                         │
+│ string (variable):  │ ┌─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┐                 │
+│                     │ │H│e│l│l│o│ │W│o│r│l│d│!│\│0│ │ │                 │
+│                     │ └─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┘                 │
+│                     │ ◄──── Variable length ────►                       │
+└─────────────────────────────────────────────────────────────────────────┘
+
+Memory Usage Comparison:
+┌──────────────┬─────────────┬──────────────┬─────────────────────────┐
+│ Data Type    │ Size        │ Range/Values │ Example                 │
+├──────────────┼─────────────┼──────────────┼─────────────────────────┤
+│ boolean      │ 1 bit       │ true/false   │ true                    │
+│ char         │ 1 byte      │ 0-255        │ 'A'                     │
+│ short        │ 2 bytes     │ -32K to 32K  │ 1000                    │
+│ int          │ 4 bytes     │ -2B to 2B    │ 25                      │
+│ long         │ 8 bytes     │ Very large   │ 9999999999              │
+│ float        │ 4 bytes     │ ~7 digits    │ 3.14f                   │
+│ double       │ 8 bytes     │ ~15 digits   │ 3.14159265359           │
+│ string       │ Variable    │ Text         │ "Hello World"           │
+└──────────────┴─────────────┴──────────────┴─────────────────────────┘
+
+Memory Efficiency Example:
+If storing 1000 age values (0-120):
+• byte:     1000 × 1 = 1,000 bytes   (sufficient range)
+• int:      1000 × 4 = 4,000 bytes   (wasted space)
+• double:   1000 × 8 = 8,000 bytes   (very wasteful)
+
+Choose the right type for efficiency!
+```
 boolean:          1 bit    →  1 bit    →  true or false
 ```
 
@@ -146,6 +347,57 @@ True + "text"   # Cannot add boolean to string
 #### Data Interpretation
 The same set of bits 01000001 can have completely different meanings depending on the data type. If interpreted as an 8-bit Integer, it is the number 65, but if interpreted as an ASCII Character, it is the letter 'A'. Data type provides the "context" for interpreting these bit sequences.
 
+```
+Data Interpretation - Same Bits, Different Meanings:
+
+Raw Binary Data: 01000001
+┌─────────────────────────────────────────────────────────────────────┐
+│                    Same 8 Bits in Memory                            │
+│                                                                     │
+│  Bit Position:  7  6  5  4  3  2  1  0                              │
+│  Binary Value:  0  1  0  0  0  0  0  1                              │
+│                 │  │  │  │  │  │  │  │                              │
+│                 └──┴──┴──┴──┴──┴──┴──┴─► Raw Data                   │
+└─────────────────────────────────────────────────────────────────────┘
+                            │
+                ┌───────────┼───────────┐
+                ▼           ▼           ▼
+        
+┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐
+│ as unsigned int │  │ as ASCII char   │  │  as boolean     │
+│                 │  │                 │  │                 │
+│      65         │  │       'A'       │  │     true        │
+│                 │  │                 │  │ (non-zero = T)  │
+│ (decimal value) │  │ (letter A)      │  │                 │
+└─────────────────┘  └─────────────────┘  └─────────────────┘
+
+Visual Interpretation Examples:
+┌──────────────────────────────────────────────────────────────────────┐
+│ Binary: 01000001                                                     │
+├──────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│ Interpreted as:                                                      │
+│                                                                      │
+│ ┌─────────────┐    ┌─────────────┐    ┌─────────────┐                │
+│ │   INTEGER   │    │  CHARACTER  │    │   BOOLEAN   │                │
+│ │             │    │             │    │             │                │
+│ │     65      │    │     'A'     │    │    true     │                │
+│ │             │    │             │    │ (non-zero)  │                │
+│ │ 64+1=65     │    │ ASCII table │    │ 0=false,    │                │
+│ │ (math calc) │    │ lookup      │    │ 1=true      │                │
+│ └─────────────┘    └─────────────┘    └─────────────┘                │
+│                                                                      │
+│ ┌─────────────┐    ┌─────────────┐                                   │
+│ │ SIGNED INT  │    │   FLOAT     │                                   │
+│ │             │    │             │                                   │
+│ │     65      │    │  Invalid    │                                   │
+│ │             │    │             │                                   │
+│ │ (positive)  │    │ (wrong      │                                   │
+│ │             │    │  format)    │                                   │
+│ └─────────────┘    └─────────────┘                                   │
+└──────────────────────────────────────────────────────────────────────┘
+
+Key Insight: Data type is the "lens" through which we view raw binary data!
 ```
 Binary: 01000001
 
@@ -189,8 +441,82 @@ result = 5 + 3.14            # int + float → float: 8.14
 
 Most programming languages provide built-in primitive data types:
 
+```
+Primitive Data Types Overview:
+
+┌─────────────────────────────────────────────────────────────────────┐
+│                    Programming Data Type Family                     │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│    NUMERIC TYPES              TEXT TYPES           LOGICAL TYPE     │
+│  ┌───────────────────┐    ┌─────────────────┐   ┌─────────────────┐ │
+│  │                   │    │                 │   │                 │ │
+│  │  ┌─────────────┐  │    │  ┌───────────┐  │   │  ┌───────────┐  │ │
+│  │  │  INTEGER    │  │    │  │ CHARACTER │  │   │  │  BOOLEAN  │  │ │
+│  │  │   (int)     │  │    │  │  (char)   │  │   │  │  (bool)   │  │ │
+│  │  │             │  │    │  │           │  │   │  │           │  │ │
+│  │  │ Whole nums  │  │    │  │Single chr │  │   │  │true/false │  │ │
+│  │  │ -2B to +2B  │  │    │  │ 'A', '9'  │  │   │  │logical    │  │ │
+│  │  └─────────────┘  │    │  └───────────┘  │   │  └───────────┘  │ │
+│  │                   │    │                 │   │                 │ │
+│  │  ┌─────────────┐  │    │  ┌───────────┐  │   │                 │ │
+│  │  │FLOATING-PT  │  │    │  │  STRING   │  │   │                 │ │
+│  │  │(float/dbl)  │  │    │  │   (str)   │  │   │                 │ │
+│  │  │             │  │    │  │           │  │   │                 │ │
+│  │  │Decimal nums │  │    │  │Multi chars│  │   │                 │ │
+│  │  │3.14, -0.5   │  │    │  │"Hello!"   │  │   │                 │ │
+│  │  └─────────────┘  │    │  └───────────┘  │   │                 │ │
+│  └───────────────────┘    └─────────────────┘   └─────────────────┘ │
+│                                                                     │
+│ Used for:                Used for:             Used for:            │
+│ • Math calculations      • Names, messages     • Decisions          │
+│ • Counting              • File paths          • Flags               │
+│ • Measurements          • User input          • Status              │
+│ • IDs                   • Labels              • Conditions          │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
 ### Integer (int)
 Used for storing whole numbers, both positive, negative, and zero (e.g., -50, 0, 199).
+
+```
+Integer Data Type Visualization:
+
+Number Line Representation:
+    ... -3  -2  -1   0   1   2   3 ...
+        ┬───┬───┬───┬───┬───┬───┬
+        │   │   │   │   │   │   │
+        ▼   ▼   ▼   ▼   ▼   ▼   ▼
+       All valid integer values
+
+Integer Storage (32-bit int):
+┌─────────────────────────────────────────────────────────────────────┐
+│ Bit Layout: 32 bits total                                           │
+│                                                                     │
+│ Sign │              30 bits for magnitude                           │
+│ bit  │                                                              │
+│  ▼   │  ▼                                                           │
+│ ┌─┬──┴──────────────────────────────────────────────────────────┐   │
+│ │S│                    Value bits                               │   │
+│ └─┴─────────────────────────────────────────────────────────────┘   │
+│                                                                     │
+│ Examples:                                                           │
+│ +25:  0 00000000000000000000000000011001                            │
+│ -25:  1 00000000000000000000000000011001                            │
+│  0:   0 00000000000000000000000000000000                            │
+└─────────────────────────────────────────────────────────────────────┘
+
+Integer Range (32-bit):
+┌────────────────────┬────────────────────┬─────────────────────────┐
+│ Negative Range     │      Zero          │ Positive Range          │
+├────────────────────┼────────────────────┼─────────────────────────┤
+│ -2,147,483,648     │         0          │ +2,147,483,647          │
+│ to                 │                    │ to                      │
+│ -1                 │                    │ +2,147,483,647          │
+└────────────────────┴────────────────────┴─────────────────────────┘
+      ~2.1 billion          1 value           ~2.1 billion
+       negative                                 positive
+```
 
 ```python
 # Integer examples
@@ -215,6 +541,67 @@ remainder = 17 % 5      # Modulo: 2
 
 ### Floating-Point (float, double)
 Used for storing decimal numbers or real numbers (e.g., 3.14159, -0.025). Double has higher precision and uses more storage space than float.
+
+```
+Floating-Point Visualization:
+
+Number Line with Decimals:
+    -2.0  -1.5  -1.0  -0.5   0.0   0.5   1.0   1.5   2.0
+      │     │     │     │     │     │     │     │     │
+      ▼     ▼     ▼     ▼     ▼     ▼     ▼     ▼     ▼
+   Infinite possible decimal values between integers
+
+Float vs Double Precision Comparison:
+┌─────────────────────────────────────────────────────────────────────┐
+│                     Precision Difference                            │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│ FLOAT (32-bit): ~7 decimal digits                                   │
+│ ┌─────────────────────────────────────────────────────────────────┐ │
+│ │ 3.1415927 ← Can store accurately                                │ │
+│ │ 3.1415926535... ← Loses precision here                          │ │
+│ └─────────────────────────────────────────────────────────────────┘ │
+│                                                                     │
+│ DOUBLE (64-bit): ~15 decimal digits                                 │
+│ ┌─────────────────────────────────────────────────────────────────┐ │
+│ │ 3.141592653589793 ← Can store accurately                        │ │
+│ │ 3.141592653589793238... ← Loses precision here                  │ │
+│ └─────────────────────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────────────┘
+
+Floating-Point Storage Format (IEEE 754):
+┌─────────────────────────────────────────────────────────────────────┐
+│ FLOAT (32-bit):                                                     │
+│ ┌──┬────────┬───────────────────────┐                               │
+│ │S │ Exp(8) │    Mantissa(23)       │                               │
+│ └──┴────────┴───────────────────────┘                               │
+│  │     │              │                                             │
+│  │     │              └─ Fractional part                            │
+│  │     └─ Exponent (power of 2)                                     │
+│  └─ Sign bit (0=positive, 1=negative)                               │
+│                                                                     │
+│ DOUBLE (64-bit):                                                    │
+│ ┌──┬─────────────┬────────────────────────────────────────────────┐ │
+│ │S │  Exp(11)    │           Mantissa(52)                         │ │
+│ └──┴─────────────┴────────────────────────────────────────────────┘ │
+│                                                                     │
+│ Example: 3.14159 in float                                           │
+│ Sign: 0 (positive)                                                  │
+│ Exponent: Represents power of 2                                     │
+│ Mantissa: Stores the significant digits                             │
+└─────────────────────────────────────────────────────────────────────┘
+
+Common Use Cases:
+┌─────────────────────────────────────────────────────────────────────┐
+│ FLOAT:                    │ DOUBLE:                                 │
+├───────────────────────────┼─────────────────────────────────────────┤
+│ • Game graphics (x,y,z)   │ • Scientific calculations               │
+│ • Basic measurements      │ • Financial precision                   │
+│ • Mobile apps (memory)    │ • GPS coordinates                       │
+│ • Simple calculations     │ • Engineering simulations               │
+│ • When 7 digits enough    │ • When high precision needed            │
+└─────────────────────────────────────────────────────────────────────┘
+```
 
 ```python
 # Floating-point examples
@@ -252,6 +639,80 @@ is_close = difference < 1e-10  # True
 ### Boolean (bool)
 Used for storing truth values. Has only 2 possible values: true and false. This is the heart of all logic and decision-making.
 
+```
+Boolean Data Type - Binary Logic:
+
+Boolean Universe (Only 2 Possible Values):
+┌─────────────────────────────────────────────────────────────────────┐
+│                        Boolean Values                               │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│         FALSE                    TRUE                               │
+│    ┌─────────────┐         ┌─────────────┐                          │
+│    │      0      │   ◄───► │      1      │                          │
+│    │    false    │         │    true     │                          │
+│    │     no      │         │     yes     │                          │
+│    │    off      │         │     on      │                          │
+│    │   empty     │         │   exists    │                          │
+│    │   fail      │         │  success    │                          │
+│    └─────────────┘         └─────────────┘                          │
+│                                                                     │
+│ Memory Storage: 1 bit (theoretically)                               │
+│ ┌─┐              ┌─┐                                                │
+│ │0│ = FALSE      │1│ = TRUE                                         │
+│ └─┘              └─┘                                                │
+└─────────────────────────────────────────────────────────────────────┘
+
+Boolean Logic Operations:
+┌─────────────────────────────────────────────────────────────────────┐
+│                    Logical Operations                               │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│ AND (&&): "Both must be true"                                       │
+│ ┌─────────────────────────────────────────────────────────────────┐ │
+│ │ true  && true  = true   │ false && true  = false                │ │
+│ │ true  && false = false  │ false && false = false                │ │
+│ └─────────────────────────────────────────────────────────────────┘ │
+│                                                                     │
+│ OR (||): "At least one must be true"                                │
+│ ┌─────────────────────────────────────────────────────────────────┐ │
+│ │ true  || true  = true   │ false || true  = true                 │ │
+│ │ true  || false = true   │ false || false = false                │ │
+│ └─────────────────────────────────────────────────────────────────┘ │
+│                                                                     │
+│ NOT (!): "Flip the value"                                           │
+│ ┌─────────────────────────────────────────────────────────────────┐ │
+│ │ !true = false                                                   │ │
+│ │ !false = true                                                   │ │
+│ └─────────────────────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────────────┘
+
+Real-World Boolean Applications:
+┌─────────────────────────────────────────────────────────────────────┐
+│ Light Switch:    ON/OFF        │  User Login:     logged_in/out     │
+│ Door:           OPEN/CLOSED     │  Payment:       paid/unpaid       │
+│ Game:           WIN/LOSE        │  Email:         read/unread       │
+│ Network:        ONLINE/OFFLINE  │  Membership:    active/expired    │
+│ Security:       SAFE/DANGER     │  Feature:       enabled/disabled  │
+└─────────────────────────────────────────────────────────────────────┘
+
+Decision Flow with Booleans:
+┌─────────────────────────────────────────────────────────────────────┐
+│                    Program Decision Tree                            │
+│                                                                     │
+│           is_logged_in?                                             │
+│              /     \                                                │
+│           TRUE     FALSE                                            │
+│            /         \                                              │
+│   has_permission?   Show Login                                      │
+│        /     \         Page                                         │
+│     TRUE     FALSE                                                  │
+│      /         \                                                    │
+│ Show Admin   Show "Access                                           │
+│   Panel      Denied"                                                │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
 ```python
 # Boolean examples
 is_logged_in = True
@@ -288,6 +749,64 @@ bool([1, 2])     # True (non-empty list)
 ### Character (char)
 Used for storing a single character, digit, or symbol (e.g., 'A', 'z', '9', '$').
 
+```
+Character Data Type - Single Symbols:
+
+Character Storage (1 byte = 8 bits):
+┌─────────────────────────────────────────────────────────────────────┐
+│                       ASCII Character Set                           │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│   Decimal │ Binary   │ Character │ Category                         │
+│   ───────────────────────────────────────────────────────────────   │
+│     65    │ 01000001 │     'A'   │ Uppercase Letter                 │
+│     97    │ 01100001 │     'a'   │ Lowercase Letter                 │
+│     48    │ 00110000 │     '0'   │ Digit                            │
+│     57    │ 00111001 │     '9'   │ Digit                            │
+│     32    │ 00100000 │    ' '    │ Space                            │
+│     33    │ 00100001 │     '!'   │ Punctuation                      │
+│     36    │ 00100100 │     '$'   │ Symbol                           │
+└─────────────────────────────────────────────────────────────────────┘
+
+Character Categories Visualization:
+┌─────────────────────────────────────────────────────────────────────┐
+│                      Character Universe                             │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐     │
+│ │   LETTERS   │ │   DIGITS    │ │  SYMBOLS    │ │  SPECIAL    │     │
+│ │             │ │             │ │             │ │             │     │
+│ │ A-Z (26)    │ │ 0-9 (10)    │ │ !@#$%^&*    │ │ space,tab   │     │
+│ │ a-z (26)    │ │             │ │ ()[]{}      │ │ newline     │     │
+│ │             │ │             │ │ +-*/=<>     │ │ null        │     │
+│ │ Total: 52   │ │ Total: 10   │ │ Total: ~32  │ │ Total: ~30  │     │
+│ └─────────────┘ └─────────────┘ └─────────────┘ └─────────────┘     │
+│                                                                     │
+│ ASCII Table Range: 0-127 (128 total characters)                     │
+│ Extended ASCII: 128-255 (additional 128 characters)                 │
+│ Unicode: Millions of characters (international support)             │
+└─────────────────────────────────────────────────────────────────────┘
+
+Character Encoding Examples:
+┌─────────────────────────────────────────────────────────────────────┐
+│ Encoding Comparison:                                                │
+│                                                                     │
+│ ASCII (7-bit):                                                      │
+│ 'A' → 65 → 01000001                                                 │
+│                                                                     │
+│ Unicode (multi-byte):                                               │
+│ 'A' → U+0041 → same as ASCII for basic Latin                        │
+│ '中' → U+4E2D → requires multiple bytes                             │
+│ '🙂' → U+1F642 → emoji requiring 4 bytes                            │
+│                                                                     │
+│ Memory Layout for 'A':                                              │
+│ ┌─┬─┬─┬─┬─┬─┬─┬─┐                                                   │
+│ │0│1│0│0│0│0│0│1│                                                   │
+│ └─┴─┴─┴─┴─┴─┴─┴─┘                                                   │
+│  7 6 5 4 3 2 1 0  ← bit positions                                   │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
 ```python
 # Character examples (in languages that have explicit char type)
 grade = 'A'
@@ -314,6 +833,83 @@ is_upper = 'A'.isupper()    # Check if uppercase: True
 
 ### String
 Used for storing sequences of characters or "text" (e.g., "Hello, World!"). Technically, in some languages String is not primitive but an array of char, but most high-level languages provide convenient usage as if it were primitive.
+
+```
+String Data Type - Character Sequences:
+
+String as Character Array:
+┌─────────────────────────────────────────────────────────────────────┐
+│                    String: "Hello World!"                           │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│ Index:    0   1   2   3   4   5   6   7   8   9  10  11             │
+│          ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐            │
+│ Chars:   │H│ │e│ │l│ │l│ │o│ │ │ │W│ │o│ │r│ │l│ │d│ │!│            │
+│          └─┘ └─┘ └─┘ └─┘ └─┘ └─┘ └─┘ └─┘ └─┘ └─┘ └─┘ └─┘            │
+│ ASCII:   72  101 108 108 111 32  87  111 114 108 100 33             │
+│                                                                     │
+│ Memory Layout (simplified):                                         │
+│ ┌─────────────────────────────────────────────────────────────────┐ │
+│ │ H │ e │ l │ l │ o │   │ W │ o │ r │ l │ d │ ! │ \0│             │ │
+│ └─────────────────────────────────────────────────────────────────┘ │
+│   │   │   │   │   │   │   │   │   │   │   │   │   │                 │
+│   ▼   ▼   ▼   ▼   ▼   ▼   ▼   ▼   ▼   ▼   ▼   ▼   ▼                 │ 
+│ Each character occupies 1 byte + null terminator                    │
+└─────────────────────────────────────────────────────────────────────┘
+
+String Operations Visualization:
+┌─────────────────────────────────────────────────────────────────────┐
+│                      String Operations                              │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│ CONCATENATION (+):                                                  │
+│ "Hello" + " " + "World"                                             │
+│    │       │      │                                                 │
+│    ▼       ▼      ▼                                                 │
+│ ┌─────┐ ┌───┐ ┌─────┐                                               │
+│ │Hello│+│ │+│World│ ──► "Hello World"                               │
+│ └─────┘ └───┘ └─────┘                                               │
+│                                                                     │
+│ SUBSTRING/SLICE:                                                    │
+│ "Programming"[0:4]                                                  │
+│  01234567891011                                                     │
+│  ▲         ▲                                                        │
+│  │         │                                                        │
+│  start     end (exclusive)                                          │
+│  └─────────┘                                                        │
+│    "Prog"                                                           │
+│                                                                     │
+│ LENGTH:                                                             │
+│ len("Hello") = 5                                                    │
+│ ┌─┬─┬─┬─┬─┐                                                         │
+│ │H│e│l│l│o│ ──► Count: 5 characters                                 │
+│ └─┴─┴─┴─┴─┘                                                         │
+│                                                                     │
+│ CASE CONVERSION:                                                    │
+│ "hello".upper() ──► "HELLO"                                         │
+│ "HELLO".lower() ──► "hello"                                         │
+│                                                                     │
+│ SEARCH:                                                             │
+│ "Programming".find("gram") ──► 3 (index where found)                │
+│ P r o g r a m m i n g                                               │
+│ 0 1 2 3 4 5 6 7 8 9 10                                              │
+│       ▲                                                             │
+│     Found at index 3                                                │
+└─────────────────────────────────────────────────────────────────────┘
+
+String Memory Management:
+┌─────────────────────────────────────────────────────────────────────┐
+│ Variable Length Storage:                                            │
+│                                                                     │
+│ Short string: "Hi"          Long string: "This is a very long..."   │
+│ ┌─────────┐                ┌─────────────────────────────────────┐  │
+│ │ H │ i │\0│               │ T│h│i│s│ │i│s│ │a│ │v│e│r│y│...│\0│    │
+│ └─────────┘                └─────────────────────────────────────┘  │
+│  3 bytes                   Variable bytes (as needed)               │
+│                                                                     │
+│ Efficient memory usage: Only allocates what's needed                │
+└─────────────────────────────────────────────────────────────────────┘
+```
 
 ```python
 # String examples

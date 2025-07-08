@@ -18,6 +18,25 @@ Upon completion of this topic, you will be able to:
 
 If variables are like "nouns" (data) in programming languages, operators are like "verbs" (actions). They are symbols used to perform mathematical operations, assign values, compare values, or perform logical operations on one or more pieces of data. The data being operated on are called operands.
 
+```
+Programming Language Analogy:
+
+Variables (Nouns)              Operators (Verbs)
+┌─────────────────┐           ┌─────────────────┐
+│ Data Storage    │           │ Data Actions    │
+│                 │           │                 │
+│ • Numbers       │           │ • Calculate     │
+│ • Text          │ ────────► │ • Compare       │
+│ • True/False    │           │ • Assign        │
+│ • Collections   │           │ • Combine       │
+└─────────────────┘           └─────────────────┘
+
+Example: x + 5 = 8
+         ↑   ↑   ↑
+      Variable Operator Result
+      (Noun)   (Verb)   (New Data)
+```
+
 The combination of values, variables, and operators forms expressions, which can be evaluated to produce a single value. For example: (x + 5) * 2
 
 ### Understanding Expressions
@@ -43,6 +62,29 @@ name + " " + surname    // String concatenation expression
 Understanding how operators work with operands:
 
 ```
+Basic Operator Structure:
+
+    Operand  Operator  Operand  =  Result
+    ┌─────┐     │     ┌─────┐     ┌─────┐
+    │  5  │ ──► + ◄── │  3  │ ──► │  8  │
+    └─────┘           └─────┘     └─────┘
+      │                 │           │
+      ▼                 ▼           ▼
+   Left Side        Operation    Final Value
+    Data             Symbol        Output
+
+Visual Examples:
+┌─────────────────────────────────────────────────────────────┐
+│  Expression     │ Left │ Op │ Right │    Result             │
+├─────────────────┼──────┼────┼───────┼───────────────────────┤
+│  5 + 3          │  5   │ +  │   3   │ ──► 8                 │
+│  x * 2          │  x   │ *  │   2   │ ──► (depends on x)    │
+│  true && false  │ true │ && │ false │ ──► false             │
+│  "Hi" + " "     │ "Hi" │ +  │  " "  │ ──► "Hi "             │
+└─────────────────┴──────┴────┴───────┴───────────────────────┘
+```
+
+```
 Structure: Operand Operator Operand = Result
 Examples:
    5       +       3     =   8
@@ -55,6 +97,28 @@ This relationship forms the foundation of all computational expressions in progr
 
 ## 2. Main Types of Operators
 
+```
+Operator Categories Overview:
+
+┌─────────────────────────────────────────────────────────────────┐
+│                      Operator Types                             │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  Arithmetic          Assignment         Comparison    Logical   │
+│  ┌─────────────┐     ┌─────────────┐    ┌─────────┐  ┌───────┐  │
+│  │ + - * / %   │     │ = += -= *=  │    │ == !=   │  │ && || │  │
+│  │             │     │             │    │ > < >=  │  │   !   │  │
+│  │ Calculate   │────►│ Store       │───►│ <= <>   │  │       │  │
+│  │ Numbers     │     │ Values      │    │ Compare │  │ Logic │  │
+│  │             │     │             │    │ Results │  │ Ops   │  │
+│  └─────────────┘     └─────────────┘    └─────────┘  └───────┘  │
+│        │                    │               │           │       │
+│        ▼                    ▼               ▼           ▼       │
+│   Math Results         Variable        Boolean      Boolean     │
+│   (Numbers)            Updates         Results      Results     │
+└─────────────────────────────────────────────────────────────────┘
+```
+
 ### A. Arithmetic Operators
 
 Used for basic mathematical calculations:
@@ -64,6 +128,38 @@ Used for basic mathematical calculations:
 - * (Multiplication)
 - / (Division)
 - % (Modulus): Returns the remainder after division
+
+```
+Arithmetic Operations Visualization:
+
+Addition (+):                  Subtraction (-):
+┌─────┐     ┌─────┐           ┌─────┐     ┌─────┐
+│  5  │ ──► │  8  │           │  8  │ ──► │  3  │
+└─────┘     └─────┘           └─────┘     └─────┘
+   +3         Result             -5         Result
+
+Multiplication (*):            Division (/):
+┌─────┐     ┌─────┐           ┌─────┐     ┌─────┐
+│  4  │ ──► │ 12  │           │ 12  │ ──► │  3  │
+└─────┘     └─────┘           └─────┘     └─────┘
+   *3         Result             /4         Result
+
+Modulus (%):
+┌─────┐     ┌─────┐
+│ 10  │ ──► │  1  │  ◄── Remainder after 10 ÷ 3 = 3 remainder 1
+└─────┘     └─────┘
+   %3         Result
+
+Division Types:
+┌─────────────────────────────────────────────────────────────┐
+│  Integer Division       │    Floating-Point Division        │
+│  7 / 3 = 2              │    7.0 / 3 = 2.333...             │
+│  ┌─────┐                │    ┌─────┐                        │
+│  │  7  │ ÷ 3 = 2        │    │ 7.0 │ ÷ 3 = 2.333...         │
+│  └─────┘                │    └─────┘                        │
+│  (Truncated)            │    (With decimals)                │
+└─────────────────────────────────────────────────────────────┘
+```
 
 Examples in different programming languages:
 
@@ -144,6 +240,36 @@ Used to assign values to variables:
 - = (Basic assignment): Assigns the value from the right to the variable on the left
 - +=, -=, *=, /=, %= (Compound assignment): Performs the operation and assigns the result back to the variable
 
+```
+Assignment Operation Flow:
+
+Basic Assignment (=):
+  Value ──────► Variable
+    5     =      x
+┌─────┐        ┌─────┐
+│  5  │ ─────► │  x  │
+└─────┘        └─────┘
+             (x now = 5)
+
+Compound Assignment (+=):
+Step 1: Get current value    Step 2: Perform operation    Step 3: Store result
+┌─────┐                     ┌─────────────┐              ┌─────┐
+│ x=10│ ──────────────────► │  10 + 5     │ ──────────►  │x=15 │
+└─────┘                     └─────────────┘              └─────┘
+                               (x += 5)
+
+Compound Assignment Equivalents:
+┌─────────────────────────────────────────────────────────────┐
+│ Compound     │ Equivalent Long Form    │ Example            │
+├──────────────┼─────────────────────────┼────────────────────┤
+│ x += 5       │ x = x + 5              │ 10 += 5 → 15        │
+│ x -= 3       │ x = x - 3              │ 10 -= 3 → 7         │
+│ x *= 2       │ x = x * 2              │ 10 *= 2 → 20        │
+│ x /= 4       │ x = x / 4              │ 20 /= 4 → 5         │
+│ x %= 3       │ x = x % 3              │ 10 %= 3 → 1         │
+└─────────────────────────────────────────────────────────────┘
+```
+
 Basic Assignment:
 ```java
 int level = 10;  // Initial assignment
@@ -193,6 +319,42 @@ Used to compare two values. The result is always a Boolean value (true or false)
 - < (Less than)
 - >= (Greater than or equal to)
 - <= (Less than or equal to)
+
+```
+Comparison Operations Visualization:
+
+Number Line Comparisons:
+    0     5     10     15     20
+    ├─────┼─────┼─────┼─────┤
+          ▲     ▲           ▲
+          A     B           C
+
+Examples with A=5, B=10, C=20:
+┌─────────────────────────────────────────────────────────────┐
+│ Comparison  │ Operation  │ Result │ Visual                  │
+├─────────────┼────────────┼────────┼─────────────────────────┤
+│ A == B      │ 5 == 10    │ false  │ A ≠ B (different)       │
+│ A != B      │ 5 != 10    │ true   │ A ≠ B (different)       │
+│ A < B       │ 5 < 10     │ true   │ A ←─── B (A is left)    │
+│ A > B       │ 5 > 10     │ false  │ A ←─── B (A not right)  │
+│ B >= A      │ 10 >= 5    │ true   │ B ───→ A (B equal/right)│
+│ A <= C      │ 5 <= 20    │ true   │ A ←─── C (A equal/left) │
+└─────────────────────────────────────────────────────────────┘
+
+Boolean Result Flow:
+    Values ──► Comparison ──► Boolean Result
+   ┌─────┐         │         ┌─────────┐
+   │ 5,10│ ────► < ────────► │  true   │
+   └─────┘                   └─────────┘
+
+Truth Table for Comparisons:
+A=5, B=10
+┌────────┬────────┬────────┬────────┬────────┬────────┐
+│ A==B   │ A!=B   │ A<B    │ A>B    │ A<=B   │ A>=B   │
+├────────┼────────┼────────┼────────┼────────┼────────┤
+│ false  │ true   │ true   │ false  │ true   │ false  │
+└────────┴────────┴────────┴────────┴────────┴────────┘
+```
 
 Examples:
 ```java
@@ -283,32 +445,46 @@ boolean isLocked = !canOpenDoor;               // isLocked will be true
 
 Understanding logical operators through truth tables:
 
-AND (&&) Truth Table:
 ```
-A     | B     | A && B
-------|-------|-------
-true  | true  | true
-true  | false | false
-false | true  | false
-false | false | false
-```
+Logical Operators Truth Tables Visualization:
 
-OR (||) Truth Table:
-```
-A     | B     | A || B
-------|-------|-------
-true  | true  | true
-true  | false | true
-false | true  | true
-false | false | false
-```
+AND (&&) - "Both must be true"
+┌─────────────────────────────────────────────────────────────┐
+│   A    │   B    │ A && B │        Logic Gate                │
+├────────┼────────┼────────┼──────────────────────────────────┤
+│ true   │ true   │ true   │ ✓ ──┐     ┌─── ✓ (Both true)     │
+│ true   │ false  │ false  │ ✓ ──┤ AND ├─── ✗ (One false)     │
+│ false  │ true   │ false  │ ✗ ──┤     ├─── ✗ (One false)     │
+│ false  │ false  │ false  │ ✗ ──┘     └─── ✗ (Both false)    │
+└─────────────────────────────────────────────────────────────┘
 
-NOT (!) Truth Table:
-```
-A     | !A
-------|------
-true  | false
-false | true
+OR (||) - "At least one must be true"
+┌─────────────────────────────────────────────────────────────┐
+│   A    │   B    │ A || B │        Logic Gate                │
+├────────┼────────┼────────┼──────────────────────────────────┤
+│ true   │ true   │ true   │ ✓ ──┐     ┌─── ✓ (Both true)     │
+│ true   │ false  │ true   │ ✓ ──┤ OR  ├─── ✓ (One true)      │
+│ false  │ true   │ true   │ ✗ ──┤     ├─── ✓ (One true)      │
+│ false  │ false  │ false  │ ✗ ──┘     └─── ✗ (Both false)    │
+└─────────────────────────────────────────────────────────────┘
+
+NOT (!) - "Flip the value"
+┌─────────────────────────────────────┐
+│   A    │  !A   │    Logic Gate      │
+├────────┼───────┼────────────────────┤
+│ true   │ false │ ✓ ──► NOT ──► ✗    │
+│ false  │ true  │ ✗ ──► NOT ──► ✓    │
+└─────────────────────────────────────┘
+
+Visual Memory Aid:
+AND: "Strict" - needs ALL conditions true
+ ✓ + ✓ = ✓    ✓ + ✗ = ✗    ✗ + ✓ = ✗    ✗ + ✗ = ✗
+
+OR: "Flexible" - needs ANY condition true  
+ ✓ + ✓ = ✓    ✓ + ✗ = ✓    ✗ + ✓ = ✓    ✗ + ✗ = ✗
+
+NOT: "Opposite" - flips the result
+ ✓ → ✗        ✗ → ✓
 ```
 
 #### Short-Circuit Evaluation
@@ -344,17 +520,70 @@ When evaluating complex expressions like a + b * c, programming languages follow
 Precedence determines which operators are evaluated first, similar to mathematical rules:
 
 ```
-Higher precedence (evaluated first):
-  ()                Parentheses
-  !                 Logical NOT
-  * / %             Multiplication, Division, Modulus
-  + -               Addition, Subtraction
-  > < >= <=         Relational operators
-  == !=             Equality operators
-  &&                Logical AND
-  ||                Logical OR
-Lower precedence (evaluated last):
-  = += -= *= /= %=  Assignment operators
+Operator Precedence Hierarchy (High to Low):
+
+  Level 1 (Highest)  ┌─────────────────┐
+                     │ ()  Parentheses │
+                     └─────────────────┘
+                             │
+  Level 2            ┌─────────────────┐
+                     │ !   Logical NOT │
+                     └─────────────────┘
+                             │
+  Level 3            ┌─────────────────┐
+                     │ * / %  Math Ops │
+                     └─────────────────┘
+                             │
+  Level 4            ┌─────────────────┐
+                     │ + -   Add/Sub   │
+                     └─────────────────┘
+                             │
+  Level 5            ┌─────────────────┐
+                     │ > < >= <=  Rel  │
+                     └─────────────────┘
+                             │
+  Level 6            ┌─────────────────┐
+                     │ == !=  Equality │
+                     └─────────────────┘
+                             │
+  Level 7            ┌─────────────────┐
+                     │ &&  Logical AND │
+                     └─────────────────┘
+                             │
+  Level 8            ┌─────────────────┐
+                     │ ||  Logical OR  │
+                     └─────────────────┘
+                             │
+  Level 9 (Lowest)   ┌─────────────────┐
+                     │ = += -= *=  etc │
+                     │   Assignment    │
+                     └─────────────────┘
+
+Expression Evaluation Example:
+    10 + 5 * 2
+    
+Step 1: Identify operators and precedence
+    10 + 5 * 2
+    ─┬─   ─┬─
+     │     └─ Level 3 (* has higher precedence)
+     └─ Level 4 (+ has lower precedence)
+
+Step 2: Evaluate by precedence
+    10 + (5 * 2)  ← Multiplication first
+    10 + 10       ← Then addition
+    20            ← Final result
+
+Visual Precedence Memory:
+┌─────────────────────────────────────────────────────────────┐
+│ Think: PEMDAS-like hierarchy                                │
+│ P - Parentheses     ()                                      │
+│ E - Exponents       ! (NOT is like negation)                │
+│ MD - Multiply/Div   * / %                                   │
+│ AS - Add/Subtract   + -                                     │
+│ C - Comparisons     > < >= <= == !=                         │
+│ L - Logical         && ||                                   │
+│ A - Assignment      = += -= *=                              │
+└─────────────────────────────────────────────────────────────┘
 ```
 
 Examples demonstrating precedence:
@@ -368,16 +597,52 @@ int result3 = 20 / 4 + 2 * 3;    // Evaluated as: (20 / 4) + (2 * 3) = 5 + 6 = 1
 
 Associativity determines the direction of evaluation for operators with the same precedence:
 
-Left-to-Right Associativity (Most operators):
-```java
-int result = 100 - 10 + 5;  // Evaluated as: ((100 - 10) + 5) = 95
-int result = 20 / 4 * 2;    // Evaluated as: ((20 / 4) * 2) = 10
 ```
+Associativity Direction Rules:
 
-Right-to-Left Associativity (Assignment operators):
-```java
-int x, y, z;
-x = y = z = 5;  // Evaluated as: x = (y = (z = 5)); All become 5
+Left-to-Right (Most operators):
+┌─────────────────────────────────────────────────────────────┐
+│  Expression: 100 - 10 + 5                                  │
+│                                                             │
+│  Step 1: Group left-to-right                               │
+│      ((100 - 10) + 5)                                      │
+│       ┌─────────┐                                          │
+│       │   90    │ + 5                                      │
+│       └─────────┘                                          │
+│                                                             │
+│  Step 2: Continue left-to-right                            │
+│      90 + 5 = 95                                           │
+│                                                             │
+│  Direction: ──►──►──►                                       │
+└─────────────────────────────────────────────────────────────┘
+
+Right-to-Left (Assignment operators):
+┌─────────────────────────────────────────────────────────────┐
+│  Expression: x = y = z = 5                                 │
+│                                                             │
+│  Step 1: Group right-to-left                               │
+│      x = (y = (z = 5))                                     │
+│               ┌─────┐                                      │
+│               │ z=5 │                                      │
+│               └─────┘                                      │
+│                                                             │
+│  Step 2: Continue right-to-left                            │
+│      x = (y = 5)  →  x = 5                                 │
+│                                                             │
+│  Direction: ◄──◄──◄──                                       │
+│  Result: x=5, y=5, z=5                                     │
+└─────────────────────────────────────────────────────────────┘
+
+Visual Comparison:
+Arithmetic (Left-to-Right):        Assignment (Right-to-Left):
+  20 / 4 * 2                        a = b = c = 10
+  ──┬──                             ──┬──
+    └─► ((20/4) * 2) = 10             └─► a = (b = (c = 10))
+      ────────►                         ◄────────
+
+Memory Aid:
+• Math operations: "Read naturally left-to-right"
+• Assignments: "Build from the value outward"
 ```
 
 ### Using Parentheses for Clarity

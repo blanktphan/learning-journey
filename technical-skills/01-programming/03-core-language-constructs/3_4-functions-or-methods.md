@@ -21,6 +21,41 @@ As programs grow larger, we often find ourselves writing the same or similar blo
 
 Functions are the primary mechanism in programming languages created specifically to solve this problem. They "encapsulate" blocks of code that serve specific purposes, giving them names so we can call and reuse them repeatedly. This is one of the most powerful forms of abstraction.
 
+```
+Code Reusability with Functions:
+
+Without Functions (Repetitive):
+┌─────────────────────────────────────┐
+│ Main Program                        │
+│                                     │
+│ area1 = length1 * width1            │ ──► Repeated Code
+│ print("Area 1:", area1)             │
+│                                     │
+│ area2 = length2 * width2            │ ──► Repeated Code  
+│ print("Area 2:", area2)             │
+│                                     │
+│ area3 = length3 * width3            │ ──► Repeated Code
+│ print("Area 3:", area3)             │
+└─────────────────────────────────────┘
+
+With Functions (Reusable):
+┌─────────────────────────────────────┐
+│ Function Definition                 │
+│ ┌─────────────────────────────────┐ │
+│ │ calculateArea(length, width)    │ │ ──► Write Once
+│ │   return length * width         │ │
+│ └─────────────────────────────────┘ │
+└─────────────────────────────────────┘
+              │
+              ▼ (Called multiple times)
+┌─────────────────────────────────────┐
+│ Main Program                        │
+│ area1 = calculateArea(length1, width1) │ ──► Use Many Times
+│ area2 = calculateArea(length2, width2) │ ──► Use Many Times
+│ area3 = calculateArea(length3, width3) │ ──► Use Many Times
+└─────────────────────────────────────┘
+```
+
 ### Why Functions Matter
 
 Without Functions:
@@ -53,6 +88,29 @@ int area3 = calculateArea(length3, width3);
 
 ### Benefits of Functions
 
+```
+Function Benefits Overview:
+
+┌─────────────────────────────────────────────────────────────┐
+│                    Function Benefits                        │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  Code Reusability:           Maintainability:               │
+│  ┌─────────────────┐         ┌─────────────────┐            │
+│  │ Write Once      │         │ Fix Once        │            │
+│  │ Use Many Times  │ ────►   │ Works Everywhere│            │
+│  │ Less Duplication│         │ Easy Updates    │            │
+│  └─────────────────┘         └─────────────────┘            │
+│                                                             │
+│  Readability:                Modularity:                    │
+│  ┌─────────────────┐         ┌─────────────────┐            │
+│  │ Self-Documenting│         │ Divide & Conquer│            │
+│  │ Clear Purpose   │ ────►   │ Team Development│            │
+│  │ Easier to Read  │         │ Independent Test│            │
+│  └─────────────────┘         └─────────────────┘            │
+└─────────────────────────────────────────────────────────────┘
+```
+
 Code Reusability:
 - Write once, use many times
 - Reduces code duplication
@@ -76,6 +134,41 @@ Modularity:
 ## 2. Anatomy of a Function
 
 A function is a named block of code that operates independently to perform a specific task. It consists of several key components:
+
+```
+Function Anatomy:
+
+┌─────────────────────────────────────────────────────────────┐
+│                    Function Structure                       │
+│                                                             │
+│  Function Signature                                         │
+│  ┌─────────────────────────────────────────────────────┐    │
+│  │ [Return Type] functionName(parameter1, parameter2)  │    │
+│  └─────────────────────────────────────────────────────┘    │
+│                           │                                 │
+│                           ▼                                 │
+│  Function Body                                              │
+│  ┌─────────────────────────────────────────────────────┐    │
+│  │ {                                                   │    │
+│  │     // Code that does the work                      │    │
+│  │     // Process parameters                           │    │
+│  │     // Perform calculations                         │    │
+│  │     return result;  // Optional                     │    │
+│  │ }                                                   │    │
+│  └─────────────────────────────────────────────────────┘    │
+└─────────────────────────────────────────────────────────────┘
+
+Detailed Component Breakdown:
+
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Function      │    │   Parameters    │    │   Return        │
+│   Name          │    │   (Input)       │    │   Statement     │
+│                 │    │                 │    │   (Output)      │
+│ • Identifier    │    │ • Data slots    │    │ • Send result   │
+│ • Descriptive   │    │ • Type defined  │    │ • Back to caller│
+│ • Unique        │    │ • Receive args  │    │ • Optional      │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+```
 
 ### Function Signature
 
@@ -203,6 +296,26 @@ public static String reverseString(String input) {
 
 The process of working with functions involves two main steps: "definition" and "invocation":
 
+```
+Function Lifecycle:
+
+Step 1: Function Definition               Step 2: Function Invocation
+┌─────────────────────────────┐          ┌─────────────────────────────┐
+│ def calculateArea(w, h):    │          │ result = calculateArea(10,5)│
+│     return w * h            │ ──────►  │                             │
+│                             │          │ Arguments: 10, 5            │
+│ Parameters: w, h            │          │ Return Value: 50            │
+│ Code: return w * h          │          └─────────────────────────────┘
+└─────────────────────────────┘
+
+Function Call Flow:
+┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│ 1. Call     │───►│ 2. Pass     │───►│ 3. Execute  │───►│ 4. Return   │
+│ Function    │    │ Arguments   │    │ Function    │    │ Result      │
+│             │    │ to Params   │    │ Body        │    │ to Caller   │
+└─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘
+```
+
 ### Function Definition
 
 Function definition is creating the function and specifying its behavior. This is where we write the code that will be executed when the function is called.
@@ -212,6 +325,32 @@ Function definition is creating the function and specifying its behavior. This i
 Function call is instructing the code in the function to execute by calling its name, along with sending arguments (actual data values) that we want the function's parameters to use.
 
 ### Parameter vs Argument
+
+```
+Parameters vs Arguments:
+
+Function Definition:                Function Call:
+┌─────────────────────────┐        ┌─────────────────────────┐
+│ calculateArea(width,    │        │ area = calculateArea(   │
+│               height)   │        │           10.0, 5.0)    │
+│               ↑     ↑   │        │           ↑     ↑       │
+│         Parameters      │        │        Arguments        │
+│      (Placeholders)     │        │      (Actual Values)    │
+└─────────────────────────┘        └─────────────────────────┘
+            │                                  │
+            └──────────── Mapping ─────────────┘
+                     width ← 10.0
+                     height ← 5.0
+
+Memory Visualization:
+┌─────────────────────────────────────────────────────────────┐
+│ Function Scope                                              │
+│ ┌─────────────┐  ┌─────────────┐  ┌─────────────┐           │
+│ │ width: 10.0 │  │ height: 5.0 │  │ area: 50.0  │           │
+│ │ (parameter) │  │ (parameter) │  │ (local var) │           │
+│ └─────────────┘  └─────────────┘  └─────────────┘           │
+└─────────────────────────────────────────────────────────────┘
+```
 
 Parameters:
 - Variables defined in the function signature
@@ -254,6 +393,34 @@ public static void main(String[] args) {
 ```
 
 ### Function Execution Flow
+
+```
+Program Execution Flow with Functions:
+
+Main Program                          Function
+┌─────────────────────┐               ┌─────────────────────┐
+│ System.out.println  │               │                     │
+│ ("Before function") │               │                     │
+│         │           │               │                     │
+│         ▼           │               │                     │
+│ result = multiply   │──────────────►│ multiply(4, 5)      │
+│ (4, 5)              │               │                     │
+│         │           │               │ x = 4, y = 5        │
+│         │           │               │ product = x * y     │
+│         │           │               │ print("product=20") │
+│         │           │               │ return 20           │
+│         │           │◄──────────────│                     │
+│         ▼           │               └─────────────────────┘
+│ System.out.println  │
+│ ("result: " + result│
+└─────────────────────┘
+
+Timeline:
+1. "Before function call"     ← Main program
+2. "Inside multiply function" ← Function starts
+3. "Calculated product: 20"   ← Function working
+4. "After function call, result: 20" ← Back to main
+```
 
 ```java
 public static int multiply(int x, int y) {
@@ -306,6 +473,40 @@ message2 = greet("Bob", "Hi")      # Uses provided: "Hi, Bob!"
 ## 4. Functions vs Methods
 
 In practice, we often hear these two terms, which have subtle conceptual differences:
+
+```
+Functions vs Methods Comparison:
+
+FUNCTIONS                              METHODS
+┌─────────────────────────────────┐   ┌─────────────────────────────────┐
+│          Independent            │   │        Object-Dependent         │
+│                                 │   │                                 │
+│  printf("Hello")                │   │  string.toUpperCase()           │
+│  calculateTax(income, rate)     │   │  list.add(item)                 │
+│  sqrt(25)                       │   │  object.method()                │
+│                                 │   │                                 │
+│  Called directly by name        │   │  Called through object          │
+│  ┌─────────────────────────┐    │   │  ┌─────────────────────────┐    │
+│  │ function_name(args)     │    │   │  │ object.method_name(args)│    │
+│  └─────────────────────────┘    │   │  └─────────────────────────┘    │
+│                                 │   │                                 │
+│  All data via parameters        │   │  Can access object data         │
+└─────────────────────────────────┘   └─────────────────────────────────┘
+
+Programming Paradigm Context:
+┌─────────────────────────────────────────────────────────────────┐
+│                     Programming Paradigms                       │
+│                                                                 │
+│  Procedural/Functional           Object-Oriented                │
+│  ┌─────────────────────┐         ┌─────────────────────┐        │
+│  │     Functions       │         │      Methods        │        │
+│  │                     │         │                     │        │
+│  │ • Standalone        │ ──────► │ • Part of objects   │        │
+│  │ • Independent       │         │ • Access object     │        │
+│  │ • Data via params   │         │   data              │        │
+│  └─────────────────────┘         └─────────────────────┘        │
+└─────────────────────────────────────────────────────────────────┘
+```
 
 ### Functions
 
@@ -375,6 +576,47 @@ count = my_list.count(2)                # count() is a method of list object
 ```
 
 ### Comparison Table
+
+```
+Functions vs Methods - Detailed Comparison:
+
+┌─────────────────┬─────────────────────┬─────────────────────┐
+│     Aspect      │      Functions      │       Methods       │
+├─────────────────┼─────────────────────┼─────────────────────┤
+│ Independence    │ Standalone,         │ Belong to           │
+│                 │ independent         │ objects/classes     │
+├─────────────────┼─────────────────────┼─────────────────────┤
+│ Calling         │ Direct by name      │ Through object      │
+│                 │ function()          │ object.method()     │
+├─────────────────┼─────────────────────┼─────────────────────┤
+│ Data Access     │ Only through        │ Can access          │
+│                 │ parameters          │ object's data       │
+├─────────────────┼─────────────────────┼─────────────────────┤
+│ Programming     │ Procedural,         │ Object-Oriented     │
+│ Paradigm        │ Functional          │                     │
+├─────────────────┼─────────────────────┼─────────────────────┤
+│ Example         │ print("Hello")      │ text.upper()        │
+└─────────────────┴─────────────────────┴─────────────────────┘
+
+Usage Decision Tree:
+┌─────────────────────────────────────────────────────────────────┐
+│ When to Use Which?                                              │
+│                                                                 │
+│          Need to work with object data?                         │
+│                        │                                        │
+│              ┌─────────┴─────────┐                              │
+│              ▼                   ▼                              │
+│            Yes                  No                              │
+│              │                   │                              │
+│              ▼                   ▼                              │
+│        Use Methods        Use Functions                         │
+│                                                                 │
+│    Examples:              Examples:                             │
+│    • text.toUpperCase()   • calculateTax()                      │
+│    • list.add(item)       • sqrt(number)                        │
+│    • object.save()        • validateEmail()                     │
+└─────────────────────────────────────────────────────────────────┘
+```
 
 | Aspect | Functions | Methods |
 |--------|-----------|---------|
@@ -713,6 +955,41 @@ Design Principles:
 
 You need to write code that checks whether a given number is "even" or not. Design and implement this functionality:
 
+```
+Problem Analysis:
+
+Input: Number (integer)
+        │
+        ▼
+    ┌─────────────┐
+    │   isEven    │  ──── Function to design
+    │ Function    │
+    └─────────────┘
+        │
+        ▼
+Output: Boolean (true/false)
+
+Logic Flow:
+┌─────────────────────────────────────────────────────────────┐
+│ Even Number Check Logic                                     │
+│                                                             │
+│   Number ──► Divide by 2 ──► Check Remainder                │
+│                    │               │                        │
+│                    ▼               ▼                        │
+│              number % 2       Remainder = 0?                │
+│                    │               │                        │
+│              ┌─────────────┐   ┌───┴────┐                   │
+│              │   Result    │   │ Yes│No │                   │
+│              └─────────────┘   └────┬───┘                   │ 
+│                    │              │   │                     │
+│                    ▼              ▼   ▼                     │
+│               0 or 1           Even  Odd                    │
+│                                │     │                      │
+│                                ▼     ▼                      │
+│                              true  false                    │
+└─────────────────────────────────────────────────────────────┘
+```
+
 1) Design a function named `isEven` that takes one number as a parameter
 2) What logic should be inside the function to check if a number is even? (Hint: use the modulus operator %)
 3) What data type should this function return?
@@ -720,6 +997,29 @@ You need to write code that checks whether a given number is "even" or not. Desi
 #### Step-by-Step Solution:
 
 Step 1: Function Design Analysis
+
+```
+Function Design Components:
+
+┌─────────────────────────────────────────────────────────────┐
+│                Function Specification                       │
+│                                                             │
+│  Purpose: Determine if a number is even                     │
+│  ┌─────────────────────────────────────────────────────┐    │
+│  │ Input:  One integer number                          │    │
+│  │ Output: Boolean value (true/false)                  │    │
+│  │ Logic:  number % 2 == 0                             │    │
+│  └─────────────────────────────────────────────────────┘    │
+│                                                             │
+│  Function Signature:                                        │
+│  ┌─────────────────────────────────────────────────────┐    │
+│  │ boolean isEven(int number)                          │    │
+│  │    ↑        ↑      ↑                                │    │
+│  │ Return   Name   Parameter                           │    │
+│  │  Type                                               │    │
+│  └─────────────────────────────────────────────────────┘    │
+└─────────────────────────────────────────────────────────────┘
+```
 
 Function Purpose: Determine if a number is even
 Input: One integer number
@@ -833,6 +1133,44 @@ public static void analyzeNumbers(int[] numbers) {
 ```
 
 Step 5: Testing the Function
+
+```
+Function Testing Strategy:
+
+Test Cases and Expected Results:
+┌─────────────────────────────────────────────────────────────┐
+│                    Test Case Analysis                       │
+│                                                             │
+│  Positive Numbers:        Zero:               Negative:     │
+│  ┌─────────────────┐     ┌─────────────┐     ┌───────────┐  │
+│  │ isEven(2) → true│     │ isEven(0)   │     │ isEven(-2)│  │
+│  │ isEven(4) → true│     │    ↓        │     │    ↓      │  │
+│  │ isEven(1) → false│    │ 0 % 2 = 0   │     │ -2 % 2 = 0│  │
+│  │ isEven(3) → false│    │ Result: true│     │Result:true│  │
+│  └─────────────────┘     └─────────────┘     └───────────┘  │
+│                                                             │
+│  Large Numbers:                                             │
+│  ┌─────────────────────────────────────────────────────┐    │
+│  │ isEven(100) → true  (100 % 2 = 0)                   │    │
+│  │ isEven(101) → false (101 % 2 = 1)                   │    │
+│  └─────────────────────────────────────────────────────┘    │
+└─────────────────────────────────────────────────────────────┘
+
+Test Execution Flow:
+┌─────────────────────────────────────────────────────────────┐
+│ for each test_number in [0, 1, 2, -1, -2, 100, 101]:        │
+│                                                             │
+│     result = isEven(test_number)                            │
+│          │                                                  │
+│          ▼                                                  │
+│     ┌─────────────────────────────────────────────────┐     │
+│     │ Function Call: test_number % 2 == 0             │     │
+│     └─────────────────────────────────────────────────┘     │
+│          │                                                  │
+│          ▼                                                  │
+│     print(f"isEven({test_number}) = {result}")              │
+└─────────────────────────────────────────────────────────────┘
+```
 
 ```java
 public static void testIsEvenFunction() {

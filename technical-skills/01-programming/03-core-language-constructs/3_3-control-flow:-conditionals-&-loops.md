@@ -19,9 +19,62 @@ Upon completion of this topic, you will be able to:
 
 By default, computers process our programs sequentially - executing commands from the top line down to the bottom line, one command at a time. Control Flow is a set of statements in programming languages that allows us to change this execution order. It enables our programs to "make decisions" to skip certain parts of code or "go back" to repeat certain sets of commands multiple times. This is what makes programs intelligent and responsive to different situations.
 
+```
+Program Execution Flow:
+
+Sequential Flow (Default):          Control Flow (Advanced):
+┌─────────────────┐                ┌─────────────────┐
+│ Step 1          │                │ Step 1          │
+│       ↓         │                │       ↓         │
+│ Step 2          │                │ Decision?       │
+│       ↓         │                │    /     \      │
+│ Step 3          │                │   /       \     │
+│       ↓         │                │  ↓         ↓    │
+│ Step 4          │                │ Step A   Step B │
+│       ↓         │                │   \       /     │
+│ End             │                │    \     /      │
+└─────────────────┘                │     ↓   ↓       │
+                                   │   Continue      │
+                                   │     ↓           │
+                                   │   Loop?         │
+                                   │    / \          │
+                                   │   /   \         │
+                                   │  ↓     ↓        │
+                                   │ Repeat  End     │
+                                   │  ↑              │
+                                   │  └──────┘       │
+                                   └─────────────────┘
+```
+
 ### Why Control Flow Matters
 
 Without control flow, programs would be extremely limited:
+
+```
+Program Capability Comparison:
+
+Without Control Flow:               With Control Flow:
+┌─────────────────────────┐        ┌──────────────────────────┐
+│ Linear & Rigid          │        │ Dynamic & Intelligent    │
+│                         │        │                          │
+│ ┌─ Get input            │        │ ┌─ Get input             │
+│ │                       │        │ │  ↓                     │
+│ ├─ Process              │        │ ├─ Valid? ──No──┐        │
+│ │                       │        │ │  ↓ Yes         │       │
+│ ├─ Display result       │        │ ├─ Process       │       │
+│ │                       │        │ │  ↓             │       │
+│ └─ End                  │        │ ├─ Display       │       │
+│                         │        │ │  ↓             │       │
+│ No flexibility          │        │ ├─ Continue?     │       │
+│ Can't handle errors     │        │ │  ↓ Yes    No   │       │
+│ No user interaction     │        │ │  └─────┐   ↓   │       │
+│                         │        │ │        │  End  │       │
+└─────────────────────────┘        │ └────────┼───────┘       │
+                                   │          ↑               │
+                                   │     ┌────┘               │
+                                   │     │ Show error ←───────┘
+                                   └──────────────────────────┘
+```
 
 Linear Execution (Without Control Flow):
 ```
@@ -51,6 +104,31 @@ Step 5: IF user says yes
 
 Control flow structures can be categorized into three main types:
 
+```
+Control Flow Categories:
+
+┌─────────────────────────────────────────────────────────────────┐
+│                    Control Flow Types                           │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  1. Sequential Flow       2. Conditional Flow     3. Iterative  │
+│  ┌─────────────────┐     ┌─────────────────┐     Flow           │
+│  │ Statement 1     │     │ Condition?      │     ┌───────────┐  │
+│  │       ↓         │     │    /     \      │     │ Loop      │  │
+│  │ Statement 2     │     │   /       \     │     │ Condition │  │
+│  │       ↓         │     │  ↓         ↓    │     │    ↓      │  │
+│  │ Statement 3     │     │ True    False   │     │ Execute   │  │
+│  │       ↓         │     │  ↓         ↓    │     │ Block     │  │
+│  │ Statement 4     │     │ Block A  Block B│     │    ↓      │  │
+│  └─────────────────┘     │  \       /      │     │ Repeat? ──┘  │
+│                          │   \     /       │     └───────────┘  │
+│  Default behavior        │    ↓   ↓        │                    │
+│  Top-to-bottom           │   Continue      │     while, for     │
+│  One command at time     │                 │     do-while       │
+│                          │ if-else, switch │                    │
+└─────────────────────────────────────────────────────────────────┘
+```
+
 Sequential Flow:
 - Normal top-to-bottom execution
 - Default behavior of programs
@@ -68,6 +146,35 @@ Iterative Flow (Looping):
 ## 2. Conditional Statements: The Power of Decision Making
 
 Conditional statements are structures used to create "branches" or "choices" for programs. They execute different blocks of code depending on whether condition expressions evaluate to true or false.
+
+```
+Conditional Statement Flow:
+
+                    Program Flow
+                         │
+                         ▼
+                   ┌─────────────┐
+                   │ Condition?  │
+                   │ (boolean)   │
+                   └─────────────┘
+                      /       \
+                     /         \
+                  True         False
+                   /             \
+                  ▼               ▼
+         ┌─────────────────┐ ┌─────────────────┐
+         │ Execute Block A │ │ Execute Block B │
+         │ (if condition   │ │ (else condition │
+         │  is true)       │ │  is false)      │
+         └─────────────────┘ └─────────────────┘
+                  \             /
+                   \           /
+                    \         /
+                     ▼       ▼
+              ┌─────────────────────┐
+              │   Continue Program  │
+              └─────────────────────┘
+```
 
 ### Basic if Statement
 
@@ -130,6 +237,59 @@ if (age >= 18) {
 ### if-else if-else Statement
 
 Used for creating complex decision structures with more than two alternatives. Conditions are checked in order from top to bottom.
+
+```
+Multiple Condition Flow:
+
+                Program Flow
+                     │
+                     ▼
+           ┌─────────────────┐
+           │   Condition 1?  │
+           └─────────────────┘
+               True │        False
+                    ▼          │
+           ┌─────────────────┐ │
+           │   Execute       │ │
+           │   Block 1       │ │
+           └─────────────────┘ │
+                    │          │
+                    ▼          │
+              ┌─────────────────┴─────┐
+              │                       ▼
+              │              ┌─────────────────┐
+              │              │   Condition 2?  │
+              │              └─────────────────┘
+              │                  True │        False
+              │                       ▼          │
+              │              ┌─────────────────┐ │
+              │              │   Execute       │ │
+              │              │   Block 2       │ │
+              │              └─────────────────┘ │
+              │                       │          │
+              │                       ▼          │
+              │                 ┌─────────────────┴─────┐
+              │                 │                       ▼
+              │                 │              ┌─────────────────┐
+              │                 │              │   Condition 3?  │
+              │                 │              └─────────────────┘
+              │                 │                  True │        False
+              │                 │                       ▼          │
+              │                 │              ┌─────────────────┐ │
+              │                 │              │   Execute       │ │
+              │                 │              │   Block 3       │ │
+              │                 │              └─────────────────┘ │
+              │                 │                       │          │
+              ▼                 ▼                       ▼          ▼
+         ┌──────────────────────────────────────────────────────────────┐
+         │                    Continue Program                          │
+         └──────────────────────────────────────────────────────────────┘
+
+Key Points:
+• Only ONE block executes (first true condition)
+• Remaining conditions are NOT checked after match
+• else block executes if NO conditions are true
+```
 
 Syntax and Structure:
 ```java
@@ -244,6 +404,49 @@ if (!condition3) return;
 ## 3. Loops: The Art of Repetition
 
 Loops are structures used to make programs execute a block of code repeatedly. They are essential for automation and processing collections of data.
+
+```
+Loop Types Comparison:
+
+while Loop (Condition-Based):      for Loop (Count-Based):
+┌─────────────────────────────┐   ┌─────────────────────────────┐
+│          Start              │   │          Start              │
+│             │               │   │             │               │
+│             ▼               │   │             ▼               │
+│     ┌───────────────┐       │   │   ┌─────────────────┐       │
+│  ┌─►│ Condition?    │       │   │   │ Initialize      │       │
+│  │  │ (boolean)     │       │   │   │ Counter = 0     │       │
+│  │  └───────────────┘       │   │   └─────────────────┘       │
+│  │    True │    False       │   │             │               │
+│  │         ▼        │       │   │             ▼               │
+│  │  ┌─────────────┐ │       │   │     ┌───────────────┐       │
+│  │  │ Execute     │ │       │   │  ┌─►│ Counter <     │       │
+│  │  │ Code Block  │ │       │   │  │  │ Limit?        │       │
+│  │  └─────────────┘ │       │   │  │  └───────────────┘       │
+│  │         │        │       │   │  │    True │    False       │
+│  └─────────┘        │       │   │  │         ▼        │       │
+│                     ▼       │   │  │  ┌─────────────┐ │       │
+│            Continue Program │   │  │  │ Execute     │ │       │
+└─────────────────────────────┘   │  │  │ Code Block  │ │       │
+                                  │  │  └─────────────┘ │       │
+Use when:                         │  │         │        │       │
+• Unknown iterations              │  │         ▼        │       │
+• Condition-dependent             │  │  ┌─────────────┐ │       │
+• User input validation           │  │  │ Increment   │ │       │
+• Game loops                      │  │  │ Counter++   │ │       │
+                                  │  │  └─────────────┘ │       │
+                                  │  │         │        │       │
+                                  │  └─────────┘        │       │
+                                  │                     ▼       │
+                                  │            Continue Program │
+                                  └─────────────────────────────┘
+
+                                  Use when:
+                                  • Known iterations
+                                  • Processing arrays
+                                  • Counting operations
+                                  • Range-based tasks
+```
 
 ### while Loop (Condition-Based Iteration)
 
@@ -438,6 +641,50 @@ for (int i = 0; i < scores.length; i++) {
 break Statement:
 - Immediately exits the loop
 - Useful for early termination
+
+continue Statement:
+- Skips the rest of current iteration
+- Continues with next iteration
+
+```
+Loop Control Flow:
+
+Normal Loop Flow:              With break:                With continue:
+┌─────────────────┐           ┌─────────────────┐        ┌─────────────────┐
+│      Start      │           │      Start      │        │      Start      │
+│        │        │           │        │        │        │        │        │
+│        ▼        │           │        ▼        │        │        ▼        │
+│ ┌─────────────┐ │           │ ┌─────────────┐ │        │ ┌─────────────┐ │
+│ │i=1: Execute │ │           │ │i=1: Execute │ │        │ │i=1: Execute │ │
+│ └─────────────┘ │           │ └─────────────┘ │        │ └─────────────┘ │
+│        │        │           │        │        │        │        │        │
+│        ▼        │           │        ▼        │        │        ▼        │
+│ ┌─────────────┐ │           │ ┌─────────────┐ │        │ ┌─────────────┐ │
+│ │i=2: Execute │ │           │ │i=2: Execute │ │        │ │i=2: Execute │ │
+│ └─────────────┘ │           │ └─────────────┘ │        │ └─────────────┘ │
+│        │        │           │        │        │        │        │        │
+│        ▼        │           │        ▼        │        │        ▼        │
+│ ┌─────────────┐ │           │ ┌─────────────┐ │        │ ┌─────────────┐ │
+│ │i=3: Execute │ │           │ │i=3: break   │ │        │ │i=3: continue│ │
+│ └─────────────┘ │           │ └─────────────┘ │        │ │(skip rest)  │ │
+│        │        │           │        │        │        │ └─────────────┘ │
+│        ▼        │           │        ▼        │        │        │        │
+│ ┌─────────────┐ │           │   Exit Loop  ───┼──────► │        ▼        │
+│ │i=4: Execute │ │           │                 │        │ ┌─────────────┐ │
+│ └─────────────┘ │           │                 │        │ │i=4: Execute │ │
+│        │        │           │                 │        │ └─────────────┘ │
+│        ▼        │           │                 │        │        │        │
+│ ┌─────────────┐ │           │                 │        │        ▼        │
+│ │i=5: Execute │ │           │                 │        │ ┌─────────────┐ │
+│ └─────────────┘ │           │                 │        │ │i=5: Execute │ │
+│        │        │           │                 │        │ └─────────────┘ │
+│        ▼        │           │                 │        │        │        │
+│   End Loop      │           │                 │        │        ▼        │
+└─────────────────┘           └─────────────────┘        │   End Loop      │
+                                                         └─────────────────┘
+
+Output: 1,2,3,4,5             Output: 1,2                Output: 1,2,4,5
+```
 
 ```java
 for (int i = 1; i <= 10; i++) {
@@ -722,6 +969,64 @@ Key Principles:
 ### Practical Exercise
 
 You are writing a program for an ATM system. Analyze the following scenarios and determine which Control Flow structure to use:
+
+```
+ATM System Analysis:
+
+Scenario 1: PIN Validation          Scenario 2: ATM Main Loop
+┌─────────────────────────────┐     ┌─────────────────────────────┐
+│ User enters PIN             │     │ User interacts with ATM     │
+│          │                  │     │          │                  │
+│          ▼                  │     │          ▼                  │
+│   ┌─────────────┐           │     │   ┌─────────────┐           │
+│   │ PIN correct?│           │     │   │ Show menu   │           │
+│   └─────────────┘           │     │   └─────────────┘           │
+│    True │   False           │     │          │                  │
+│         ▼      ▼            │     │          ▼                  │
+│   ┌─────────────────────┐   │     │   ┌─────────────┐           │
+│   │ Grant │ Block       │   │     │   │User chooses │           │
+│   │Access │Access       │   │     │   │option       │           │
+│   └─────────────────────┘   │     │   └─────────────┘           │
+│                             │     │          │                  │
+│ Decision: if-else           │     │          ▼                  │
+│ Reason: Binary choice       │     │   ┌─────────────┐           │
+│                             │     │   │ Process     │           │
+│                             │     │   │ transaction │           │
+│                             │     │   └─────────────┘           │
+│                             │     │          │                  │
+│                             │     │          ▼                  │
+│                             │     │   ┌─────────────┐           │
+│                             │     │   │Continue?    │───No──┐   │
+│                             │     │   └─────────────┘       │   │
+│                             │     │       Yes │             │   │
+│                             │     │           └─────────────┼─► │
+│                             │     │                         ▼   │
+│                             │     │ Decision: while loop        │
+│                             │     │ Reason: Unknown iterations  │
+│                             │     │                             │
+└─────────────────────────────┘     └─────────────────────────────┘
+
+Control Flow Decision Tree:
+┌─────────────────────────────────────────────────────────────────┐
+│                 When to Use What?                               │
+│                                                                 │
+│     Need to make a decision?                                    │
+│              │                                                  │
+│              ▼                                                  │
+│        ┌──────────────┐                                         │
+│        │ Yes   │   No │                                         │
+│        ▼       ▼      ▼                                         │
+│   Use if-else    Need repetition?                               │
+│                       │                                         │
+│                 ┌─────┴─────┐                                   │
+│                 ▼           ▼                                   │
+│          Known count?   Unknown count?                          │
+│                 │           │                                   │
+│                 ▼           ▼                                   │
+│            Use for     Use while                                │
+│             loop        loop                                    │
+└─────────────────────────────────────────────────────────────────┘
+```
 
 1) Checking if the user entered the correct PIN:
    Should you use if-else or a loop?
