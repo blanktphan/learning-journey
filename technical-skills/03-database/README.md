@@ -17,10 +17,10 @@
 
 ### 📕 Structured Query Language
 
-- 📖 [Data Query Language - DQL: SELECT](.)
-- 📖 [Data Manipulation Language - DML: INSERT, UPDATE, DELETE](.)
-- 📖 [Data Definition Language - DDL: CREATE, ALTER, DROP](.)
-- 📖 [JOINs](.)
+- 📖 [Data Query Language - DQL: SELECT](./03-structured-query-language/01-data-query-language-dql:-select.md)
+- 📖 [Data Manipulation Language - DML: INSERT, UPDATE, DELETE](./03-structured-query-language/02-data-manipulation-language-dml.md)
+- 📖 [Data Definition Language - DDL: CREATE, ALTER, DROP](./03-structured-query-language/03-table-relationships:-1-to-1,-1-to-many,-many-to-many.md)
+- 📖 [JOINs: Combining Data from Multiple Tables](./03-structured-query-language/04-joins.md)
 
 ### 📕 NoSQL Databases
 
