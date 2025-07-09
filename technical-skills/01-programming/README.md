@@ -32,25 +32,9 @@
 
 ### 📕 Programming Paradigms
 
-- 📖 [Procedural Programming]()
-- 📖 [Object-Oriented Programming - OOP]()
-- 📖 [Functional Programming - FP]()
-
-### 📕 Data Structures & Algorithms
-
-- 📖 [Arrays / Lists]()
-- 📖 [Stacks / Queues]()
-- 📖 [Dictionaries / Hash Maps]()
-- 📖 [Trees / Graphs]()
-- 📖 [Sorting and Searching Algorithms]()
-- 📖 [Algorithm Complexity - Big O Notation]()
-
-### 📕 Languages & Execution
-
-- 📖 [Low-Level vs. High-Level]()
-- 📖 [Compiled vs. Interpreted]()
-- 📖 [Typing: Static vs. Dynamic]()
-- 📖 [Key Languages: Python, JavaScript, Java, C++, Go, Rust]()
+- 📖 [Procedural Programming](./05-programming-paradigms/5_1-procedural-programming.md)
+- 📖 [Object-Oriented Programming - OOP](./05-programming-paradigms/5_2-object-oriented-programming.md)
+- 📖 [Functional Programming - FP](./05-programming-paradigms/5_3-functional-programming.md)
 
 ### 📕 Development Tools & Practices
 
@@ -60,12 +44,6 @@
 - 📖 [Debugging]()
 - 📖 [Software Testing]()
 - 📖 [Clean Code]()
-
-### 📕 Software Development Methodologies
-
-- 📖 [Waterfall Model]()
-- 📖 [Agile: Scrum, Kanban]()
-- 📖 [DevOps]()
 
 ---
 
