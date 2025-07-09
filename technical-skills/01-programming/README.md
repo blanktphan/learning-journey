@@ -24,11 +24,11 @@
 
 ### 📕 The Programming Process
 
-- 📖 [Requirement Analysis]()
-- 📖 [Algorithm Design & Planning]()
-- 📖 [Coding / Implementation]()
-- 📖 [Testing & Debugging]()
-- 📖 [Refactoring & Documentation]()
+- 📖 [Requirement Analysis](./04-the-programming-process/4_1-requirement-analysis.md)
+- 📖 [Algorithm Design & Planning](./04-the-programming-process/4_2-algorithm-design-and-planning.md)
+- 📖 [Coding / Implementation](./04-the-programming-process/4_3-coding-or-implementation.md)
+- 📖 [Testing & Debugging](./04-the-programming-process/4_4-testing-and-debugging.md)
+- 📖 [Refactoring & Documentation](./04-the-programming-process/4_5-refactoring-and-documentation.md)
 
 ### 📕 Programming Paradigms
 

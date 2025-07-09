@@ -191,9 +191,9 @@ FUNCTIONAL REQUIREMENTS (What it does):
 NON-FUNCTIONAL REQUIREMENTS (How well it works):
 ┌─────────────────────────────────────────────┐
 │ 1. Performance: App must open and display   │
-│    note list within 1 second               │
+│    note list within 1 second                │
 │ 2. Security: All notes must be encrypted    │
-│    and protected with user authentication  │
+│    and protected with user authentication   │
 └─────────────────────────────────────────────┘
 ```
 
