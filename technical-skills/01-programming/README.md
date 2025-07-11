@@ -38,12 +38,12 @@
 
 ### 📕 Development Tools & Practices
 
-- 📖 [Code Editors & IDEs]()
-- 📖 [Terminal / Command Line]()
-- 📖 [Version Control - Git]()
-- 📖 [Debugging]()
-- 📖 [Software Testing]()
-- 📖 [Clean Code]()
+- 📖 [Code Editors & IDEs](./06-development-tools-and-practices/6_1-code-editors-and-ides.md)
+- 📖 [Terminal / Command Line](./06-development-tools-and-practices/6_2-terminal-or-command-line.md)
+- 📖 [Version Control - Git](./06-development-tools-and-practices/6_3-version-control-git.md)
+- 📖 [Debugging](./06-development-tools-and-practices/6_4-debugging.md)
+- 📖 [Software Testing](./06-development-tools-and-practices/6_5-software-testing.md)
+- 📖 [Clean Code](./06-development-tools-and-practices/6_6-clean-code.md)
 
 ---
 
