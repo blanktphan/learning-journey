@@ -23,10 +23,9 @@
 
 ### 📕 Graphs
 
-- 📖 [Introduction to Graphs](.)
-- 📖 [Graph Traversal: BFS, DFS](.)
-- 📖[Minimum Spanning Tree (MST)](.)
-- 📖 [Shortest Path Algorithms: Dijkstra's](.)
+- 📖 [Introduction to Graphs](./04-graphs/4_1-introduction-to-graphs.md)
+- 📖 [Graph Traversal: BFS, DFS](./04-graphs/4_2-graph_traversal.md)
+- 📖 [Shortest Path Algorithms: Dijkstra's](./04-graphs/4_3-shortest-path-algorithms.md)
 
 ### 📕 Algorithm Design Techniques
 
