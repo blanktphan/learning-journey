@@ -17,63 +17,56 @@
 
 While procedural programming focuses on "actions" or "procedures" (verbs), Object-Oriented Programming (OOP) shifts the perspective to modeling the real world by focusing on "objects" (nouns).
 
-Instead of having scattered data and separate functions, OOP **encapsulates** data (attributes) and the behaviors (methods) that operate on that data into a single unit called an "object."
+Instead of having scattered data and separate functions, OOP encapsulates data (attributes) and the behaviors (methods) that operate on that data into a single unit called an "object."
 
 ### 2. Class and Object: The Blueprint and the Product
 
--   **Class**: A "blueprint" or "template" for creating objects. It is the code that defines the attributes and methods that an object of that type will have. A class itself does not exist in memory.
--   **Object**: An "instance" or "real entity" created from a class. Each object has its own set of attributes and is stored in memory.
+-   Class: A "blueprint" or "template" for creating objects. It is the code that defines the attributes and methods that an object of that type will have. A class itself does not exist in memory.
+-   Object: An "instance" or "real entity" created from a class. Each object has its own set of attributes and is stored in memory.
 
-**Analogy**:
--   A `Car` is a **class**. It's a blueprint specifying that a car must have a `color` and an `accelerate()` method.
--   "Mr. Smith's red Honda Civic" is an **object**. It is an instance created from the `Car` class, with its `color` attribute set to "red."
+Analogy:
+-   A `Car` is a class. It's a blueprint specifying that a car must have a `color` and an `accelerate()` method.
+-   "Mr. Smith's red Honda Civic" is an object. It is an instance created from the `Car` class, with its `color` attribute set to "red."
 
 ```
-      +-----------------+
-      |   Class: Car    |
-      |-----------------|
-      | Attributes:     |
-      |   - color       |
-      |   - model       |
-      |-----------------|
-      | Methods:        |
-      |   - accelerate()|
-      |   - brake()     |
-      +-----------------+
-              |
-              | (is a blueprint for)
-              v
-+--------------------------+      +--------------------------+
-| Object: myCar            |      | Object: yourCar          |
-|--------------------------|      |--------------------------|
-| color: "Red"             |      | color: "Blue"            |
-| model: "Honda Civic"     |      | model: "Toyota Camry"    |
-+--------------------------+      +--------------------------+
++--------------+
+| Class: Car   |
+|--------------|
+| attr: color  |
+| method: move |
++--------------+
+       |
+       v (creates)
++--------------+
+| Object: myCar|
+|--------------|
+| color: "Red" |
++--------------+
 ```
 
 ### 3. The Four Pillars of OOP
 
 #### A. Encapsulation
 
--   **Definition**: The bundling of data (attributes) and the methods that operate on that data into a single object. It also includes "hiding" the internal implementation details and protecting data from direct external modification.
--   **Analogy**: A car's engine. All complex parts are "encapsulated" under the hood. The driver interacts with it through a simple "interface" like the accelerator pedal (`accelerate()`) without needing to know how the internal mechanics work.
+-   Definition: The bundling of data (attributes) and the methods that operate on that data into a single object. It also includes "hiding" the internal implementation details and protecting data from direct external modification.
+-   Analogy: A car's engine. All complex parts are "encapsulated" under the hood. The driver interacts with it through a simple "interface" like the accelerator pedal (`accelerate()`) without needing to know how the internal mechanics work.
 
 #### B. Abstraction
 
--   **Definition**: A result of good encapsulation. It involves hiding complex implementation details and exposing only the necessary functionalities to the user.
--   **Analogy**: A "steering wheel" is an abstraction for directional control. We just turn it left or right without dealing with the complex mechanics of the steering column, control arms, or the power steering system.
+-   Definition: A result of good encapsulation. It involves hiding complex implementation details and exposing only the necessary functionalities to the user.
+-   Analogy: A "steering wheel" is an abstraction for directional control. We just turn it left or right without dealing with the complex mechanics of the steering column, control arms, or the power steering system.
 
 #### C. Inheritance
 
--   **Definition**: A mechanism that allows a new class (subclass or child class) to acquire all the properties and behaviors of an existing class (superclass or parent class).
--   **Purpose**: To promote code reusability and create a hierarchy of classes with an "is-a" relationship.
--   **Analogy**: We can create an `ElectricCar` class that "inherits" from the `Car` class. The `ElectricCar` automatically gets the `accelerate()` method and `color` attribute, and then adds its own unique properties, like `battery_level`, and methods, like `charge()`.
+-   Definition: A mechanism that allows a new class (subclass or child class) to acquire all the properties and behaviors of an existing class (superclass or parent class).
+-   Purpose: To promote code reusability and create a hierarchy of classes with an "is-a" relationship.
+-   Analogy: We can create an `ElectricCar` class that "inherits" from the `Car` class. The `ElectricCar` automatically gets the `accelerate()` method and `color` attribute, and then adds its own unique properties, like `battery_level`, and methods, like `charge()`.
 
 #### D. Polymorphism
 
--   **Definition**: From the Greek words "Poly" (many) and "Morph" (form), it means "many forms." It is the ability of different objects to respond to the **same method call** in different, type-specific ways.
--   **Purpose**: To create flexible and extensible programs.
--   **Analogy**: Consider a `move()` method:
+-   Definition: From the Greek words "Poly" (many) and "Morph" (form), it means "many forms." It is the ability of different objects to respond to the same method call in different, type-specific ways.
+-   Purpose: To create flexible and extensible programs.
+-   Analogy: Consider a `move()` method:
     -   When called on a `Car` object -> `move()` means "wheels spin."
     -   When called on a `Boat` object -> `move()` means "propeller turns."
     -   When called on a `Plane` object -> `move()` means "jet engine fires."

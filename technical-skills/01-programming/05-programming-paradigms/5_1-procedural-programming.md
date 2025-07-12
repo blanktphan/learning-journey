@@ -25,15 +25,45 @@ The choice of a paradigm directly influences how we design, organize, and reason
 
 Procedural Programming is a paradigm based on the concept of the "procedure call." Procedures, also known as functions or subroutines, are simply a series of computational steps to be carried out. A program in this paradigm is a "sequence of computational steps" executed from top to bottom.
 
-**Analogy**: A procedural program is like a **recipe** with clear steps: 1, 2, 3... We read and follow each step in order. There might be "sub-steps" (procedures) that we need to perform, such as an "ingredient preparation" step, which we can call upon whenever needed.
+```
+      (Start)
+         |
+         v
++------------------+
+|   Procedure 1    |
++------------------+
+         |
+         v
++------------------+
+|   Procedure 2    |
++------------------+
+         |
+         v
+       (End)
+```
 
-**Focus**: This paradigm focuses on **actions** (verbs). The program is a list of "things to do."
+Analogy: A procedural program is like a recipe with clear steps: 1, 2, 3... We read and follow each step in order. There might be "sub-steps" (procedures) that we need to perform, such as an "ingredient preparation" step, which we can call upon whenever needed.
+
+Focus: This paradigm focuses on actions (verbs). The program is a list of "things to do."
 
 ### 2. Key Characteristics
 
--   **Top-Down Approach**: Design typically starts with the main task, which is then decomposed into smaller and smaller procedures.
--   **Shared State**: Data is often stored in global variables that multiple procedures can read from and write to. Alternatively, data is passed between procedures as arguments. The data and the procedures that operate on it are distinctly separate.
--   **Sequential Execution**: The program follows a sequential flow of execution, with procedure calls altering the flow as needed.
+-   Top-Down Approach: Design typically starts with the main task, which is then decomposed into smaller and smaller procedures.
+-   Shared State: Data is often stored in global variables that multiple procedures can read from and write to. Alternatively, data is passed between procedures as arguments. The data and the procedures that operate on it are distinctly separate.
+-   Sequential Execution: The program follows a sequential flow of execution, with procedure calls altering the flow as needed.
+
+```
++-----------------+
+|  Shared Data    |
+| (e.g., balance) |
++-----------------+
+   ^           ^
+   |           |
++----------+ +----------+
+| Proc A   | | Proc B   |
+|(deposit) | |(withdraw)|
++----------+ +----------+
+```
 
 ### 3. Example of Operation
 
@@ -72,13 +102,13 @@ As you can see, `account_balance` is an independent piece of data, and both proc
 
 #### Advantages:
 
--   **Simplicity**: Easy to understand and straightforward, making it suitable for small programs or simple scripts.
--   **Efficiency**: For linear computational tasks, it often has low overhead and can execute quickly.
+-   Simplicity: Easy to understand and straightforward, making it suitable for small programs or simple scripts.
+-   Efficiency: For linear computational tasks, it often has low overhead and can execute quickly.
 
 #### Disadvantages (The reason other paradigms were created):
 
--   **Difficult to Manage Complexity**: As a program grows, having many procedures accessing and modifying shared global data can create a complex web of dependencies, often called "Spaghetti Code." This makes it very difficult to track and debug.
--   **Poor Data Encapsulation**: Because data and the functions that operate on it are separate, it is easy for one procedure to unintentionally modify data, leading to hard-to-find bugs. This is the primary problem that **Object-Oriented Programming (OOP)** was created to solve.
+-   Difficult to Manage Complexity: As a program grows, having many procedures accessing and modifying shared global data can create a complex web of dependencies, often called "Spaghetti Code." This makes it very difficult to track and debug.
+-   Poor Data Encapsulation: Because data and the functions that operate on it are separate, it is easy for one procedure to unintentionally modify data, leading to hard-to-find bugs. This is the primary problem that Object-Oriented Programming (OOP) was created to solve.
 
 ---
 
