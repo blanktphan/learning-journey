@@ -16,10 +16,10 @@
 
 ### 📕 Hierarchical & Hash-based Structures
 
-- 📖 [Introduction to Trees & Binary Trees](.)
-- 📖 [Binary Search Trees - BST](.)
-- 📖 [Balanced Trees: AVL, Red-Black Trees](.)
-- 📖 [Heaps](.)
+- 📖 [Introduction to Trees & Binary Trees](./03-hierarchical-and-hash-based-structures/3_1-introduction-to-tree-and-binary-trees.md)
+- 📖 [Binary Search Trees - BST](./03-hierarchical-and-hash-based-structures/3_2-binary_search-trees-bst.md)
+- 📖 [Balanced Trees: AVL, Red-Black Trees](./03-hierarchical-and-hash-based-structures/3_3-balanced-trees.md)
+- 📖 [Heaps](./03-hierarchical-and-hash-based-structures/3_4-heaps.md)
 
 ### 📕 Graphs
 
