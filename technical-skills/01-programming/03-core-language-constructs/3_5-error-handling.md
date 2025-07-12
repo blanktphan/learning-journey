@@ -30,14 +30,14 @@ We can categorize program errors into two main types:
 
 #### Syntax Errors
 
-- **Description**: These are errors caused by writing code that violates the grammatical (syntax) rules of the programming language. It is like making a spelling or grammar mistake in an English sentence.
-- **Detection**: They are detected by the compiler or interpreter *before* the program starts to run. The program cannot be executed at all until these errors are corrected.
-- **Examples**: Forgetting a semicolon, misspelling a command, or having mismatched parentheses.
+- Description: These are errors caused by writing code that violates the grammatical (syntax) rules of the programming language. It is like making a spelling or grammar mistake in an English sentence.
+- Detection: They are detected by the compiler or interpreter before the program starts to run. The program cannot be executed at all until these errors are corrected.
+- Examples: Forgetting a semicolon, misspelling a command, or having mismatched parentheses.
 
 #### Runtime Errors or Exceptions
 
-- **Description**: These errors occur *while* the program is running. Even if the code's syntax is completely correct, an unexpected situation arises that prevents the program from continuing its normal execution. This is the type of error we need to "handle".
-- **Examples**: `DivisionByZeroError` (dividing by zero), `FileNotFoundError` (file not found), `NullPointerException` (attempting to use a method on a null object).
+- Description: These errors occur while the program is running. Even if the code's syntax is completely correct, an unexpected situation arises that prevents the program from continuing its normal execution. This is the type of error we need to "handle".
+- Examples: `DivisionByZeroError`, `FileNotFoundError`, `NullPointerException`.
 
 ### 3. Structured Exception Handling
 
@@ -45,37 +45,31 @@ This is the standard approach used in modern programming languages to manage Run
 
 #### The try-catch Structure (or try-except in Python)
 
-- **`try` block**: This is where we place "risky" code, or code that we anticipate "might" cause an Exception.
-- **`catch` / `except` block**: This block of code executes *only if* an Exception occurs within the `try` block. It serves to "catch" the error and allows us to handle it appropriately, such as by displaying a user-friendly message, logging the error, or trying an alternative operation. If no error occurs in the `try` block, this section of code is skipped entirely.
-
-Here is an ASCII diagram illustrating the flow:
+- `try` block: This is where we place "risky" code, or code that we anticipate "might" cause an Exception.
+- `catch` / `except` block: This block of code executes only if an Exception occurs within the `try` block. It serves to "catch" the error and allows us to handle it appropriately. If no error occurs, this section is skipped.
 
 ```
-Start
-  |
-  v
-+----------------------+
-|      try block       |  <-- Execute risky code
-|  (e.g., file access) |
-+----------------------+
-  |
-  |
-  v
-/--------------------\  No  +--------------------+
-| Did an error occur?|----->|  Skip catch block  |
-\--------------------/      +--------------------+
-  | Yes                           |
-  v                               |
-+----------------------+          |
-|     catch block      |          |
-| (Handle the error)   |          |
-+----------------------+          |
-  |                               |
-  v                               v
-End of try-catch structure, continue program
+      Start
+        |
+        v
++-----------------+
+|    try block    |
++-----------------+
+        |
+        v
+/-----------------\
+|  Error Occurs?  |
+\-----------------/
+   |           |
+  Yes          No
+   |           |
+   v           v
++-----------+  (Continue)
+| catch blk |
++-----------+
 ```
 
-**Example (Python-like syntax):**
+Example (Python-like syntax):
 
 ```python
 try:
@@ -85,13 +79,10 @@ try:
     result = 100 / number
     print(result)
 except FileNotFoundError:
-    # Executes when data.txt is not found
     print("Error: The specified file was not found.")
 except ValueError:
-    # Executes when data in the file is not a number
-    print("Error: Data in the file cannot be converted to a number.")
+    print("Error: Data in the file is not a number.")
 except ZeroDivisionError:
-    # Executes when trying to divide by zero
     print("Error: Cannot divide by zero.")
 ```
 
@@ -99,35 +90,35 @@ except ZeroDivisionError:
 
 #### `finally` block
 
-This is an optional block of code that is *always* executed, regardless of whether an Exception occurred or not. It is typically used for necessary "cleanup" tasks, such as closing a file (`file.close()`) or terminating a network connection, to ensure resources are always returned to the system.
+This is an optional block of code that is always executed, regardless of whether an Exception occurred or not. It is typically used for necessary "cleanup" tasks, such as closing a file (`file.close()`) or terminating a network connection, to ensure resources are always returned to the system.
 
 ```
-Start
-  |
-  v
-+----------------------+
-|      try block       |
-+----------------------+
-  |
-  |
-  v
-/--------------------\
-| Did an error occur?|
-\--------------------/
-  |            | No
-  | Yes        |
-  v            v
-+----------------------+
-|     catch block      |
-+----------------------+
-  |
-  v
-+----------------------+
-|    finally block     |  <-- This ALWAYS runs
-+----------------------+
-  |
-  v
-End
+      Start
+        |
+        v
++-----------------+
+|    try block    |
++-----------------+
+        |
+        v
+/-----------------\
+|  Error Occurs?  |
+\-----------------/
+   |           |
+  Yes          No
+   |           |
+   v           v
+   +-----------+
+   | catch blk |
+   +-----------+
+        |
+        v
++-----------------+
+|  finally block  | <- Always runs
++-----------------+
+        |
+        v
+       End
 ```
 
 #### `throw` or `raise`

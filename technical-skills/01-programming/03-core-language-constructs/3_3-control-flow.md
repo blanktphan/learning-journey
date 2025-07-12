@@ -15,35 +15,35 @@ An understanding of variables, and especially comparison and logical operators t
 
 ### 1. Introduction to Control Flow
 
-By default, a computer processes a program **sequentially**—it executes commands one by one, from the top line down to the bottom. **Control Flow** refers to the set of statements that allow us to **change this execution order**. It enables our programs to "make decisions" to skip certain instructions or "loop back" to repeat a set of instructions, which is what makes programs intelligent and responsive to different situations.
+By default, a computer processes a program sequentially—it executes commands one by one, from the top line down to the bottom. Control Flow refers to the set of statements that allow us to change this execution order. It enables our programs to "make decisions" to skip certain instructions or "loop back" to repeat a set of instructions, which is what makes programs intelligent and responsive to different situations.
 
 ```
-Sequential vs. Control Flow Execution
-=====================================
+  Sequential Flow
++-----------------+
+|  Instruction A  |
++-----------------+
+         |
+         v
++-----------------+
+|  Instruction B  |
++-----------------+
 
-Sequential Execution (The Default):
-┌──────────────────────────────────┐
-│ Line 1: instruction_A            │
-│             ▼                    │
-│ Line 2: instruction_B            │
-│             ▼                    │
-│ Line 3: instruction_C            │
-└──────────────────────────────────┘
-Execution path is always: 1 → 2 → 3
-
-Control Flow Execution (Decision):
-┌──────────────────────────────────┐
-│ Line 1: if (condition) {         │
-│ Line 2:   instruction_A          │
-│ Line 3: } else {                 │
-│ Line 4:   instruction_B          │
-│ Line 5: }                        │
-└──────────────────────────────────┘
-Path depends on the condition:
-- If true: 1 → 2 → 5
-- If false: 1 → 3 → 4 → 5
+  Control Flow (Decision)
++-----------------+
+|   Condition?    |
++-----------------+
+   |           |
+ True        False
+   |           |
+   v           v
+[Do A]       [Do B]
 ```
 
+### 2. Conditional Statements: The Power of Decision Making
+
+This structure creates "branches" or "choices" in your program. It executes different blocks of code depending on whether a condition evaluates to `true` or `false`.
+
+- `if`: Executes the code block
 ### 2. Conditional Statements: The Power of Decision Making
 
 This structure creates "branches" or "choices" in your program. It executes different blocks of code depending on whether a condition evaluates to `true` or `false`.
