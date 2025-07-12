@@ -21,53 +21,58 @@ In previous lessons, we established that humans write understandable Source Code
 Imagine the journey of a single, simple command from the code we write down to the hardware level.
 
 ```
-+--------------------------------+
-| Level 4: High-Level Language   |  (e.g., total = price + tax)
-+--------------------------------+
-                | (Compiler/Interpreter)
-                v
-+--------------------------------+
-| Level 3: Assembly Language     |  (e.g., LOAD, ADD, STORE)
-+--------------------------------+
-                | (Assembler)
-                v
-+--------------------------------+
-| Level 2: Machine Code          |  (e.g., 01011001 11101010)
-+--------------------------------+
-                | (CPU Control Unit)
-                v
-+--------------------------------+
-| Level 1: Micro-operations      |  (Activating logic gates)
-+--------------------------------+
-                | (Physics)
-                v
-+--------------------------------+
-| Level 0: Electrical Signals    |  (Electron flow in transistors)
-+--------------------------------+
++------------------+
+| L4: High-Level   |
+| (total = a + b)  |
++------------------+
+         |
+         v
++------------------+
+| L3: Assembly     |
+| (LOAD, ADD)      |
++------------------+
+         |
+         v
++------------------+
+| L2: Machine Code |
+| (01101011...)    |
++------------------+
+         |
+         v
++------------------+
+| L1: Micro-ops    |
+| (Logic Gates)    |
++------------------+
+         |
+         v
++------------------+
+| L0: Physics      |
+| (Electrons)      |
++------------------+
 ```
 
-**Level 4: High-Level Language**
+Level 4: High-Level Language
 This is the level where we write code. It is human-readable and hardware-independent.
-- **Example**: `total_price = price + tax`
+- Example: `total_price = price + tax`
 
-**Level 3: Assembly Language**
+Level 3: Assembly Language
 A compiler or interpreter translates the high-level instruction into a series of low-level instructions that are specific to the CPU's architecture.
-- **Example**: The single instruction above might become:
+- Example: The single instruction above might become:
   ```assembly
-  LOAD price, REG1      ; Load the value of 'price' into register 1
-  LOAD tax, REG2        ; Load the value of 'tax' into register 2
-  ADD REG1, REG2        ; Add the values in the two registers
+  LOAD price, REG1        ; Load the value of 'price' into register 1
+  LOAD tax, REG2          ; Load the value of 'tax' into register 2
+  ADD REG1, REG2          ; Add the values in the two registers
   STORE REG1, total_price ; Store the result back into memory
   ```
 
-**Level 2: Machine Code**
+Level 2: Machine Code
 A program called an Assembler translates the assembly instructions into binary numbers (0s and 1s) that the CPU can execute directly.
-- **Example**: `LOAD price, REG1` might become `00101101 11100101...`
+- Example: `LOAD price, REG1` might become `00101101 11100101...`
 
-**Level 1: Micro-operations & Logic Gates**
+Level 1: Micro-operations & Logic Gates
 The CPU's Control Unit decodes the machine code instruction. This decoding process activates the most basic operations, which involve opening and closing specific logic gates within the Arithmetic Logic Unit (ALU) to perform tasks like binary addition.
 
-**Level 0: Physics**
+Level 0: Physics
 The physical opening and closing of logic gates is the control of electron flow through transistor circuits. Different voltage levels represent the binary states of 0 and 1. This is the point where software and hardware truly meet.
 
 ### The Processing Engine: CPU Fetch-Decode-Execute Cycle
@@ -75,26 +80,26 @@ The physical opening and closing of logic gates is the control of electron flow 
 The CPU is the engine that performs all this work through a repetitive cycle, known as the Fetch-Decode-Execute Cycle, which runs billions of times per second.
 
 ```
-+------------------+
-|      Fetch       |  (Get instruction from RAM)
-+------------------+
+   +-----------+
+   |   Fetch   | (Get instruction)
+   +-----------+
          |
          v
-+------------------+
-|      Decode      |  (Interpret the instruction)
-+------------------+
+   +-----------+
+   |  Decode   | (Understand it)
+   +-----------+
          |
          v
-+------------------+
-|     Execute      |  (Send signals to components)
-+------------------+
+   +-----------+
+   |  Execute  | (Perform action)
+   +-----------+
          |
-         +----(repeats)----+
+         +--(repeats)--+
 ```
 
-1.  **Fetch**: The CPU fetches the next machine code instruction from memory (RAM).
-2.  **Decode**: The CPU interprets the machine code to understand what operation needs to be performed.
-3.  **Execute**: The CPU sends electrical signals to the correct components (like the ALU) to carry out the instruction.
+1.  Fetch: The CPU fetches the next machine code instruction from memory (RAM).
+2.  Decode: The CPU interprets the machine code to understand what operation needs to be performed.
+3.  Execute: The CPU sends electrical signals to the correct components (like the ALU) to carry out the instruction.
 
 This cycle is the fundamental process that drives every computer program.
 
