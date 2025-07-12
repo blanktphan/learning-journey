@@ -2,72 +2,77 @@
 
 ## 💡 Basic knowledge required
 
-A general understanding of what a program is and what it does. No prior programming experience is necessary.
+A general interest in problem-solving. No prior programming experience is necessary.
 
 ## 🎯 Learning Objectives
 
-- To be able to define and explain the meaning of Computational Thinking.
-- To be able to identify and explain the four pillars of CT (Decomposition, Pattern Recognition, Abstraction, Algorithm Design).
-- To be able to apply the CT framework to analyze technical problems.
+- Define and explain the meaning of Computational Thinking.
+- Identify and explain the four pillars of CT (Decomposition, Pattern Recognition, Abstraction, Algorithm Design).
+- Apply the CT framework to analyze technical problems.
 
 ---
 
-### Introduction to Chapter 2: The Thinking Process
+### Introduction to Chapter 2
 
-In Chapter 1, we built an understanding of the big picture: "What are programs?" and "How do computers work with them?" In this chapter, we step back from languages and hardware to dive deep into the "thinking processes" that are crucial before writing a single line of code. This chapter is about creating the "mental blueprint," or algorithm, for systematic problem-solving.
+In Chapter 1, we built a high-level understanding of "what a program is" and "how computers work with them." In this second chapter, we will step back from the specifics of languages and hardware to delve into the "thought process"—the critical core that happens before a single line of code is written. This chapter is about creating the "mental blueprint," or algorithm, for solving problems systematically.
 
 ---
 
 ### 1. Definition and Core Concepts
 
-Computational Thinking (CT) is a problem-solving process that involves organizing and framing problems and their solutions in a way that a computer can efficiently execute. It is not about "thinking like a computer" but is a set of mental tools that help humans leverage the power of computation to solve complex problems.
+Computational Thinking (CT) is a problem-solving process that involves formulating problems and their solutions in a way that a computer can effectively execute. It is not about "thinking like a computer," but rather a set of mental tools that allows humans to leverage the power of computing to solve complex problems.
 
-This concept is built on four pillars that work together:
+This approach is built on four key pillars that work in conjunction:
 
-- **Decomposition**: The process of breaking down a complex problem into smaller, more manageable sub-problems.
-- **Pattern Recognition**: The process of finding similarities, trends, or recurring patterns among the sub-problems.
-- **Abstraction**: The process of filtering out unnecessary details to focus on the essential aspects of the problem.
-- **Algorithm Design**: The process of developing clear, step-by-step instructions to solve the problem.
+- **Decomposition**: The process of breaking down a complex problem or system into smaller, more manageable sub-problems.
+- **Pattern Recognition**: The process of finding similarities, trends, or recurring patterns among and within the sub-problems.
+- **Abstraction**: The process of filtering out and ignoring irrelevant details to focus only on the essential information required to solve the problem.
+- **Algorithm Design**: The process of developing a step-by-step, unambiguous set of instructions to solve the problem.
 
 ### 2. Application in Problem-Solving
 
-Consider the problem: "Analyze a sales data file to find the top 10 customers who generated the most profit."
+Consider the task: "Analyze a sales data file to find the top 10 customers by total profit."
 
-We can apply the four pillars of CT as follows:
+We can apply the four pillars of CT to structure our approach:
 
 #### Decomposition
-- Read data from the file.
-- Calculate the profit for each transaction.
-- Aggregate the total profit for each customer.
-- Sort customers by their total profit.
-- Select the top 10 customers.
-- Display the results.
+First, we break the problem down into smaller steps:
+1.  Read the data from the file.
+2.  Calculate the profit for each transaction.
+3.  Sum the total profit for each individual customer.
+4.  Sort the customers based on their total profit.
+5.  Select the top 10 customers.
+6.  Display the result.
 
 #### Pattern Recognition
-- Notice that each row in the data file has the same "pattern" (e.g., Date, Customer_ID, Sale_Price, Cost).
-- Recognize that the "aggregation" process is a common pattern in data analysis.
+Next, we look for patterns:
+- We observe that each row in the data file follows a consistent pattern (e.g., `date, customer_id, sale_price, cost_price`).
+- We recognize that the process of "aggregation" (summing totals) is a common pattern in data analysis.
 
 #### Abstraction
-- We "ignore" unnecessary information for this specific problem, such as the time of the transaction.
-- We "model" the necessary data using a Dictionary structure, where the Customer ID is the key and the accumulated profit is the value.
+Then, we abstract away unnecessary details:
+- We ignore data that is not relevant to our goal, such as the specific time of the transaction.
+- We create a conceptual model for the data we need. A dictionary is a suitable abstraction, where the `key` is the `customer_id` and the `value` is their `cumulative_profit`.
 
 #### Algorithm Design
-From the steps above, we can create a clear algorithm:
+Finally, we design a step-by-step algorithm based on the previous stages:
 
-1.  Create an empty dictionary named `profits_by_customer`.
-2.  Open the sales data file.
-3.  For each row in the file:
-    a. Calculate `profit` = `sale_price` - `cost`.
-    b. If the `customer_id` already exists in `profits_by_customer`:
-        i. Add the `profit` to the existing value.
-    c. Else:
-        i. Add the new `customer_id` with the current `profit` as its value.
-4.  Convert the dictionary into a list.
-5.  Sort the list in descending order based on profit.
-6.  Select the first 10 items from the list.
-7.  Print the result.
+```
+1. Create an empty dictionary named 'profits_by_customer'.
+2. Open the sales data file.
+3. FOR each row in the file:
+4.     Calculate profit = sale_price - cost_price.
+5.     IF the customer_id already exists in 'profits_by_customer':
+6.         Add the profit to the existing value.
+7.     ELSE:
+8.         Create a new entry for the customer_id with the current profit.
+9. Convert the dictionary into a list.
+10. Sort the list by profit in descending order.
+11. Select the first 10 items from the list.
+12. Print the result.
+```
 
-This entire thought process is Computational Thinking. The final output is an algorithm ready to be implemented as a program.
+This entire thought process is Computational Thinking. The final output is a clear algorithm ready to be implemented as a program.
 
 ---
 
@@ -75,16 +80,15 @@ This entire thought process is Computational Thinking. The final output is an al
 
 ### Comprehensive Summary
 
-Computational Thinking is a systematic process for creating a "plan" to solve a problem. It consists of four steps: decomposing the problem, finding patterns, abstracting away unnecessary details, and creating a step-by-step sequence of instructions (an algorithm).
+Computational Thinking is a systematic process for creating a "plan" to solve a problem. It consists of four steps: decomposing the problem, finding patterns, filtering out non-essential information, and creating a sequence of steps (an algorithm).
 
 ### Practical Exercise
 
-Try applying the four pillars of CT to one of your daily routines: "Getting ready for work or school in the morning."
-
--   Decompose the entire activity into smaller tasks.
--   Find the patterns you repeat every day.
--   Abstract away unnecessary actions.
--   Write down a clear, step-by-step algorithm for your morning routine.
+Try applying the four principles of CT to your daily routine: "Getting ready for work or school in the morning."
+- **Decompose** the entire activity.
+- **Find** the 'patterns' you repeat.
+- **Filter out** what isn't necessary.
+- **Write down** a clear 'sequence of steps'.
 
 ---
 
