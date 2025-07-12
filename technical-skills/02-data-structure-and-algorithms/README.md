@@ -4,16 +4,16 @@
 
 ### 📕 Algorithm Analysis & Foundations
 
-- 📖 [What is an Algorithm & Why Analyze?](.)
-- 📖 [Asymptotic Analysis & Big O Notation](.)
-- 📖 [Abstract Data Types - ADT](.)
+- 📖 [What is an Algorithm & Why Analyze?](./01-algorithm-analysis-and-foundations/1_1-what-is-an-alorithm-and-why-analyze?.md)
+- 📖 [Asymptotic Analysis & Big O Notation](./01-algorithm-analysis-and-foundations/1_2-asymptotic-analysis-and-big-o-notation.md)
+- 📖 [Abstract Data Types - ADT](./01-algorithm-analysis-and-foundations/1_3-abstract-data-types-adt.md)
 
 ### 📕 Linear Data Structures
 
-- 📖 [Arrays and Dynamic Arrays](.)
-- 📖 [Linked Lists: Singly, Doubly, Circular](.)
-- 📖 [Stacks](.)
-- 📖 [Queues and Deques](.)
+- 📖 [Arrays and Dynamic Arrays](./02-linear-data-structures.md/2_1-arrays-and-dynamic-arrays.md)
+- 📖 [Linked Lists: Singly, Doubly, Circular](./02-linear-data-structures.md/2_2.linked-lists.md)
+- 📖 [Stacks](./02-linear-data-structures.md/2_3-stacks.md)
+- 📖 [Queues and Deques](./02-linear-data-structures.md/2_4.queues-and-deques.md)
 
 ### 📕 Hierarchical & Hash-based Structures
 
