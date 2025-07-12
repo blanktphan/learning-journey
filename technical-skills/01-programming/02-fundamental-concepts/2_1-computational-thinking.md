@@ -24,10 +24,38 @@ Computational Thinking (CT) is a problem-solving process that involves formulati
 
 This approach is built on four key pillars that work in conjunction:
 
-- **Decomposition**: The process of breaking down a complex problem or system into smaller, more manageable sub-problems.
-- **Pattern Recognition**: The process of finding similarities, trends, or recurring patterns among and within the sub-problems.
-- **Abstraction**: The process of filtering out and ignoring irrelevant details to focus only on the essential information required to solve the problem.
-- **Algorithm Design**: The process of developing a step-by-step, unambiguous set of instructions to solve the problem.
+- Decomposition: The process of breaking down a complex problem or system into smaller, more manageable sub-problems.
+- Pattern Recognition: The process of finding similarities, trends, or recurring patterns among and within the sub-problems.
+- Abstraction: The process of filtering out and ignoring irrelevant details to focus only on the essential information required to solve the problem.
+- Algorithm Design: The process of developing a step-by-step, unambiguous set of instructions to solve the problem.
+
+```
+      +-------------+
+      |   Problem   |
+      +-------------+
+             |
+             v
+      +-------------+
+      |  Decompose  |
+      +-------------+
+             |
+             v
+      +-------------+
+      |  Recognize  |
+      |  Patterns   |
+      +-------------+
+             |
+             v
+      +-------------+
+      |  Abstract   |
+      +-------------+
+             |
+             v
+      +-------------+
+      |   Design    |
+      |  Algorithm  |
+      +-------------+
+```
 
 ### 2. Application in Problem-Solving
 

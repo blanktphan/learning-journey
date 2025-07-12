@@ -1,4 +1,4 @@
-# 📖 Topic: logic and Abstraction
+# 📖 Topic: Logic and Abstraction
 
 ## 💡 Basic knowledge required
 
@@ -14,50 +14,61 @@
 
 ### 1. Logic: The Foundation of Reasoning
 
-In computer science, logic is the formal system used for reasoning and drawing conclusions from a given set of premises. It is the "grammar" of decision-making within a program, fundamentally based on **Propositional Logic**, where every state is either **True** or **False**.
+In computer science, logic is the formal system used for reasoning and drawing conclusions from a given set of premises. It is the "grammar" of decision-making within a program, fundamentally based on Propositional Logic, where every state is either True or False.
 
 Programmers constantly use logic through logical connectives:
 
-- **AND**: The result is true only if all conditions are true.
-- **OR**: The result is true if at least one condition is true.
-- **NOT**: Inverts the truth value (true becomes false, false becomes true).
+- AND: The result is true only if all conditions are true.
+- OR: The result is true if at least one condition is true.
+- NOT: Inverts the truth value (true becomes false, false becomes true).
 
 Logic guarantees that a program will behave precisely and correctly according to the conditions we define. Every `if-else` statement or `while` loop is governed by these logical rules.
 
 ```
-+----------------------------------------------------+
-|                 Logical Flow                       |
-|                                                    |
-|   Premise -> [LOGICAL RULES] -> Conclusion         |
-|   (e.g., user input) (AND, OR, NOT) (e.g., action) |
-|                                                    |
-+----------------------------------------------------+
+   +----------------+
+   |    Premise     |
+   | (e.g., input)  |
+   +----------------+
+           |
+           v
+   +----------------+
+   | Logical Rules  |
+   | (AND, OR, NOT) |
+   +----------------+
+           |
+           v
+   +----------------+
+   |   Conclusion   |
+   |  (e.g., action)|
+   +----------------+
 ```
 
 ### 2. Abstraction: The Art of Ignoring
 
-Abstraction is the intellectual process of filtering out and "hiding" unnecessary details to focus on the essential concepts of a system. It is the most powerful tool for **Managing Complexity**.
+Abstraction is the intellectual process of filtering out and "hiding" unnecessary details to focus on the essential concepts of a system. It is the most powerful tool for Managing Complexity.
 
-A perfect example is a subway map. It is an **abstraction** of a city. It hides all the details of buildings, streets, and alleys, showing only the information essential to a passenger: the **stations** and the **connecting routes**.
+A perfect example is a subway map. It is an abstraction of a city. It hides all the details of buildings, streets, and alleys, showing only the information essential to a passenger: the stations and the connecting routes.
 
 ```
-      Real World (Full Complexity)
-        (City with all streets, buildings, etc.)
-                   |
-                   |  Abstraction Process
-                   |  (Filter out irrelevant details)
-                   ▼
-      Abstract Model (Simplified View)
-        (Subway map with only stations and lines)
++----------------+
+|   Real World   |
+| (Full Detail)  |
++----------------+
+        |
+        v (Filter)
++----------------+
+| Abstract Model |
+| (Essentials)   |
++----------------+
 ```
 
-In programming, we use abstraction to create "black boxes" or **APIs (Application Programming Interfaces)** that other programmers can use without needing to know how the complex internal mechanisms work.
+In programming, we use abstraction to create "black boxes" or APIs (Application Programming Interfaces) that other programmers can use without needing to know how the complex internal mechanisms work.
 
 ### 3. Synergy: Logic and Abstraction in Software Creation
 
-Logic and abstraction work together to enable the construction of complex systems. We use **logic** to build small, correct components, and then we use **abstraction** to wrap those components behind simple interfaces.
+Logic and abstraction work together to enable the construction of complex systems. We use logic to build small, correct components, and then we use abstraction to wrap those components behind simple interfaces.
 
-**Example: The "Checkout" Button on an E-commerce Website**
+Example: The "Checkout" Button on an E-commerce Website
 
 #### The Logic (Internal Mechanism)
 When a user clicks the button, a complex set of logical conditions must be evaluated:
@@ -76,13 +87,13 @@ END IF
 ```
 
 #### The Abstraction (What another programmer sees)
-A programmer working on the user interface doesn't need to know all this internal logic. They might only need to call a single function provided by the backend team:
+A programmer working on the user interface does not need to know all this internal logic. They might only need to call a single function provided by the backend team:
 
 ```javascript
 checkout();
 ```
 
-The `checkout()` function is an **abstraction** that hides all the complex logic inside. This makes developing the overall system easier and more modular.
+The `checkout()` function is an abstraction that hides all the complex logic inside. This makes developing the overall system easier and more modular.
 
 ---
 
@@ -94,9 +105,9 @@ Logic provides the rules that guarantee the "correctness" of a program, while ab
 
 ### Practical Exercise
 
-Consider an **air conditioner**.
-- Use **logic** to describe its operating conditions (e.g., `IF room_temperature > set_temperature THEN compressor_starts`).
-- Use **abstraction** to describe which components "hide" complexity from the user (e.g., you just press a button on the "remote control" without needing to know how the internal circuitry works).
+Consider an air conditioner.
+- Use logic to describe its operating conditions (e.g., `IF room_temperature > set_temperature THEN compressor_starts`).
+- Use abstraction to describe which components "hide" complexity from the user (e.g., you just press a button on the "remote control" without needing to know how the internal circuitry works).
 
 ---
 
