@@ -24,11 +24,11 @@ Algorithm Design is the activity of creating a clear, step-by-step, and finite c
 
 A good algorithm is not just one that "works," but one that exhibits several key properties:
 
-- **Correctness**: This is the most important attribute. The algorithm must produce the correct output for all possible inputs as defined by the requirements.
-- **Efficiency**: It should use resources, such as CPU processing time and memory space, as minimally as possible.
-- **Readability & Maintainability**: The logic of the algorithm should be clear and easy for humans to understand, allowing for easier modification, debugging, or extension in the future.
-- **Finiteness**: The algorithm must terminate after a finite number of steps.
-- **Unambiguity**: Each step must be precisely defined and have only one interpretation.
+- Correctness: This is the most important attribute. The algorithm must produce the correct output for all possible inputs as defined by the requirements.
+- Efficiency: It should use resources, such as CPU processing time and memory space, as minimally as possible.
+- Readability & Maintainability: The logic of the algorithm should be clear and easy for humans to understand, allowing for easier modification, debugging, or extension in the future.
+- Finiteness: The algorithm must terminate after a finite number of steps.
+- Unambiguity: Each step must be precisely defined and have only one interpretation.
 
 ### 3. Tools for Planning and Representing Algorithms
 
@@ -36,63 +36,55 @@ Before writing actual code, programmers often use these tools to draft and refin
 
 #### Pseudocode
 
-- **Description**: An explanation of an algorithm's logic using a language that resembles a programming language but is less formal and not tied to the syntax of any specific language.
-- **Objective**: To focus solely on the problem-solving logic without worrying about the complex syntax of a programming language.
-- **Example (Checking for a prime number)**:
+- Description: An explanation of an algorithm's logic using a language that resembles a programming language but is less formal and not tied to the syntax of any specific language.
+- Objective: To focus solely on the problem-solving logic without worrying about the complex syntax of a programming language.
+- Example (Checking for a prime number):
 ```
 FUNCTION is_prime(number n)
-  IF n <= 1 THEN 
+  IF n <= 1 THEN
     RETURN false
-  
+
   FOR i FROM 2 TO square_root(n)
     IF n % i == 0 THEN
       RETURN false
   END FOR
-  
+
   RETURN true
 END FUNCTION
 ```
 
 #### Flowchart
 
-- **Description**: A diagram that uses standard symbols (e.g., rectangles for processes, diamonds for decisions) connected by arrows to show the "flow" of control and logic.
-- **Objective**: To provide a visual overview of the logic and decision points, making it suitable for explaining complex algorithms to non-programmers.
-- **ASCII Example (Simple Decision Flow)**:
+- Description: A diagram that uses standard symbols (e.g., rectangles for processes, diamonds for decisions) connected by arrows to show the "flow" of control and logic.
+- Objective: To provide a visual overview of the logic and decision points, making it suitable for explaining complex algorithms to non-programmers.
+- ASCII Example (Simple Decision Flow):
 ```
-      +------------------+
-      |      Start       |
-      +--------+---------+
-               |
-               v
-+--------------------------------+
-| Get number 'n' from user       |
-+----------------+---------------+
-                 |
-                 v
-      +------------------+
-      |   Is n > 0 ?     |----(No)---->+-------------------+
-      +--------+---------+             | Print "Negative"  |
-               |                       +-------------------+
-             (Yes)                             |
-               |                               v
-               v                       +------------------+
-      +-------------------+            |       End        |
-      | Print "Positive"  |            +------------------+
-      +-------------------+
-               |
-               v
-      +------------------+
-      |       End        |
-      +------------------+
+      (Start)
+         |
+         v
+   [Get number n]
+         |
+         v
+    <Is n > 0?>
+   /            \
+Yes              No
+ /                \
+v                  v
+[Print "Positive"] [Print "Negative"]
+ \                 /
+  \______________ /
+         |
+         v
+       (End)
 ```
 
 ### 4. The Practical Planning Process
 
-1.  **Understand the Requirements**: Clearly define the problem, identifying the inputs and the expected outputs.
-2.  **Decompose the Problem**: Break the large problem down into smaller, more manageable sub-problems.
-3.  **Choose Data Structures**: Decide how to store and organize data (e.g., using an Array, List, Dictionary), as this choice directly impacts the algorithm.
-4.  **Draft the Algorithm**: Use pseudocode or flowcharts to outline the sequence of logical steps for solving each sub-problem.
-5.  **Refine and Analyze**: Review the drafted algorithm. Is it correct? Does it cover all edge cases? Is it reasonably efficient? Can it be simplified?
+1.  Understand the Requirements: Clearly define the problem, identifying the inputs and the expected outputs.
+2.  Decompose the Problem: Break the large problem down into smaller, more manageable sub-problems.
+3.  Choose Data Structures: Decide how to store and organize data (e.g., using an Array, List, Dictionary), as this choice directly impacts the algorithm.
+4.  Draft the Algorithm: Use pseudocode or flowcharts to outline the sequence of logical steps for solving each sub-problem.
+5.  Refine and Analyze: Review the drafted algorithm. Is it correct? Does it cover all edge cases? Is it reasonably efficient? Can it be simplified?
 
 ---
 

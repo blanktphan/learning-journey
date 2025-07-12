@@ -2,50 +2,73 @@
 
 ## 💡 Basic knowledge required
 
-- A clear algorithm or plan (from lesson 4.2).
-- Knowledge of the syntax of the chosen programming language (from section 3).
+- A well-defined algorithm or plan (from lesson 4.2).
+- Familiarity with the syntax of the chosen programming language.
 
 ## 🎯 Learning Objectives
 
-- Define "Implementation" as the process of translating an algorithm into functional source code.
-- Understand the importance of adhering to coding standards and styles for consistency and readability.
-- Recognize the role of comments and documentation in explaining the "why" behind the code.
-- Understand the iterative nature of coding, which involves a cycle of writing and debugging.
+- Define "Implementation" as the process of translating a design into source code.
+- Understand the importance of writing readable and maintainable code.
+- Identify best practices in coding, such as using comments and following style guides.
 
 ---
 
-### 1. Introduction: From Blueprint to Construction
+### 1. Introduction: Translating the Blueprint into Reality
 
-If the algorithm design in the previous lesson was like an architect creating a "blueprint," then the Coding or Implementation phase is the process where the construction team lays the bricks, applies the plaster, and installs the wiring according to that blueprint. It is the step of transforming an abstract "logical plan" into tangible, executable "source code."
+After completing the Requirement Analysis ("what to build") and Algorithm Design ("how to build it"), we finally arrive at the Implementation phase. This is the process of taking the logical blueprint (the algorithm, pseudocode, or flowchart) and translating it into a set of instructions that a computer can execute using a specific programming language.
 
-The outcome of this stage is a program or program module that can be compiled or interpreted without any syntax errors.
+This is the stage most people associate with "programming," but it is important to remember that it is just one step in a much larger process. Writing code without a clear plan is like trying to build a house without a blueprint—it is likely to be disorganized and structurally unsound.
 
-### 2. The Art of Good Coding
+```
++-----------+
+| Algorithm | (Blueprint)
++-----------+
+      |
+      v
++-----------+
+|  Coding   | (Translation)
++-----------+
+      |
+      v
++-----------+
+|  Source   | (Working Code)
+|   Code    |
++-----------+
+```
 
-Professional coding is about more than just making a program "work"; it also involves making the code "good." This includes the following key principles:
+### 2. More Than Just "Making it Work"
 
-#### Readability and Clarity
+While the primary goal is to write code that correctly implements the algorithm, good implementation involves much more. The code must not only be correct for the computer but also understandable for other humans (or your future self).
 
-- **Principle**: Programmers spend far more time "reading" code (both their own and others') than they do "writing" it. Therefore, good code should be optimized for the "human" who will read it in the future.
-- **Techniques**:
-    - **Meaningful Naming**: Use names that clearly describe the function of variables, functions, and classes (e.g., `calculate_final_price` is much better than `proc_data`).
-    - **Consistent Formatting**: Adhere to a consistent style for indentation, spacing, and newlines to make the code's structure visible and easy to understand.
+Key principles of good implementation include:
 
-#### Adherence to Coding Standards
+- Readability: The code should be clean, clearly structured, and easy to follow. This is achieved through descriptive variable names, well-organized functions, and a consistent layout.
+- Maintainability: Code that is easy to read is also easier to debug, modify, and extend in the future.
+- Adherence to Standards: Following established coding conventions or style guides for a specific language (e.g., PEP 8 for Python) makes the code consistent and predictable for others to read.
 
-- **Concept**: Most programming languages have a standard Style Guide (like PEP 8 for Python), and teams or organizations often define their own coding standards.
-- **Objective**: To ensure that all code produced by the team has a consistent format, making it easier to read, understand, and maintain code written by others.
+### 3. Best Practices in Coding
 
-#### Effective Use of Comments
+#### Using Comments Effectively
 
-- **Principle**: Good code should be "self-documenting" in explaining **what** it does through good naming. Comments should be reserved for explaining what the code cannot: **why** it was written a certain way, especially in complex or non-obvious sections.
-- **Bad Comment**: `x = x + 1; // Increment x by 1` (Redundant and unnecessary).
-- **Good Comment**: `// Using Algorithm A instead of the faster Algorithm B due to a bug in an external library.` (Explains the reasoning behind a decision).
+Comments are notes in the source code that are ignored by the compiler or interpreter. They are not for explaining "what" the code is doing (the code itself should make that clear), but for explaining "why" it is doing it.
 
-### 3. The Coding Mindset
+- Good Comment (Explains the "why"):
+  ```javascript
+  // We only check divisors up to the square root because
+  // if n has a divisor larger than its square root,
+  // it must also have a divisor smaller than it.
+  for (let i = 2; i <= Math.sqrt(n); i++) { ... }
+  ```
+- Bad Comment (Just repeats the "what"):
+  ```javascript
+  // Loop from 2 to the square root of n
+  for (let i = 2; i <= Math.sqrt(n); i++) { ... }
+  ```
 
-- **Iterative Process**: Coding is not a single pass from start to finish but a cycle of "write a small piece -> test -> debug -> write the next piece."
-- **Defensive Programming**: This is the practice of writing code that anticipates potential problems. This includes validating user input, handling potential errors (from lesson 3.5), and not assuming that received data will always be correct.
+#### The Coding Process
+
+- Iterative Process: Coding is not a single pass from start to finish but a cycle of "write a small piece -> test -> debug -> write the next piece."
+- Defensive Programming: This is the practice of writing code that anticipates potential problems. This includes validating user input, handling potential errors (from lesson 3.5), and not assuming that received data will always be correct.
 
 ---
 

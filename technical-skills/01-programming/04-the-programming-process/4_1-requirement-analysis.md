@@ -1,4 +1,4 @@
-# 📖 Topic: 4.1 Requirement Analysis
+# 📖 Topic: Requirement Analysis
 
 ## 💡 Basic knowledge required
 
@@ -24,10 +24,20 @@ Statistics in the software industry show that many projects fail not because of 
 This initial phase sets the foundation for the entire project. A mistake here can have a cascading effect, leading to wasted time, budget overruns, and a final product that does not meet user needs.
 
 ```
-+--------------------------+      +------------------------+      +----------------------+
-|      Vague Idea          |----->| Requirement Analysis   |----->|  Clear, Actionable   |
-| "We need a note app."    |      | (Asking "What?")       |      |         Plan         |
-+--------------------------+      +------------------------+      +----------------------+
++-------------+
+|  Vague Idea |
++-------------+
+      |
+      v
++--------------+
+|  Analysis    |
+| (Ask "What?")|
++--------------+
+      |
+      v
++-------------+
+| Clear Plan  |
++-------------+
 ```
 
 ### 2. Types of Requirements
@@ -63,10 +73,19 @@ This is an investigative phase to extract information from stakeholders, who cou
 - Prototyping: Creating models or mockups of the program to allow users to try them and provide early feedback.
 
 ```
-Stakeholders -> [Interview] ->  +-----------+
-(Users, Biz)  -> [Survey]  ->   |           | -> [Analysis] -> Requirements
-              -> [Observe] ->   | Raw Data  |                  Specification
-              -> [Docs]    ->   +-----------+
++------------+
+|Stakeholders|
++------------+
+      | (Gathering)
+      v
++------------+
+|  Raw Data  |
++------------+
+      | (Analysis)
+      v
++------------+
+|Requirements|
++------------+
 ```
 
 ### 4. The Outcome: Requirements Specification Document
