@@ -28,13 +28,13 @@
 - 📖 [Algorithm Design & Planning](./04-the-programming-process/4_2-algorithm-design-and-planning.md) - (Completed)
 - 📖 [Coding / Implementation](./04-the-programming-process/4_3-coding-or-implementation.md) - (Completed)
 - 📖 [Testing & Debugging](./04-the-programming-process/4_4-testing-and-debugging.md) - (Completed)
-- 📖 [Refactoring & Documentation](./04-the-programming-process/4_5-refactoring-and-documentation.md) - (Completed)
+- 📖 [Refactoring & Documentation](./04-the-programming-process/4_5-refactoring-and-documentation.md) - (Completede)
 
 ### 📕 Programming Paradigms
 
-- 📖 [Procedural Programming](./05-programming-paradigms/5_1-procedural-programming.md)
-- 📖 [Object-Oriented Programming - OOP](./05-programming-paradigms/5_2-object-oriented-programming.md)
-- 📖 [Functional Programming - FP](./05-programming-paradigms/5_3-functional-programming.md)
+- 📖 [Procedural Programming](./05-programming-paradigms/5_1-procedural-programming.md) - (Cpmpleted)
+- 📖 [Object-Oriented Programming - OOP](./05-programming-paradigms/5_2-object-oriented-programming.md) - (Completed)
+- 📖 [Functional Programming - FP](./05-programming-paradigms/5_3-functional-programming.md) - (Completed)
 
 ### 📕 Development Tools & Practices
 
