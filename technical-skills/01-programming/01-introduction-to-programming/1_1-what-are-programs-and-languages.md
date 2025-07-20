@@ -39,7 +39,9 @@ The output of programming is Source Code, a human-readable text file. This sourc
     |   Code    |  Prog. Language)
     +-----------+
           |
-          v (Translate)
+          | (Translate)
+          |
+          v
     +-----------+
     |  Machine  | (CPU Instructions)
     |   Code    |
@@ -80,7 +82,7 @@ Translating source code into machine code happens through two main processes:
 |  Source   |----->| Compiler |----->| Executable |-----> Run
 | (main.c)  |      |  (GCC)   |      |  (a.out)   |
 +-----------+      +----------+      +------------+
-(Entire file)                       (Ready to run)
+(Entire file)                        (Ready to run)
 ```
 
 #### Interpretation

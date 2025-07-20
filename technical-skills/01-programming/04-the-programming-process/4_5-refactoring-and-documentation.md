@@ -60,10 +60,10 @@ The software development process does not end when the code works and passes tes
 - Target Audience: The most important readers of documentation are your "future self" and your "teammates."
 
 ```
-      [Software]
-      /        \
-     /          \
-    v            v
+          [Software]
+         /          \
+        /            \
+       v              v
 +------------+  +-----------+
 | Internal   |  | External  |
 | (Comments) |  | (Guides)  |

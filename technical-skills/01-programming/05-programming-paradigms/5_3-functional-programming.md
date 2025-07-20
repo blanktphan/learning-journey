@@ -20,7 +20,7 @@ The paradigms we have studied so far (Procedural and OOP) belong to the Imperati
 Functional Programming (FP) belongs to the Declarative Programming group, which takes a completely different approach. It focuses on "declaring" (What) the final result should be, viewing a program as a composition of stateless mathematical functions.
 
 ```
- Imperative (How)    Declarative (What)
+Imperative (How)    Declarative (What)
 +-------------+     +----------------+
 | Start State |     | Input Data     |
 +-------------+     +----------------+

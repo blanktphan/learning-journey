@@ -42,12 +42,16 @@ Analogy: The Staging Area is like a shopping cart. You browse your project (Work
 | Working Directory |
 +-------------------+
         |
-        v (git add)
+        | (git add)
+        |
+        v 
 +-------------------+
 |   Staging Area    |
 +-------------------+
         |
-        v (git commit)
+        | (git commit)
+        |
+        v 
 +-------------------+
 |    Repository     |
 +-------------------+

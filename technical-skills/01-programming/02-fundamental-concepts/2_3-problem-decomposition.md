@@ -21,12 +21,12 @@ Problem Decomposition is a problem-solving strategy that involves dividing or br
     +-----------------+
     |  Large Problem  |
     +-----------------+
-           |
-           v
-   +-------+-------+
-   |       |       |
-   v       v       v
-[Sub A] [Sub B] [Sub C]
+             |
+             v
+     +-------+-------+
+     |       |       |
+     v       v       v
+  [Sub A] [Sub B] [Sub C]
 ```
 
 ### 2. Benefits and Importance

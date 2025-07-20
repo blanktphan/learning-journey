@@ -41,6 +41,41 @@ You can click [here](./fundamental/) to see more fundamental lessons.
 
 You can click [here](./technical-skills/) to see more Technical skill lessons.
 
+## 📁 Related Repositories 
+
+<section align="center">
+    <p>
+        <span>
+          <a href="https://github.com/blanktphan/codecademy-solutions" target="_blank" rel="noopener noreferrer" aria-label="Visit Codecademy Solutions repository">
+            <img src="https://github-readme-stats.vercel.app/api/pin/?username=blanktphan&repo=codecademy-solutions&bg_color=00000000&text_color=fff&show_owner=true" alt="Codecademy Solutions repository card" />
+          </a>
+        </span>
+        <span>
+          <a href="https://github.com/blanktphan/freecodecamp-solutions" target="_blank" rel="noopener noreferrer" aria-label="Visit freeCodeCamp Solutions repository">
+            <img src="https://github-readme-stats.vercel.app/api/pin/?username=blanktphan&repo=freecodecamp-solutions&bg_color=00000000&text_color=fff&show_owner=true" alt="freeCodeCamp Solutions repository card" />
+          </a>
+        </span>
+        <span>
+          <a href="https://github.com/blanktphan/cisco-networking-academy-solutions" target="_blank" rel="noopener noreferrer" aria-label="Visit Cisco Networking academy Solutions repository">
+            <img src="https://github-readme-stats.vercel.app/api/pin/?username=blanktphan&repo=cisco-networking-academy-solutions&bg_color=00000000&text_color=fff&show_owner=true" alt="Cisco Networking academy Solutions repository card" />
+          </a>
+        </span>
+        <span>
+          <a href="https://github.com/blanktphan/roadmap.sh-solutions" target="_blank" rel="noopener noreferrer" aria-label="Roadmap.sh Solutions repository">
+            <img src="https://github-readme-stats.vercel.app/api/pin/?username=blanktphan&repo=roadmap.sh-solutions&bg_color=00000000&text_color=fff&show_owner=true" alt="Roadmap.sh Solutions repository card" />
+          </a>
+        </span>
+        <span>
+          <a href="https://github.com/blanktphan/leetcode-solutions" target="_blank" rel="noopener noreferrer" aria-label="LeetCode Solutions repository">
+            <img src="https://github-readme-stats.vercel.app/api/pin/?username=blanktphan&repo=leetcode-solutions&bg_color=00000000&text_color=fff&show_owner=true" alt="LeetCode Solutions repository card" />
+          </a>
+        </span>
+    </p>
+</section>
+
+
+These repositories contain solutions and resources for various coding platforms and learning paths. Explore them to find helpful code examples and study materials.
+
 ---
 
 📍 Since most of the techniques and skills I've shared and demonstrated here were acquired through self-study, there might be some errors or omissions.

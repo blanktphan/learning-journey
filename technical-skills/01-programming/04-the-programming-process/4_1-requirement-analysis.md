@@ -76,12 +76,16 @@ This is an investigative phase to extract information from stakeholders, who cou
 +------------+
 |Stakeholders|
 +------------+
+      |
       | (Gathering)
+      |
       v
 +------------+
 |  Raw Data  |
 +------------+
+      |
       | (Analysis)
+      |
       v
 +------------+
 |Requirements|

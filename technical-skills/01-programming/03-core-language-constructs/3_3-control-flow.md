@@ -28,7 +28,7 @@ By default, a computer processes a program sequentially—it executes commands o
 |  Instruction B  |
 +-----------------+
 
-  Control Flow (Decision)
+Control Flow (Decision)
 +-----------------+
 |   Condition?    |
 +-----------------+

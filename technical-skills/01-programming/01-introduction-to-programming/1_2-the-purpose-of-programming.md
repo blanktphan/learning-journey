@@ -19,12 +19,12 @@ After understanding what "programs" and "programming languages" are, the next fu
 We can categorize the overarching goals of programming into three main areas:
 
 ```
-      +-------------+
-      | Programming |
-      +-------------+
-      /      |      \
-     /       |       \
-    v        v        v
+           +-------------+
+           | Programming |
+           +-------------+
+          /       |       \
+         /        |        \
+        v         v         v
 +----------+ +---------+ +----------+
 | Automate | |  Solve  | |  Create  |
 +----------+ +---------+ +----------+

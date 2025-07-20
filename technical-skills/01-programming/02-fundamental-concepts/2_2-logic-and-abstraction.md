@@ -55,7 +55,9 @@ A perfect example is a subway map. It is an abstraction of a city. It hides all 
 | (Full Detail)  |
 +----------------+
         |
-        v (Filter)
+        | (Filter)
+        |
+        v
 +----------------+
 | Abstract Model |
 | (Essentials)   |

@@ -25,7 +25,9 @@ The Terminal is the application that opens a CLI window. The Shell is the progra
 +------+   (interprets)   +---------+
 | User | -- [command] --> |  Shell  |
 +------+                  +---------+
+                                |
                                 | (executes)
+                                |
                                 v
                           +-----------+
                           |    OS     |

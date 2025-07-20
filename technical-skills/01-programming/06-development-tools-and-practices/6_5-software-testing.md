@@ -45,9 +45,9 @@ This is a concept for structuring automated tests to be efficient and cost-effec
 
 ```
       /---------\
-     /    E2E    \  (Few, Slow)
+     /    E2E    \      (Few, Slow)
     /-------------\
-   /  Integration  \  (Some, Medium)
+   /  Integration  \    (Some, Medium)
   /-----------------\
  /       Unit        \  (Many, Fast)
 +---------------------+
