@@ -20,6 +20,8 @@ This repository is created to document various lessons learned through self-stud
     </span>
 </section>
 
+---
+
 ## 📚 Fundamental
 
 - 📘 [Mathmematics](./fundamental/mathematics/) - [🚧 soon]
@@ -31,6 +33,16 @@ This repository is created to document various lessons learned through self-stud
 
 You can click [here](./fundamental/) to see more fundamental lessons.
 
+## 📚 Soft Skills
+
+- 📗 [Complex Problem-Solving]() - [🚧 soon]
+- 📗 [Clear Communication]() - [🚧 soon]
+- 📗 [Lifelong Learning & Adaptability]() - [🚧 soon]
+- 📗 [Collaboration]() - [🚧 soon]
+- 📗 [Emotional Intelligence]() - [🚧 soon]
+
+You can click [here](./soft-skills/) to see more Soft skill lessons.
+
 ## 📚 Technical skills
   
 - 📕 [Programming](./technical-skills/01-programming) - (Completed lesson as of Jul 12, 2025)
@@ -41,12 +53,15 @@ You can click [here](./fundamental/) to see more fundamental lessons.
 
 You can click [here](./technical-skills/) to see more Technical skill lessons.
 
+---
+
 ## 📁 Related Repositories 
 
 <section align="center">
     <p>
         <span>
-          <a href="https://github.com/blanktphan/codecademy-solutions" target="_blank" rel="noopener noreferrer" aria-label="Visit Codecademy Solutions repository">
+          <a href="https://github.com/blank
+          tphan/codecademy-solutions" target="_blank" rel="noopener noreferrer" aria-label="Visit Codecademy Solutions repository">
             <img src="https://github-readme-stats.vercel.app/api/pin/?username=blanktphan&repo=codecademy-solutions&bg_color=00000000&text_color=fff&show_owner=true" alt="Codecademy Solutions repository card" />
           </a>
         </span>
