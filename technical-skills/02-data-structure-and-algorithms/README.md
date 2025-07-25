@@ -10,9 +10,9 @@
 
 ### 📕 Linear Data Structures
 
-- 📖 [Arrays and Dynamic Arrays](./02-linear-data-structures/2_1-arrays-and-dynamic-arrays.md)
-- 📖 [Linked Lists: Singly, Doubly, Circular](./02-linear-data-structures/2_2.linked-lists.md)
-- 📖 [Stacks & Queues](./02-linear-data-structures/2_3-stacks-and-queues.md)
+- 📖 [Arrays and Dynamic Arrays](./02-linear-data-structures/2_1-arrays-and-dynamic-arrays.md) - (Completed)
+- 📖 [Linked Lists: Singly, Doubly, Circular](./02-linear-data-structures/2_2.linked-lists.md) - (Completed)
+- 📖 [Stacks & Queues](./02-linear-data-structures/2_3-stacks-and-queues.md) - (Completed)
 
 ### 📕 Tree-based Data Structures
 

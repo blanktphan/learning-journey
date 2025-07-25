@@ -50,8 +50,8 @@ A Queue is a linear data structure that operates on the FIFO principle. This mea
 Analogy: It's exactly like a "line at a checkout counter." The first person to get in line is the first person to be served.
 
 ```
-dequeue() <- [ P1 | P2 | P3 ] <- enqueue(P4)
-(Front)                          (Back)
+dequeue() <-- [ P1 | P2 | P3 ] <-- enqueue(P4)
+(Front)                            (Back)
 ```
 
 **Core Operations:**
