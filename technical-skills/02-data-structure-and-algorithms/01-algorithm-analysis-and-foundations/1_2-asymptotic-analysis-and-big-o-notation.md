@@ -38,18 +38,23 @@ Big O notation is the mathematical notation used to describe the asymptotic uppe
 It answers the question: "As the input size (n) increases, the growth rate of the time taken (Time Complexity) or memory used (Space Complexity) will not exceed this rate."
 
 #### Common Complexity Classes (from best to worst):
+```
+Performance
+        ^
+        |
+   O(n²)|           *
+        |         *
+O(nlogn)|      *
+        |    *
+  O(n)  |  *
+        | *
+ O(logn)|*
+        |*
+  O(1)  |_________________>
+             Input Size (n)
+```
 
-```
-  Performance
-      ^
-      |
- O(n²)| . . . . . . . . . ./.
-O(nlogn). . . . . . . . ./.
-  O(n)  | . . . . . . ./.
- O(logn). . . . . . /..
-  O(1)  |___________/_________________>
-                                  Input Size (n)
-```
+*Graph: As input size (n) increases, algorithms with higher complexity (like O(n²)) grow much faster than those with lower complexity (like O(1) or O(log n)).*
 
 -   **O(1) — Constant Time:** Excellent. The runtime does not depend on the input size.
     -   Example: Accessing an array element by its index (e.g., `my_array[5]`).

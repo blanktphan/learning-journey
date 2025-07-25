@@ -31,10 +31,10 @@ Algorithms and data structures are two sides of the same coin. Their relationshi
 The choice of a "data structure" determines the "algorithm" that can be used efficiently. Conversely, the desired algorithm determines how data should be structured.
 
 ```
-+----------------+  determines   +------------+
-| Data Structure | <-----------> | Algorithm  |
-| (e.g., Sorted) |               | (e.g., BS) |
-+----------------+               +------------+
++----------------+   determines   +------------+
+| Data Structure | <------------> | Algorithm  |
+| (e.g., Sorted) |                | (e.g., BS) |
++----------------+                +------------+
 ```
 
 **Classic Example: Searching for a phone number in a directory of 1 million names.**

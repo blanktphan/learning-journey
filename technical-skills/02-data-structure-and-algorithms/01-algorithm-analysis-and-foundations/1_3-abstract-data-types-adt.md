@@ -40,13 +40,13 @@ This is the most critical distinction to understand:
 ```
 +-----------+      can be implemented by
 |    ADT    |      (one-to-many)
-|  (Logic)  |----------------+
-+-----------+                |
-                             v
-           +------------------+ +------------------+
-           | Data Structure 1 | | Data Structure 2 |
+|  (Logic)  |------------------+
++-----------+                  |
+                               v
+           +------------------+ +--------------------+
+           | Data Structure 1 | | Data Structure 2   |
            | (e.g., Array)    | | (e.g., Linked List)|
-           +------------------+ +------------------+
+           +------------------+ +--------------------+
 ```
 
 **Example: The List ADT**
