@@ -23,8 +23,8 @@
 
 ### 📕 Hash-based Data Structures
 
-- 📖 [Hash Functions & Concepts](./04-hash-based-data-structures/4_1-hash-functions-and-concepts.md)
-- 📖 [Hash Tables](./04-hash-based-data-structures/4_2-hash-tables.md)
+- 📖 [Hash Functions & Concepts](./04-hash-based-data-structures/4_1-hash-functions-and-concepts.md) - (Completed)
+- 📖 [Hash Tables](./04-hash-based-data-structures/4_2-hash-tables.md) - (Completed)
 
 ### 📕 Graphs
 
