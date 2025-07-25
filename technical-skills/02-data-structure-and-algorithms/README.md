@@ -16,10 +16,10 @@
 
 ### 📕 Tree-based Data Structures
 
-- 📖 [Introduction to Trees & Binary Trees](./03-tree-based-data-structures/3_1-introduction-to-tree-and-binary-trees.md)
-- 📖 [Binary Search Trees - BST](./03-tree-based-data-structures/3_2-binary_search-trees-bst.md)
-- 📖 [Balanced Trees: AVL, Red-Black Trees](./03-tree-based-data-structures/3_3-balanced-trees.md)
-- 📖 [Heaps](./03-tree-based-data-structures/3_4-heaps.md)
+- 📖 [Introduction to Trees & Binary Trees](./03-tree-based-data-structures/3_1-introduction-to-tree-and-binary-trees.md) - (Completed)
+- 📖 [Binary Search Trees - BST](./03-tree-based-data-structures/3_2-binary_search-trees-bst.md) - (Completed)
+- 📖 [Balanced Trees: AVL, Red-Black Trees](./03-tree-based-data-structures/3_3-balanced-trees.md) -(Completed)
+- 📖 [Heaps](./03-tree-based-data-structures/3_4-heaps.md) - (Completed)
 
 ### 📕 Hash-based Data Structures
 

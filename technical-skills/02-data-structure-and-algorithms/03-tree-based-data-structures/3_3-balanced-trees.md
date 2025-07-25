@@ -23,11 +23,11 @@ A **Self-Balancing Binary Search Tree** is a special type of BST designed to **a
 The primary mechanism these trees use to rebalance is the **Tree Rotation**. This is a local operation that rearranges a subtree by swapping a parent-child pair to decrease the tree's height while always preserving the BST's ordering property.
 
 ```
-    y           x
-   / \         / \
-  x   C  <=>  A   y
- / \             / \
-A   B           B   C
+     y           x
+    / \         / \
+   x   C  <=>  A   y
+  / \             / \
+ A   B           B   C
 (A right rotation on y)
 ```
 
