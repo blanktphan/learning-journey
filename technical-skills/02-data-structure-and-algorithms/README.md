@@ -34,10 +34,10 @@
 
 ### 📕 Algorithms & Design Techniques
 
-- 📖 [Sorting Algorithms: Merge Sort, Quick Sort](./06-algorithms-and-design-techniques/6_1-sorting-algorithms.md)
-- 📖 [Searching Algorithms: Binary Search](./06-algorithms-and-design-techniques/6_2-searching-algorithms.md)
-- 📖 [Divide and Conquer](./06-algorithms-and-design-techniques/6_3-divide-and-conquer.md)
-- 📖 [Dynamic Programming](./06-algorithms-and-design-techniques/6_4-dynamic-programming.md)
+- 📖 [Sorting Algorithms: Merge Sort, Quick Sort](./06-algorithms-and-design-techniques/6_1-sorting-algorithms.md) - (Completed)
+- 📖 [Searching Algorithms: Binary Search](./06-algorithms-and-design-techniques/6_2-searching-algorithms.md) - (Completed)
+- 📖 [Divide and Conquer](./06-algorithms-and-design-techniques/6_3-divide-and-conquer.md) - (Completed)
+- 📖 [Dynamic Programming](./06-algorithms-and-design-techniques/6_4-dynamic-programming.md) - (Completed)
 
 
 ---

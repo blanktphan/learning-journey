@@ -32,12 +32,13 @@ A problem can typically be solved with Dynamic Programming if it exhibits two ke
     -   To find `fib(4)`, we need `fib(3)` and `fib(2)`.
     -   As you can see, `fib(3)` is calculated redundantly. DP solves this by storing the result of `fib(3)` the first time it's computed.
 ```
-          fib(5)
-         /      \
-      fib(4)     fib(3)
-     /    \       /    \
-  fib(3) fib(2) fib(2) fib(1)
- (fib(3) is computed twice)
+        fib(5)
+       /      \
+  fib(4)     fib(3)
+  /    \       /    \
+fib(3) fib(2) fib(2) fib(1)
+ 
+(fib(3) is computed twice)
 ```
 
 #### Optimal Substructure
