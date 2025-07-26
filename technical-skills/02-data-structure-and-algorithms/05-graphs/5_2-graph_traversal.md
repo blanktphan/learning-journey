@@ -36,12 +36,12 @@ BFS explores the graph "layer by layer." It starts at a source vertex, explores 
 
 ```
 BFS explores like ripples in a pond:
-       (A)
-      / | \
-     /  |  \
-   (B) (C) (D)  <- Level 1
-   / \   |
- (E) (F) (G)    <- Level 2
+        (A)
+       /  | \
+      /   |  \
+    (B)  (C) (D)  <- Level 1
+    / \   |
+  (E) (F) (G)    <- Level 2
 ```
 
 -   **Use Cases:** Finding the shortest path in an unweighted graph, social network analysis (e.g., finding all friends of friends), web crawlers.

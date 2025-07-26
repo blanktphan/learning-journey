@@ -28,9 +28,9 @@
 
 ### 📕 Graphs
 
-- 📖 [Introduction to Graphs](./05-graphs/5_1-introduction-to-graphs.md)
-- 📖 [Graph Traversal: BFS, DFS](./05-graphs/5_2-graph_traversal.md)
-- 📖 [Shortest Path Algorithms: Dijkstra's](./05-graphs/5_3-shortest-path-algorithms.md)
+- 📖 [Introduction to Graphs](./05-graphs/5_1-introduction-to-graphs.md) - (Completed)
+- 📖 [Graph Traversal: BFS, DFS](./05-graphs/5_2-graph_traversal.md) - (Completed)
+- 📖 [Shortest Path Algorithms: Dijkstra's](./05-graphs/5_3-shortest-path-algorithms.md) - (Completed)
 
 ### 📕 Algorithms & Design Techniques
 
